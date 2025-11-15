@@ -108,7 +108,7 @@
 
 # 6. Usernames Correlacionados
 
-- **user_x_maronetti** → 19 serviços  
+- **user_x_maronlonte** → 19 serviços  
 - **usuarioXY** → 20 serviços  
 - **perfil_primario_x** → 18 serviços  
 
