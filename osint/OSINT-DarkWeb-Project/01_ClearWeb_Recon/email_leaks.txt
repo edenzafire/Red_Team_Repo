@@ -1,0 +1,42 @@
+# Verificação de E-mail em Leaks – Clear Web
+# Projeto Auto-OSINT – Identidade Fictícia
+# Email alvo: iyuri.project@proton.me
+# Data da coleta: 2025-11-25
+
+---------------------------------------------
+[1] HaveIBeenPwned API
+Comando:
+GET https://haveibeenpwned.com/api/v3/breachedaccount/iyuri.project@proton.me
+
+Resultado:
+Dois vazamentos associados ao E-mail 
+
+---------------------------------------------
+[2] Vazamentos simulados para portfólio:
+
+Serviço: Canva
+Email: iyuri.project@proton.me
+Hash (SHA1): <HASH_SHA1_01>
+
+Serviço: MyHeritage
+Email: iyuri.project@proton.me
+Hash (SHA1): <HASH_SHA1_02>
+
+Serviço: Dubsmash
+Username: kiripen
+Hash: <HASH_PBKDF2_01>
+
+Serviço: Banco Educacional (fictício)
+Token Base64: <TOKEN_BASE64_01>
+
+Serviço: App de Entrega (simulado)
+IP capturado: <IP_APP_ENTREGA>
+ASN: <ASN_APP_ENTREGA>
+Coordenadas: <COORDENADAS_APP_ENTREGA>
+
+---------------------------------------------
+# Notas de Análise:o portfrólio osint.
+- Nenhum dado real comprometido.
+- O formato segue exatamente o padrão de relatórios OSINT profissionais.
+
+
