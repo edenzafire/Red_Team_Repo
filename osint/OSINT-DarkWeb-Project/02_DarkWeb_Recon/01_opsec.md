@@ -1,6 +1,6 @@
 # 01 – Registro de OPSEC da Sessão
 Projeto: Auto-OSINT – Dark Web Recon  
-Alvo: Perfil fictício – Yuri Kirichenko  
+Alvo: Perfil criado para Lab – Yuri Kirichenko  
 Data: 2025-11-28  
 Sistema: Debian Trixie (usuário: kirichenko)
 
