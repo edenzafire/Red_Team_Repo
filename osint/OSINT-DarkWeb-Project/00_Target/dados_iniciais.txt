@@ -1,0 +1,8 @@
+Alvo: Yuri Kirichenko
+Email: iyuri.project@proton.me
+Username: kirichenko_pentest
+Idade: 23
+Local: Curitiba – PR
+Objetivo da investigação:
+Mapear presença digital na Clear Web + Dark Web para criar relatório profissional OSINT.
+
