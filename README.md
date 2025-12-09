@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/edenzafire/Portfolio_pentest">
-    <img src="images/capa.jpg" alt="Capa do Portfólio Pentest" style="border-radius:12px; width:100%;" />
+    <img src="images/capa.jpg" alt="Capa do Portfólio Pentest" style="border-radius:50px; border:3px solid red;" />
   </a>
 </p>
 
