@@ -11,3 +11,7 @@ Este diretório reúne materiais, estudos e projetos relacionados a **pentest** 
 Aqui são organizadas subpastas que abrangem diferentes áreas da segurança — como **OSINT**, **Enumeration**, **Vulnerability Research**, e outras áreas relacionadas à segurança ofensiva.
 
 O objetivo é manter um repositório claro, estruturado e evolutivo que reflita o desenvolvimento contínuo dos estudos.
+
+
+
+[🔎 OSINT](https://github.com/edenzafire/Portfolio_pentest/tree/main/OSINT)
