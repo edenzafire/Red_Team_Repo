@@ -1,7 +1,6 @@
-
 <p align="center">
-  <a href="https://seu-site-ou-github-pages">
-    <img src="images/capa.jpg" alt="Capa do Portfólio Pentest" width="100%" />
+  <a href="https://github.com/edenzafire/Portfolio_pentest">
+    <img src="images/capa.jpg" alt="Capa do Portfólio Pentest" style="border-radius:12px; width:100%;" />
   </a>
 </p>
 
