@@ -1,9 +1,14 @@
-# Portfolio_pentest
+
+<p align="center">
+  <a href="https://seu-site-ou-github-pages">
+    <img src="images/capa.jpg" alt="Capa do Portfólio Pentest" width="100%" />
+  </a>
+</p>
 
 # 🛡️ Pentest – Estudos, Metodologias e Projetos
 
-Este diretório reúne materiais, estudos e projetos relacionados a **pentest** (testes de intrusão) com foco educacional e profissional.  
-Aqui são organizadas subpastas que abrangem diferentes áreas da segurança ofensiva — como **OSINT**, **análise de vulnerabilidades**, **testes de aplicações**, entre outros — sempre conduzidas de forma **ética, responsável e dentro dos limites legais**.
+Este diretório reúne materiais, estudos e projetos relacionados a **pentest** (testes de intrusão) com o objetivo de aprofundar conhecimentos em segurança ofensiva.
 
-O objetivo é manter um repositório claro, estruturado e evolutivo que reflita o desenvolvimento contínuo de habilidades em segurança ofensiva.
+Aqui são organizadas subpastas que abrangem diferentes áreas da segurança — como **OSINT**, **Enumeration**, **Vulnerability Research**, e outras áreas relacionadas à segurança ofensiva.
 
+O objetivo é manter um repositório claro, estruturado e evolutivo que reflita o desenvolvimento contínuo dos estudos.
