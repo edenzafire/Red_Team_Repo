@@ -14,7 +14,7 @@ O objetivo é manter um repositório claro, estruturado e evolutivo que reflita 
 
 ## Esteprojeto está estruturado na seguinte ordem
 
-##🔎 1) OSINT – Open Source Intelligence
+## 🔎 1) OSINT – Open Source Intelligence
 
 A etapa de OSINT consiste na coleta e análise de informações públicas disponíveis em fontes abertas.
 Aqui são documentadas técnicas usadas para identificar dados sensíveis, pegadas digitais e possíveis vetores de ataque antes mesmo de qualquer interação direta com o alvo.
