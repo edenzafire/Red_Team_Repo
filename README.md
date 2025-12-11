@@ -60,4 +60,27 @@ Aqui documento práticas de:
 [🕵️‍♂️ Recon](https://github.com/edenzafire/Portfolio_pentest/tree/main/Recon)
 
 
+## 🧩 3) Enumeration (Enumeração)
 
+A fase de Enumeração é onde transformamos as informações coletadas no Recon em dados mais profundos e estruturados sobre os serviços ativos, portas abertas, versões de softwares e possíveis vetores de ataque.
+É uma etapa essencial para identificar pontos fracos exploráveis.
+
+Nesta seção são documentadas práticas como:
+
+Enumeração de serviços (HTTP, SMB, FTP, SSH, RPC, etc.)
+
+Identificação de versões e banners
+
+Descoberta de usuários, grupos e compartilhamentos
+
+Varreduras aprofundadas com Nmap e NSE
+
+Enumeração de diretórios e endpoints
+
+Enumeração de vulnerabilidades preliminares
+
+Coleta ativa para identificar superfícies de ataque internas
+
+📁 Pasta de Enumeration:
+
+[🧩 Enumeration](https://github.com/edenzafire/Portfolio_pentest/tree/main/Enumeration)
