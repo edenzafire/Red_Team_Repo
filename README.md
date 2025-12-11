@@ -84,3 +84,29 @@ Coleta ativa para identificar superfícies de ataque internas
 📁 Pasta de Enumeration:
 
 [🧩 Enumeration](https://github.com/edenzafire/Portfolio_pentest/tree/main/Enumeration)
+
+
+🟦 4) Vulnerability Research (Pesquisa de Vulnerabilidades)
+
+A fase de Vulnerability Research é dedicada à identificação, análise e compreensão profunda das vulnerabilidades descobertas durante Recon e Enumeration.
+Aqui são documentadas técnicas e métodos utilizados para investigar fraquezas em sistemas, aplicações e serviços, além de análises mais avançadas que envolvem exploração teórica.
+
+As práticas incluem:
+
+Identificação e validação de vulnerabilidades
+
+Análise de CVEs e bancos de dados de segurança
+
+Avaliação de impacto e severidade
+
+Estudo de vetores de exploração conhecidos
+
+Pesquisa manual e uso de scanners (Nmap NSE, Nikto, Nessus, OpenVAS, etc.)
+
+Criação de notas técnicas sobre falhas detectadas
+
+Entendimento profundo das causas e da possibilidade de exploração
+
+📁 Pasta de Vulnerability Research:
+
+[🟦 Vulnerability-Research](https://github.com/edenzafire/Portfolio_pentest/tree/main/Vulnerability-Research)
