@@ -22,7 +22,7 @@ Coleta e análise de informações públicas a partir de fontes abertas, com foc
 
 ## 🔎 2) Reconnaissance (Recon)
 
-[🕵️‍ ♂️ Recon](https://github.com/edenzafire/Portfolio_pentest/tree/main/Recon)  
+[🕵️‍♂️ Recon](https://github.com/edenzafire/Portfolio_pentest/tree/main/Recon)  
 Reconhecimento ativo e passivo de alvos, incluindo fingerprinting, descoberta de serviços, tecnologias e mapeamento da superfície de ataque.
 
 
