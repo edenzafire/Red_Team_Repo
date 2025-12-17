@@ -16,7 +16,7 @@ O objetivo é manter um repositório claro, estruturado e evolutivo que reflita 
 
 ## 🔎 1) Osint – Open Source Intelligence
 
-[🔎 Osint](https://github.com/edenzafire/Portfolio_pentest/tree/main/OSINT)  
+[🔎 Osint](https://github.com/edenzafire/Portfolio_pentest/tree/main/Osint)  
 Coleta e análise de informações públicas a partir de fontes abertas, com foco em footprinting, exposição de dados e mapeamento inicial de riscos.
 
 
