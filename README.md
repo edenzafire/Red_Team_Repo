@@ -16,97 +16,81 @@ O objetivo é manter um repositório claro, estruturado e evolutivo que reflita 
 
 ## 🔎 1) OSINT – Open Source Intelligence
 
-A etapa de OSINT consiste na coleta e análise de informações públicas disponíveis em fontes abertas.
-Aqui são documentadas técnicas usadas para identificar dados sensíveis, pegadas digitais e possíveis vetores de ataque antes mesmo de qualquer interação direta com o alvo.
-
-As práticas incluem:
-
-Coleta de informações públicas
-
-Footprinting de organizações e indivíduos
-
-Análise de metadados
-
-Mapeamento de superfícies expostas
-
-Busca em redes sociais
-
-Coleta em fontes abertas (DNS, WHOIS, motores de busca, leaks)
-
-Identificação de riscos derivados de exposição pública
-
-📁 Pasta do OSINT:
-
-[🔎 OSINT](https://github.com/edenzafire/Portfolio_pentest/tree/main/OSINT)
-
-
+[🔎 OSINT](https://github.com/edenzafire/Portfolio_pentest/tree/main/OSINT)  
+Coleta e análise de informações públicas a partir de fontes abertas, com foco em footprinting, exposição de dados e mapeamento inicial de riscos.
 
 
 ## 🔎 2) Reconnaissance (Recon)
 
-A etapa de Recon é essencial em qualquer avaliação de segurança.  
-Aqui documento práticas de:
-
-- Reconhecimento Passivo  
-- Reconhecimento Ativo  
-- Fingerprinting  
-- Coleta de Metadados  
-- Enumeração de Serviços  
-- Coleta de Infraestrutura Exposta  
-- Mapeamento de Superfície de Ataque  
-
-📁 **Pasta do Recon:**  
-
-[🕵️‍♂️ Recon](https://github.com/edenzafire/Portfolio_pentest/tree/main/Recon)
+[🕵️‍ ♂️ Recon](https://github.com/edenzafire/Portfolio_pentest/tree/main/Recon)  
+Reconhecimento ativo e passivo de alvos, incluindo fingerprinting, descoberta de serviços, tecnologias e mapeamento da superfície de ataque.
 
 
 ## 🧩 3) Enumeration (Enumeração)
 
-A fase de Enumeração é onde transformamos as informações coletadas no Recon em dados mais profundos e estruturados sobre os serviços ativos, portas abertas, versões de softwares e possíveis vetores de ataque.
-É uma etapa essencial para identificar pontos fracos exploráveis.
-
-Nesta seção são documentadas práticas como:
-
-Enumeração de serviços (HTTP, SMB, FTP, SSH, RPC, etc.)
-
-Identificação de versões e banners
-
-Descoberta de usuários, grupos e compartilhamentos
-
-Varreduras aprofundadas com Nmap e NSE
-
-Enumeração de diretórios e endpoints
-
-Enumeração de vulnerabilidades preliminares
-
-Coleta ativa para identificar superfícies de ataque internas
-
-📁 Pasta de Enumeration:
-
-[🧩 Enumeration](https://github.com/edenzafire/Portfolio_pentest/tree/main/Enumeration)
+[🧩 Enumeration](https://github.com/edenzafire/Portfolio_pentest/tree/main/Enumeration)  
+Enumeração detalhada de serviços, portas e aplicações, com foco na identificação de usuários, versões, recursos expostos e possíveis vetores de ataque.
 
 
 ##  🟦 4) Vulnerability Research (Pesquisa de Vulnerabilidades)
 
-A fase de Vulnerability Research é dedicada à identificação, análise e compreensão profunda das vulnerabilidades descobertas durante Recon e Enumeration.
-Aqui são documentadas técnicas e métodos utilizados para investigar fraquezas em sistemas, aplicações e serviços, além de análises mais avançadas que envolvem exploração teórica.
+[🟦 Vulnerability Research](https://github.com/edenzafire/Portfolio_pentest/tree/main/Vulnerability-Research)  
+Pesquisa, análise e validação de vulnerabilidades, incluindo estudo de CVEs, avaliação de impacto e compreensão técnica das falhas.
 
-As práticas incluem:
 
-Identificação e validação de vulnerabilidades
+## 💥 5) Exploitation
 
-Análise de CVEs e bancos de dados de segurança
+[💥 Exploitation](https://github.com/edenzafire/Portfolio_pentest/tree/main/Exploitation)  
+Exploração controlada de vulnerabilidades em ambientes de laboratório, visando validação prática das falhas e obtenção inicial de acesso.
 
-Avaliação de impacto e severidade
 
-Estudo de vetores de exploração conhecidos
+## ⬆️  6) Privilege Escalation
 
-Pesquisa manual e uso de scanners (Nmap NSE, Nikto, Nessus, OpenVAS, etc.)
+[⬆️ Privilege Escalation](https://github.com/edenzafire/Portfolio_pentest/tree/main/Privilege-Escalation)  
+Técnicas de escalada de privilégios em sistemas Linux e Windows, explorando configurações inseguras, permissões incorretas e falhas conhecidas.
 
-Criação de notas técnicas sobre falhas detectadas
 
-Entendimento profundo das causas e da possibilidade de exploração
+## 🧠 7)  Post-Exploitation
 
-📁 Pasta de Vulnerability Research:
+[🧠 Post-Exploitation](https://github.com/edenzafire/Portfolio_pentest/tree/main/Post-Exploitation)  
+Atividades realizadas após a exploração inicial, incluindo enumeração interna, persistência, movimentação lateral e coleta de evidências.
 
-[🟦 Vulnerability-Research](https://github.com/edenzafire/Portfolio_pentest/tree/main/Vulnerability-Research)
+
+## 🌐 8) Web Application Testing
+
+[🌐 Web Application Testing](https://github.com/edenzafire/Portfolio_pentest/tree/main/Web-Application-Testing)  
+Testes de segurança em aplicações web, abordando vulnerabilidades comuns como SQL Injection, XSS, CSRF, LFI/RFI e falhas de autenticação.
+
+
+## 📡 9) Wireless
+
+[📡 Wireless](https://github.com/edenzafire/Portfolio_pentest/tree/main/Wireless)  
+Avaliação de segurança em redes sem fio, incluindo análise de protocolos, autenticação, criptografia e ataques comuns a ambientes Wi-Fi.
+
+
+## 🏁 10) CTFs
+
+[🏁 CTFs](https://github.com/edenzafire/Portfolio_pentest/tree/main/CTFs)  
+Resoluções documentadas de desafios Capture The Flag, demonstrando metodologia, raciocínio lógico e aplicação prática de técnicas ofensivas.
+
+
+
+## 🛠️  11)  Scripts
+
+[🛠️ Scripts](https://github.com/edenzafire/Portfolio_pentest/tree/main/Scripts)  
+Scripts e ferramentas desenvolvidas para automação de tarefas em OSINT, Recon, Enumeração e testes de segurança.
+
+
+## 📄 12)  Reports
+
+[📄 Reports](https://github.com/edenzafire/Portfolio_pentest/tree/main/Reports)  
+Relatórios técnicos e executivos de atividades de OSINT e Pentest, seguindo boas práticas de documentação e padrões do mercado.
+
+
+## 📝 13) Notes
+
+[📝 Notes](https://github.com/edenzafire/Portfolio_pentest/tree/main/Notes)  
+Anotações técnicas, estudos pessoais, cheatsheets e registros de aprendizado contínuo em segurança da informação.
+
+
+
