@@ -63,11 +63,11 @@ Todos os dados reais foram mascarados ou ofuscados. Este relatório utiliza info
 | Dispositivos/Tokens   | Alto           | Possibilidade de clonagem de sessão               |
 | Perfil Digital        | Médio-Alto     | Doxing facilitado por usernames consistentes     |
 
-## Metodologia Utilizada (Mostre isso no portfólio!)
+## Metodologia Utilizada 
 - Coleta passiva via fontes públicas e breaches conhecidos  
 - Parsing automatizado com Python (pandas + regex)  
 - Remoção de duplicatas e normalização de dados  
 - Mascaramento total antes de qualquer exposição pública  
 - Organização em Markdown + tabelas para relatórios  
-- Integração opcional com Maltego CE (transforms locais)
+- Integração com Maltego CE (transforms locais)
 
