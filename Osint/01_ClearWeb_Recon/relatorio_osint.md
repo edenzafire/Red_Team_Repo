@@ -1,175 +1,73 @@
+# Relatório OSINT Mascarado para Portfólio Público
+**Demonstração Técnica de Coleta, Organização e Análise Ética de Dados Vazados**  
+**Data de Geração:** 20/12/2025  
+**Autor:** Zafire Daniel 
+**Objetivo:** Mostrar metodologia completa de OSINT passivo sem expor dados reais de terceiros  
 
-# 🛡️ Relatório Completo de Auto-OSINT  
-**Identidade Avaliada:** Usuário X (Dados Mascarados)  
-**Classificação:** CONFIDENCIAL – Uso Pessoal  
-**Data:** 2025-10-24  
+**Aviso Legal**  
+Todos os dados reais foram mascarados ou ofuscados. Este relatório utiliza informações fictícias simuladas a partir de vazamentos reais antigos, apenas para fins educacionais e demonstração de habilidades em cibersegurança.
 
----
+## Resumo Executivo
+- Total de leaks analisados → **10 fontes distintas**  
+- Período dos vazamentos → 2018–2023  
+- Email central (mascarado) → r***_1@h******.com  
+- Nome completo (mascarado) → R****** R******** M********  
+- Data de nascimento (mascarada) → **/**/1998  
+- Cidades identificadas → C****** – PR (atual) e P**** A***** – RS (leak 2019)
 
-# 1. Identificação de Perfis (Mascarado)
+## Tabela de Vazamentos (Dados Totalmente Mascarados)
 
-## Perfil Primário – Instagram
-- **Username:** @perfil_primario_x  
-- **User ID:** 1932••••••  
-- **Nome exibido:** R. M. Silva  
-- **Conta privada:** Sim  
-- **Posts:** 13  
-- **Seguidores:** 5••  
-- **Seguindo:** 7••  
+| ID Leak (parcial) | Fonte                  | Email (mascarado)     | Username (exemplo mascarado) | Tipo de Hash / Observação                              | Ano Aproximado |
+|-------------------|------------------------|-----------------------|------------------------------|--------------------------------------------------------|----------------|
+| 1bc2...           | Twitter 2023           | r***_1@h******.com   | R******_R***                 | -                                                      | 2023           |
+| 00f3...           | Deezer                 | r***_1@h******.com   | R****** R******** M*****     | Dados pessoais + data de nascimento                    | 2019–2020      |
+| 9c41...           | Dubsmash               | r***_1@h******.com   | r***m********                | PBKDF2-SHA256 (15.000 rounds) – hash completo exposto  | 2018           |
+| 7372...           | Edmodo                 | r***_1@h******.com   | R******R***                  | Custom salted hash (não padrão)                        | 2019           |
+| 7dcf...           | Descomplica            | r***_1@h******.com   | -                            | Campo codificado (provável Base64)                     | 2018           |
+| 28fb...           | Leak isolado           | r***_1@h******.com   | R***R*********               | Apenas username                                        | -              |
+| 3c44...           | Site .inf.br           | r***_1@h******.com   | -                            | bcrypt ($2y$10$) – custo 10                            | 2020           |
+| 2460...           | James Delivery         | r***_1@h******.com   | -                            | Coordenadas precisas + token JWT + push tokens Firebase| 2019           |
+| bee9...           | Habibs                 | r***_1@h******.com   | R*** R********               | IP + Lat/Long precisão ~500m + Android device IDs     | 2019           |
+| -                 | Canva / Toondoo        | r***_1@h******.com   | -                            | Mesmo hash SHA1 reutilizado em ambos os leaks         | 2019           |
 
-## Perfil Secundário – Instagram
-- **Username:** @perfil_secundario_y  
-- **User ID:** 1679••••••  
-- **Nome exibido:** R. Silva  
-- **Bio:** “Cidade A :>”  
-- **Conta privada:** Sim  
+## Perfis de Redes Sociais Identificados (Mascarados)
+- Instagram Principal → @r***.m********_ (conta privada, ~582 seguidores)  
+- Instagram Secundário → @r****.m********_ (conta privada, bio: “C****** :>”)  
+- Facebook → facebook.com/r************ (perfil ativo desde 2011, mora em C******)
 
----
+## Achados Técnicos Relevantes (Demonstração de Capacidade)
+1. **Reutilização extrema de credenciais**  
+   → Mesmo email usado em mais de 15 serviços diferentes  
+   → Senhas/hashes reutilizados em pelo menos 3 vazamentos distintos
 
-# 2. Dados Pessoais Consolidados (Mascarado)
+2. **Exposição de geolocalização precisa**  
+   → Coordenadas com precisão de ~500m (leak Habibs 2019)  
+   → Segundo ponto geográfico em leak de delivery (área metropolitana)
 
-- **Nome completo:** R. M. Silva  
-- **Variações de nome:**
-  - R. Silva  
-  - UsuarioX29  
-  - Silva_Rega  
-  - SilvaRodr3  
-  - user_x_maroo  
+3. **Exposição de identificadores de dispositivo**  
+   → Facebook ASID completo  
+   → Múltiplos push tokens Firebase (APA91b...)  
+   → Token JWT válido na época  
+   → IDs internos de apps mobile
 
-- **Ano de nascimento:** 1998  
-- **Cidade atual (bio):** Cidade A  
-- **Cidade em vazamento:** Cidade B  
-- **País:** Brasil  
-- **Email central:** iyuri.project@proton.me  
-- **Telefone parcial:** (***) ***-**54  
+4. **Usernames consistentes em dezenas de sites**  
+   → Variações encontradas em ~58 plataformas (Spotify, GitLab, Threads, etc.)
 
----
+## Avaliação de Risco (Simulada)
 
-# 3. Vazamentos de Dados – Consolidação
+| Categoria              | Nível de Risco | Justificativa (exemplo genérico)                  |
+|-----------------------|----------------|---------------------------------------------------|
+| Identidade            | Alto           | Nome completo + data de nascimento + cidades      |
+| Credenciais           | Alto           | Hashes crackeáveis + reutilização massiva         |
+| Geolocalização        | Alto           | Coordenadas precisas em dois vazamentos           |
+| Dispositivos/Tokens   | Alto           | Possibilidade de clonagem de sessão               |
+| Perfil Digital        | Médio-Alto     | Doxing facilitado por usernames consistentes     |
 
-## Canva
-- **Email:** iyuri.project@proton.me  
-- **Hash:** `sha1:a8b9c1••••••••••••••••`  
+## Metodologia Utilizada (Mostre isso no portfólio!)
+- Coleta passiva via fontes públicas e breaches conhecidos  
+- Parsing automatizado com Python (pandas + regex)  
+- Remoção de duplicatas e normalização de dados  
+- Mascaramento total antes de qualquer exposição pública  
+- Organização em Markdown + tabelas para relatórios  
+- Integração opcional com Maltego CE (transforms locais)
 
-## Toondoo
-- Mesmo hash → **reutilização de senha**
-
-## MyHeritage
-- **Hash SHA1:** `02a9•••••••••••••••••••`
-
-## Dubsmash
-- **Username:** user_x_malon  
-- **Hash:** `pbkdf2_sha256$15000$xxxx$xxxxxxxxxxxxxxxxxx`
-
-## Edmodo
-- **Username:** UsuarioX29  
-- **Hash:** `$826y4$31•••••••••••••••••••`
-
-## Plataforma Educacional
-- **Token codificado (Base64):** truncado  
-
-## Benfare
-- **Hash bcrypt:** `$2y$10$LbR8Gs•••••••••••••`  
-
-## App de Entrega
-- **Nome:** R. Silva  
-- **Cidade:** Cidade B  
-- **IP:** 123.45.67.89  
-- **ASN:** 9999 – Operadora Fictícia  
-- **Coordenadas:** -30.11 / -51.16  
-
----
-
-# 4. Geolocalização e Rede (Mascarada)
-
-| Informação | Valor |
-|-----------|-------|
-| IP | 123.45.67.89 |
-| Cidade | Cidade B |
-| Coordenadas aproximadas | -30.11, -51.16 |
-| Precisão | ~500m |
-| ASN | 9999 |
-
-**Risco:** Alto – ligação entre identidade e localização.
-
----
-
-# 5. Identificadores de Dispositivo (Mascarado)
-
-- **SO:** Android  
-- **ASID Facebook:** 2479••••••••••••  
-- **IDs internos:** 2394••••••, 1565••••••  
-- **Push Tokens (Firebase):** `APA91b••••••••••••••••`  
-- **Token JWT (truncado)**  
-
-**Risco:** Alto – exposição de identificadores persistentes.
-
----
-
-# 6. Usernames Correlacionados
-
-- **user_x_maronlonte** → 19 serviços  
-- **usuarioXY** → 20 serviços  
-- **perfil_primario_x** → 18 serviços  
-
-### Perfis confirmados:
-- Instagram: @perfil_primario_x
-
----
-
-# 7. Padrões Notáveis
-
-- Reutilização de e-mail em dezenas de serviços  
-- Reutilização de senha em ao menos 2 vazamentos  
-- Nome real presente em serviços antigos  
-- Geolocalização cruzada (Cidade A ↔ Cidade B)  
-- Atividade consistente entre 2018–2023  
-- Forte correlação identidade ↔ dispositivos ↔ serviços  
-
----
-
-# 8. Avaliação de Riscos
-
-| Área | Nível | Impacto |
-|------|-------|---------|
-| Identidade | 🔴 Alto | Fraudes, engenharia social |
-| Credenciais | 🔴 Alto | Credential stuffing |
-| Localização | 🔴 Alto | Risco físico/digital |
-| Dispositivo | 🔴 Alto | Clonagem de sessão |
-| Padrões comportamentais | 🟡 Médio | Perfil para phishing |
-
----
-
-# 9. Conclusão
-
-A análise indica que, mesmo mascarando os dados, existe um padrão claro de:
-
-- Centralização de e-mail  
-- Reutilização de senhas  
-- Vazamentos múltiplos envolvendo credenciais, IP e geolocalização  
-- Perfis conectados a uma mesma identidade  
-- Exposição de identificadores sensíveis (IDs, tokens, ASID, hashes)  
-
-**Risco global: ALTO.**
-
----
-
-# 10. Recomendações (Prioridade Máxima)
-
-- Alterar todas as senhas imediatamente  
-- Ativar 2FA em e-mail e redes sociais  
-- Criar e-mail exclusivo para novos cadastros  
-- Solicitar remoção de vazamentos quando possível  
-- Encerrar contas antigas  
-- Monitorar acessos por 30 dias  
-- Não usar nome real em serviços não essenciais  
-
----
-
-# 11. Observação Final
-
-Este relatório contém **dados completamente mascarados**, seguros para publicação como portfólio no GitHub.  
-Porém, foram coletados de forma real!
-Nenhum dado pessoal real está presente.
-
-**Classificação:** CONFIDENCIAL – Uso somente do proprietário.
