@@ -18,6 +18,9 @@ Este relatório demonstra uma abordagem ética e técnica para reconhecimento na
 
 ### Ambiente Técnico
 - **Plataforma:** Whonix 17+ configurado em VirtualBox, garantindo anonimato total através de isolamento de rede e roteamento Tor.
+- **Configuração Detalhada do Ambiente Whonix/Tor:**  
+  📄 [02_torConf.md - Guia completo de configuração e hardening do Whonix](https://github.com/edenzafire/Portfolio_pentest/blob/main/Osint/02_DarkWeb_Recon/02_torConf.md)
+
 - **Acesso à Dark Web:** Proxy SOCKS5 na porta 9050, com renovação dinâmica de circuitos via biblioteca `stem` para mitigar riscos de rastreamento.
 - **Script Personalizado:**  
   📂 [Pasta completa de Scripts OSINT](https://github.com/edenzafire/Portfolio_pentest/tree/main/Scripts/scripts_osint)  
