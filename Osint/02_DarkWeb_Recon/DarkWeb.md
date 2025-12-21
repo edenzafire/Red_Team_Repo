@@ -1,3 +1,4 @@
+[![GitHub](https://img.shields.io/badge/GitHub-Repositorio-blue?logo=github)](https://github.com/edenzafire/Portfolio_pentest)
 # Dark Web Reconnaissance - Demonstração OSINT
 
 **Autor:** Zafire Daniel  
