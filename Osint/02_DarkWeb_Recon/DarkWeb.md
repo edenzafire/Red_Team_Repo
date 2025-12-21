@@ -39,9 +39,14 @@ python3 darkweb_monitor_masked_v2.py \
   --max-depth 2 \
   --output recon_br_simulado.json
 
-** O Script pode ser acessado através do seguinte link **
+### Script Principal
+O script utilizado para a coleta anônima e mascarada está disponível publicamente:
 
-[darkweb_monitor_masked_v2.py](https://github.com/edenzafire/Portfolio_pentest/blob/main/Scripts/scripts_osint/darkweb_monitor_masked_v2.py)
+📂 [Pasta de Scripts OSINT](https://github.com/edenzafire/Portfolio_pentest/tree/main/Scripts/scripts_osint)  
+📄 [darkweb_monitor_masked_v2.py](https://github.com/edenzafire/Portfolio_pentest/blob/main/Scripts/scripts_osint/darkweb_monitor_masked_v2.py) – Versão ética com anonimização automática de IOCs.
+
+O código é comentado e pronto para reprodução em ambiente Whonix.
+
 ## Resultados ( Mascarados)
 
 Páginas Analisadas: Aproximadamente 25 (crawling até profundidade 2, com otimização para evitar sobrecarga).
