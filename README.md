@@ -8,7 +8,7 @@
 
 **Bem-vindo ao meu portfólio profissional de Penetration Testing e Cibersegurança!**  
 
-Este repositório documenta minhas habilidades técnicas em testes de invasão éticos, OSINT, reconnaissance, exploit development e boas práticas de segurança. Todo o conteúdo é educacional, utiliza alvos fictícios ou autorizados e segue princípios de responsible disclosure.
+Este repositório documenta minhas habilidades técnicas em testes de invasão éticos, OSINT, reconnaissance, exploit development e boas práticas de segurança. Todo o conteúdo é educacional, utiliza alvos autorizados e segue princípios de responsible disclosure.
 
 > **Aviso:** Nenhum ataque real foi realizado. Todos os exemplos são simulações ou demonstrações em ambientes controlados.
 
