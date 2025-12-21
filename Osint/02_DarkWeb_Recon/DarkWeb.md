@@ -1,54 +1,40 @@
-## Dark Web Reconnaissance - Demonstração OSINT
-Autor: Zafire Daniel
- 
-Data: 21 de Dezembro de 2025
+# Dark Web Reconnaissance - Demonstração OSINT
 
-Versão: 1.1
+**Autor:** Zafire Daniel  
+**Data:** 21 de Dezembro de 2025  
+**Versão:** 1.1  
 
 Este relatório demonstra uma abordagem ética e técnica para reconhecimento na dark web no âmbito de Open Source Intelligence (OSINT). O foco reside no monitoramento de ameaças cibernéticas, com ênfase em potenciais exposições de dados associados a domínios brasileiros (.br). Todos os exemplos e resultados são baseados em simulações fictícias, com dados mascarados para preservar a privacidade e conformidade legal.
 
 ## Objetivo
 
-Executar coleta anônima de inteligência via Tor em fontes públicas.
-Extrair e analisar indicadores de compromisso (IOCs) de forma responsável.
-Aplicar anonimização automática para demonstração segura.
-Fornecer insights acionáveis para estratégias de threat intelligence defensiva.
+- Executar coleta anônima de inteligência via Tor em fontes públicas.
+- Extrair e analisar indicadores de compromisso (IOCs) de forma responsável.
+- Aplicar anonimização automática para demonstração segura.
+- Fornecer insights acionáveis para estratégias de threat intelligence defensiva.
 
 ## Metodologia
-** Ambiente Técnico **
 
-Plataforma: Whonix 17+ configurado em VirtualBox, garantindo anonimato total através de isolamento de rede e roteamento Tor.
-Acesso à Dark Web: Proxy SOCKS5 na porta 9050, com renovação dinâmica de circuitos via biblioteca stem para mitigar riscos de rastreamento.
-Script Personalizado:darkweb_monitor_masked_v2.py desenvolvido em Python 3.11.
-Dependências: requests, beautifulsoup4, pysocks, stem.
-Funcionalidades chave: Crawling restrito (profundidade máxima 2), delays aleatórios (8-18 segundos) para evitar detecção, e mascaramento regex automático de dados sensíveis.
+### Ambiente Técnico
+- **Plataforma:** Whonix 17+ configurado em VirtualBox, garantindo anonimato total através de isolamento de rede e roteamento Tor.
+- **Acesso à Dark Web:** Proxy SOCKS5 na porta 9050, com renovação dinâmica de circuitos via biblioteca `stem` para mitigar riscos de rastreamento.
+- **Script Personalizado:**  
+  📂 [Pasta completa de Scripts OSINT](https://github.com/edenzafire/Portfolio_pentest/tree/main/Scripts/scripts_osint)  
+  📄 [darkweb_monitor_masked_v2.py](https://github.com/edenzafire/Portfolio_pentest/blob/main/Scripts/scripts_osint/darkweb_monitor_masked_v2.py) – Versão ética com anonimização automática de IOCs (Python 3.11).
 
-Fontes de Dados: Motores de busca éticos na dark web, incluindo Ahmia, Torch e DuckDuckGo Onion – limitado a conteúdos públicos e indexados.
-Parâmetros de Busca: Keywords direcionadas para ameaças brasileiras, como ".br", "gov.br", "vazamento brasil", "breach .com.br", "exposição CPF".
+  Dependências principais: `requests`, `beautifulsoup4`, `pysocks`, `stem`.  
+  Funcionalidades chave: Crawling restrito (profundidade máxima 2), delays aleatórios (8-18 segundos) e mascaramento regex automático.
 
-## Processo de Execução
+- **Fontes de Dados:** Motores de busca éticos na dark web (Ahmia, Torch, DuckDuckGo Onion).
+- **Parâmetros de Busca:** Keywords direcionadas: ".br", "gov.br", "vazamento brasil", "breach .com.br", "exposição CPF".
 
-Configuração de ambiente virtual isolado (venv).
-Inicialização do script com URLs de busca ética.
-Parsing de HTML e extração de texto relevante.
-Aplicação de filtros e mascaramento antes de armazenamento em JSON.
-Análise qualitativa e quantitativa dos resultados simulados.
-
-## Exemplo de Comando
-
+### Exemplo de Execução
+```bash
 python3 darkweb_monitor_masked_v2.py \
   --url "http://juhanurmihxlp77nkq76byazcldy2hlmovfu2epvl5ankdibsot4csyd.onion/search/?q=.br+breach+2025" \
   --keywords ".br" "vazamento" "leak brasil" "gov.br" "CPF exposto" \
   --max-depth 2 \
   --output recon_br_simulado.json
-
-### Script Principal
-O script utilizado para a coleta anônima e mascarada está disponível publicamente:
-
-📂 [Pasta de Scripts OSINT](https://github.com/edenzafire/Portfolio_pentest/tree/main/Scripts/scripts_osint)  
-📄 [darkweb_monitor_masked_v2.py](https://github.com/edenzafire/Portfolio_pentest/blob/main/Scripts/scripts_osint/darkweb_monitor_masked_v2.py) – Versão ética com anonimização automática de IOCs.
-
-O código é comentado e pronto para reprodução em ambiente Whonix.
 
 ## Resultados ( Mascarados)
 
