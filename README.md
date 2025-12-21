@@ -1,3 +1,28 @@
+[![GitHub stars](https://img.shields.io/github/stars/edenzafire/Portfolio_pentest?style=social)](https://github.com/edenzafire/Portfolio_pentest/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/edenzafire/Portfolio_pentest?style=social)](https://github.com/edenzafire/Portfolio_pentest/network/members)
+[![GitHub license](https://img.shields.io/github/license/edenzafire/Portfolio_pentest)](https://github.com/edenzafire/Portfolio_pentest/blob/main/LICENSE)
+[![Visitors](https://visitor-badge.laobi.icu/badge?page_id=edenzafire.Portfolio_pentest)](https://github.com/edenzafire/Portfolio_pentest)
+[![Last Commit](https://img.shields.io/github/last-commit/edenzafire/Portfolio_pentest)](https://github.com/edenzafire/Portfolio_pentest/commits/main)
+
+# Portfolio Pentest & Cibersegurança
+
+**Bem-vindo ao meu portfólio profissional de Penetration Testing e Cibersegurança!**  
+
+Este repositório documenta minhas habilidades técnicas em testes de invasão éticos, OSINT, reconnaissance, exploit development e boas práticas de segurança. Todo o conteúdo é educacional, utiliza alvos fictícios ou autorizados e segue princípios de responsible disclosure.
+
+> **Aviso:** Nenhum ataque real foi realizado. Todos os exemplos são simulações ou demonstrações em ambientes controlados.
+
+## Sobre Mim
+
+Olá! Sou **Éden Zafire**, entusiasta de cibersegurança com foco em **Penetration Testing**, **Red Team** e **Threat Intelligence**.  
+
+- Apaixonado por OSINT avançado, automação de ferramentas e ambientes hardened (Whonix, Kali, Parrot OS).  
+- Experiência em metodologias como PTES, MITRE ATT&CK e OWASP Testing Guide.  
+- Sempre em busca de aprendizado contínuo: certificações em andamento (ex: OSCP, eJPT, Practical Ethical Hacking).  
+- Comprometido com ética, privacidade e segurança responsável.
+
+
+
 <p align="center">
   <a href="https://github.com/edenzafire/Portfolio_pentest">
     <img src="images/capa.jpg" alt="Capa do Portfólio Pentest" style="border-radius:50px; border:3px solid red;" />

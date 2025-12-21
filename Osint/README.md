@@ -23,11 +23,6 @@ Todos os dados originais foram **anonimizados**, garantindo privacidade e manten
 - Senhas reutilizadas em mais de um serviço.
 - Alto grau de correlação entre perfis, e-mail e dados pessoais.
 
-Detalhes completos estão no arquivo:
-
-👉 **[`relatorio_osint.md`](relatorio_osint.md)**
-
----
 
 ## 🚨 Avaliação de Risco (Resumo)
 
