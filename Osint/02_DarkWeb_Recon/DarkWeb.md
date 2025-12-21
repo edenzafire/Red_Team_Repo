@@ -1,7 +1,10 @@
 ## Dark Web Reconnaissance - Demonstração OSINT
 Autor: Zafire Daniel
+ 
 Data: 21 de Dezembro de 2025
+
 Versão: 1.1
+
 Este relatório demonstra uma abordagem ética e técnica para reconhecimento na dark web no âmbito de Open Source Intelligence (OSINT). O foco reside no monitoramento de ameaças cibernéticas, com ênfase em potenciais exposições de dados associados a domínios brasileiros (.br). Todos os exemplos e resultados são baseados em simulações fictícias, com dados mascarados para preservar a privacidade e conformidade legal.
 
 ## Objetivo
