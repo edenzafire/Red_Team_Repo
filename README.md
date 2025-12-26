@@ -41,19 +41,19 @@ O objetivo é manter um repositório claro, estruturado e evolutivo que reflita 
 
 ## 🔎 1) Osint – Open Source Intelligence
 
-[🔎 Osint](https://github.com/edenzafire/Portfolio_pentest/tree/main/Osint)  
+[🔎01_Osint](https://github.com/edenzafire/Portfolio_pentest/tree/main/01_Osint)  
 Coleta e análise de informações públicas a partir de fontes abertas, com foco em footprinting, exposição de dados e mapeamento inicial de riscos.
 
 
 ## 🔎 2) Reconnaissance (Recon)
 
-[🕵️‍♂️ Recon](https://github.com/edenzafire/Portfolio_pentest/tree/main/Recon)  
+[🕵️‍♂️ 02_Recon](https://github.com/edenzafire/Portfolio_pentest/tree/main/02_Recon)  
 Reconhecimento ativo e passivo de alvos, incluindo fingerprinting, descoberta de serviços, tecnologias e mapeamento da superfície de ataque.
 
 
 ## 🧩 3) Enumeration (Enumeração)
 
-[🧩 Enumeration](https://github.com/edenzafire/Portfolio_pentest/tree/main/Enumeration)  
+[🧩03_Enumeration](https://github.com/edenzafire/Portfolio_pentest/tree/main/03_Enumeration)  
 Enumeração detalhada de serviços, portas e aplicações, com foco na identificação de usuários, versões, recursos expostos e possíveis vetores de ataque.
 
 
