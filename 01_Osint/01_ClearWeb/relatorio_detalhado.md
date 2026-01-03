@@ -53,6 +53,8 @@ Todos os dados reais foram mascarados ou ofuscados. Este relatório utiliza info
 4. **Usernames consistentes em dezenas de sites**  
    → Variações encontradas em ~58 plataformas (Spotify, GitLab, Threads, etc.)
 
+
+
 ## Avaliação de Risco (Simulada)
 
 | Categoria              | Nível de Risco | Justificativa (exemplo genérico)                  |
@@ -105,6 +107,20 @@ Foram identificados diferentes níveis de maturidade criptográfica nos serviço
 * **bcrypt (Site .inf.br):** Implementação robusta (custo 10), demonstrando uma maior dificuldade de quebra via força bruta.
 * **Reuso de Hash:** Identificou-se que o mesmo hash SHA1 foi encontrado em plataformas distintas, confirmando o **reuso de senhas** pelo usuário na época.
 
+
+### 🌐 2.0Habibs[NOME_DO_LEAK]. Análise de Infraestrutura e Conectividade (Network Artifacts)
+Durante o parsing dos vazamentos (Leaks de 2019), foi isolado um artefato de rede persistente:
+
+* **Endereço IP Identificado:** `187.6.181.16`
+* **ASN:** `AS27699` (Telefônica Brasil S.A / VIVO)
+* **Origem do Dado:** Metadados de log de acesso vinculados ao vazamento Habibs.
+* **Geolocalização Histórica:** Brasil, Regional Curitiba PR.
+
+#### 🧠 Relevância para a Investigação:
+A identificação deste IP permite realizar a técnica de **Pivotagem**. No contexto de um Pentest profissional, este dado não é apenas um número, mas um ponto de partida para:
+1.  **Mapeamento de ASN:** Identificar se o alvo opera em redes domésticas ou se possui blocos de IP empresariais dedicados.
+2.  **Passive DNS (pDNS):** Verificar se este IP já resolveu para algum domínio oficial ou subdomínio de infraestrutura (ex: `vpn.empresa.com.br`).
+3.  **Análise de Histórico de Portas:** Consultar bases como Shodan/Censys para entender quais serviços estavam expostos nesta interface na data do vazamento.
 ## Conclusão e Avaliação de Risco
 A exposição é classificada como **ALTA**. Apesar da antiguidade dos dados, a consistência de usernames (`r***.m********_`) permite a migração do ataque para plataformas modernas (Instagram/Threads/GitLab), onde o atacante pode tentar *Credential Stuffing* ou ataques de recuperação de conta.
 
