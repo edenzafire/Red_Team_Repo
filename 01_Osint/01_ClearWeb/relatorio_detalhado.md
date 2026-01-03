@@ -35,7 +35,7 @@ Todos os dados reais foram mascarados ou ofuscados. Este relatório utiliza info
 - Instagram Secundário → @r****.m********_ (conta privada, bio: “C****** :>”)  
 - Facebook → facebook.com/r************ (perfil ativo desde 2011, mora em C******)
 
-## Achados Técnicos Relevantes (Demonstração de Capacidade)
+## Achados Técnicos Relevantes
 1. **Reutilização extrema de credenciais**  
    → Mesmo email usado em mais de 15 serviços diferentes  
    → Senhas/hashes reutilizados em pelo menos 3 vazamentos distintos
@@ -69,5 +69,47 @@ Todos os dados reais foram mascarados ou ofuscados. Este relatório utiliza info
 - Remoção de duplicatas e normalização de dados  
 - Mascaramento total antes de qualquer exposição pública  
 - Organização em Markdown + tabelas para relatórios  
-- Integração com Maltego CE (transforms locais)
+- Integração com Maltego CE (transforms locais
+
+
+## 🛠️ Ferramentas Utilizadas
+Mapeamento realizado através de ferramentas líderes de mercado e automação própria:
+
+* **Holehe:** Verificação de contas em serviços via mecanismos de recuperação de senha.
+* **Have I Been Pwned (HIBP):** Consulta de histórico de brechas de segurança.
+* **Maigret & Sherlock:** Rastreamento de consistência de identificadores (usernames) em centenas de plataformas.
+* **Automação Própria:** Script Python utilizando a API do **BreachDirectory** para busca automatizada de hashes e fontes de vazamento.
+
+> 📁 **Acesse meu script aqui:** https://github.com/edenzafire/Portfolio_pentest/blob/main/Scripts/scripts_osint/bd_lookup.py
+
+
+## Inventário de Exposição (Breaches)
+Abaixo, os principais pontos de exposição identificados através de correlação de e-mail e username:
+
+| Fonte do Vazamento | Ano | Dado Exposto | Tipo de Hash / Proteção |
+| :--- | :--- | :--- | :--- |
+| **Deezer** | 2019 | Nome, Nascimento, Localização | Dados em Texto Plano |
+| **James Delivery** | 2019 | Geolocalização, Tokens JWT, Firebase | - |
+| **Dubsmash** | 2018 | Username, Hash de Senha | PBKDF2-SHA256 |
+| **Site .inf.br** | 2020 | Username, Hash de Senha | bcrypt ($2y$10$) |
+| **Habibs** | 2019 | IP, Lat/Long, Device IDs | Coordenadas precisas |
+
+## Análise Profunda de Vetores
+
+### 1.1. Correlação Geográfica e Rastreamento
+A análise cruzada entre os vazamentos do **James Delivery** e **Habibs** permitiu a triangulação de coordenadas geográficas. Embora os dados sejam de 2019, o histórico estabelece um padrão de residência e consumo que pode ser explorado em ataques de engenharia social direcionada.
+
+### 1.2. Análise de Criptografia (Hashes)
+Foram identificados diferentes níveis de maturidade criptográfica nos serviços afetados:
+* **SHA1 (Canva/Toondoo):** Extremamente vulnerável a ataques de colisão e *rainbow tables*.
+* **bcrypt (Site .inf.br):** Implementação robusta (custo 10), demonstrando uma maior dificuldade de quebra via força bruta.
+* **Reuso de Hash:** Identificou-se que o mesmo hash SHA1 foi encontrado em plataformas distintas, confirmando o **reuso de senhas** pelo usuário na época.
+
+## Conclusão e Avaliação de Risco
+A exposição é classificada como **ALTA**. Apesar da antiguidade dos dados, a consistência de usernames (`r***.m********_`) permite a migração do ataque para plataformas modernas (Instagram/Threads/GitLab), onde o atacante pode tentar *Credential Stuffing* ou ataques de recuperação de conta.
+
+## Recomendações de Segurança (Remediação)
+1.  **Auditoria de E-mail de Recuperação:** Garantir que e-mails de 2011 não sejam o único método de recuperação de contas modernas.
+2.  **MFA de Hardware/App:** Eliminar a dependência de senhas onde os hashes já foram vazados.
+3.  **Higienização de Identidade:** Solicitação de deleção de dados baseada na LGPD/GDPR para os sites identificados.
 
