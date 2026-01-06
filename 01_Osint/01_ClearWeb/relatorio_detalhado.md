@@ -108,7 +108,7 @@ Foram identificados diferentes níveis de maturidade criptográfica nos serviço
 * **Reuso de Hash:** Identificou-se que o mesmo hash SHA1 foi encontrado em plataformas distintas, confirmando o **reuso de senhas** pelo usuário na época.
 
 
-### 🌐 2.0Habibs[NOME_DO_LEAK]. Análise de Infraestrutura e Conectividade (Network Artifacts)
+### 🌐 2.0 Habibs. Análise de Infraestrutura e Conectividade (Network Artifacts)
 Durante o parsing dos vazamentos (Leaks de 2019), foi isolado um artefato de rede persistente:
 
 * **Endereço IP Identificado:** `187.6.181.16`
