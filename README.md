@@ -59,37 +59,37 @@ Enumeração detalhada de serviços, portas e aplicações, com foco na identifi
 
 ##  🟦 4) Vulnerability Research (Pesquisa de Vulnerabilidades)
 
-[🟦 Vulnerability Research](https://github.com/edenzafire/Portfolio_pentest/tree/main/Vulnerability-Research)  
+[🟦04_Vulnerability_Research](https://github.com/edenzafire/Portfolio_pentest/tree/main/04_Vulnerability-Research)  
 Pesquisa, análise e validação de vulnerabilidades, incluindo estudo de CVEs, avaliação de impacto e compreensão técnica das falhas.
 
 
 ## 💥 5) Exploitation
 
-[💥 Exploitation](https://github.com/edenzafire/Portfolio_pentest/tree/main/Exploitation)  
+[💥05_Exploitation](https://github.com/edenzafire/Portfolio_pentest/tree/main/05_Exploitation)  
 Exploração controlada de vulnerabilidades em ambientes de laboratório, visando validação prática das falhas e obtenção inicial de acesso.
 
 
 ## ⬆️  6) Privilege Escalation
 
-[⬆️ Privilege Escalation](https://github.com/edenzafire/Portfolio_pentest/tree/main/Privilege-Escalation)  
+[⬆️ 06_Privilege_Escalation](https://github.com/edenzafire/Portfolio_pentest/tree/main/06_Privilege-Escalation)  
 Técnicas de escalada de privilégios em sistemas Linux e Windows, explorando configurações inseguras, permissões incorretas e falhas conhecidas.
 
 
 ## 🧠 7)  Post-Exploitation
 
-[🧠 Post-Exploitation](https://github.com/edenzafire/Portfolio_pentest/tree/main/Post-Exploitation)  
+[🧠 07_Post_Exploitation](https://github.com/edenzafire/Portfolio_pentest/tree/main/07_Post-Exploitation)  
 Atividades realizadas após a exploração inicial, incluindo enumeração interna, persistência, movimentação lateral e coleta de evidências.
 
 
 ## 🌐 8) Web Application Testing
 
-[🌐 Web Application Testing](https://github.com/edenzafire/Portfolio_pentest/tree/main/Web-Application-Testing)  
+[🌐08_Web_Application_Testing](https://github.com/edenzafire/Portfolio_pentest/tree/main/08_Web_Application_Testing)  
 Testes de segurança em aplicações web, abordando vulnerabilidades comuns como SQL Injection, XSS, CSRF, LFI/RFI e falhas de autenticação.
 
 
 ## 📡 9) Wireless
 
-[📡 Wireless](https://github.com/edenzafire/Portfolio_pentest/tree/main/Wireless)  
+[📡09_Wireless](https://github.com/edenzafire/Portfolio_pentest/tree/main/09_Wireless)  
 Avaliação de segurança em redes sem fio, incluindo análise de protocolos, autenticação, criptografia e ataques comuns a ambientes Wi-Fi.
 
 
