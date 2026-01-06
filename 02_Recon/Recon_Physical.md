@@ -42,7 +42,7 @@ Com a localização física confirmada, a investigação evoluiu para a identifi
 
 > 🛡️ **Nota de Metodologia:**
 > O processo de auditoria e ganho de acesso à rede sem fio identificada encontra-se detalhado em meu repositório especializado:
-> 🔗 [**Projeto: Wireless Pentest - Auditoria de Redes Locais**](SEU_LINK_AQUI)
+> 🔗 [**Projeto: Wireless Pentest - Auditoria de Redes Locais**] https://github.com/edenzafire/Portfolio_pentest/tree/main/09_Wireless
 
 ---
 
