@@ -1,32 +1,74 @@
 # 🔍 Estudo de Caso: Auto-OSINT e Pegada Digital Legada
-[![Framework: MITRE ATT&CK](https://img.shields.io/badge/Framework-MITRE%20ATT%26CK-orange)](https://attack.mitre.org/)
-[![Status: Finalizado](https://img.shields.io/badge/Status-Finalizado-green)](#)
-[![Nível de Risco: Alto](https://img.shields.io/badge/Risco-Alto-red)](#)
+
+**Mapeamento completo da superfície de ataque digital de um indivíduo a partir de dados vazados entre 2018–2023**
+
+[![OSINT](https://img.shields.io/badge/Técnica-OSINT-blue)](https://github.com/edenzafire/Portfolio_pentest/tree/main/Clear_Web)
+[![Python](https://img.shields.io/badge/Script-Python-yellow)](https://github.com/edenzafire/Portfolio_pentest/blob/main/Scripts/scripts_osint/bd_lookup.py)
+[![Maltego](https://img.shields.io/badge/Tool-Maltego_CE-lightgrey)](https://www.maltego.com/)
+[![Status](https://img.shields.io/badge/Status-Concluído-green)]()
+
+**Data:** dezembro 2025
+**Autor:** Zafire Daniel  
 
 ## 📌 Visão Geral
-Este projeto demonstra a aplicação de técnicas de **Inteligência de Fontes Abertas (OSINT)** para mapear a superfície de ataque de um indivíduo a partir de identificadores antigos (e-mails ativos desde 2011). 
+Demonstração realista e **100% ética** de como vazamentos antigos podem ser correlacionados para reconstruir identidade digital, credenciais reutilizadas e localização histórica.
 
-O objetivo é evidenciar como dados vazados em brechas de segurança ao longo de uma década podem ser correlacionados para realizar **Doxing**, **Credential Stuffing** e rastreamento geográfico.
+> **Aviso Legal**: Todos os dados reais foram mascarados/ofuscados. Este é um exercício de Red Team simulado para fins educacionais e portfólio.
 
-## 🛠️ Metodologia e Ferramentas
-A investigação seguiu o framework **MITRE ATT&CK**, focando na tática de **Reconnaissance (TA0043)**.
+## 🎯 Objetivo
+Mostrar o impacto duradouro de brechas de segurança antigas e como um atacante pode:
+- Realizar **doxing passivo**
+- Preparar ataques de **credential stuffing**
+- Pivotar para **geolocalização precisa**
 
-* **Coleta de Dados:** Busca passiva em bases de dados de vazamentos (Breach Data).
-* **Processamento:** Scripts em Python para limpeza e normalização de dados.
-* **Visualização:** Modelagem de relacionamentos no Maltego CE.
-* **Análise:** Avaliação crítica de hashes de senhas e padrões de comportamento digital.
+## 🛠 Metodologia e Ferramentas
+Alinhado ao **MITRE ATT&CK – Reconnaissance (TA0043)**
 
-## 🛡️ Técnicas MITRE ATT&CK Mapeadas
-| ID | Técnica | Descrição |
-| :--- | :--- | :--- |
-| **T1589.002** | Gather Victim Identity Info | Coleta de e-mails legados para pivotagem. |
-| **T1593.001** | Search Open Technical Databases | Consulta a repositórios de vazamentos e redes sociais. |
-| **T1592.005** | Gather Victim Digital Network Info | Identificação de Device IDs e tokens de aplicativos. |
+| Ferramenta              | Uso Principal                          |
+|-------------------------|----------------------------------------|
+| Holehe                  | Verificação de registros em serviços   |
+| Have I Been Pwned       | Consulta de breaches                   |
+| BreachDirectory API     | Busca automatizada (script próprio)    |
+| Maigret / Sherlock      | Rastreamento de usernames              |
+| Maltego CE              | Visualização de relações               |
+| Python (pandas, regex)  | Normalização e parsing de dados        |
 
-## 📊 Resumo de Resultados
-* **Identidade:** Nome completo, data de nascimento e localização mapeados com sucesso.
-* **Credenciais:** Exposição de hashes de alta e baixa complexidade (bcrypt, PBKDF2, SHA1).
-* **Geolocalização:** Identificação de rotas e cidades de residência através de vazamentos de apps de delivery.
+📂 **Script principal**: [bd_lookup.py](https://github.com/edenzafire/Portfolio_pentest/blob/main/Scripts/scripts_osint/bd_lookup.py)
+
+## 📊 Resultados em Números
+- **10+ breaches** identificados (2018–2023)
+- **~58 plataformas** com username consistente
+- **2 pontos geográficos** triangulados com precisão ~500m
+- Hashes expostos: SHA1, PBKDF2, bcrypt
+
+## 🔗 Relatórios Detalhados
+Explore cada pivô de análise:
+
+- [📧 Análise de E-mail e Breaches](Email_Analysis/report_email.md)  
+- [👤 Consistência de Usernames](Username_Analysis/report_usernames.md)  
+- [📱 Footprint em Redes Sociais](Social_Media_Footprint/report_social.md)  
+- [🌍 Pivotagem Geográfica e Artefatos de Rede](Geolocation_Pivoting/report_geo.md)  
+- [☎️ Análise Telefônica](Phone_Analysis/report_phone.md) *(em desenvolvimento)*
+
+## 🛡 Técnicas MITRE ATT&CK Mapeadas
+| ID            | Técnica                              | Aplicação no Projeto                     |
+|---------------|--------------------------------------|------------------------------------------|
+| T1589.002     | Gather Victim Identity Information   | Coleta de nome, nascimento, cidades      |
+| T1593.001     | Search Open Technical Databases      | Consulta em bases de vazamentos          |
+| T1592.005     | Gather Victim Digital Network Info   | Device IDs, tokens Firebase, IP histórico|
+
+## 💡 Lições Aprendidas e Recomendações
+- Reutilização de senhas/hashes é o maior vetor mesmo anos depois
+- Usernames consistentes são o "fio condutor" perfeito para doxing
+- Apps de delivery e restaurantes vazam geolocalização absurdamente precisa
+- **Recomendações práticas**: MFA hardware, higienização LGPD, variação de usernames
+
+## 🖼 Teaser Visual
+![Maltego Graph Teaser](https://via.placeholder.com/800x450.png?text=Maltego+Graph+-+Relacionamentos+OSINT)  
+*(Em breve: screenshot real do grafo no Maltego com entidades mascaradas)*
 
 ---
-👉 **[CLIQUE AQUI PARA LER O RELATÓRIO TÉCNICO COMPLETO](./relatorio_detalhado.md)**
+
+**Projeto em evolução** – Próximos módulos: Recon Técnico, Enumeração de Subdomínios, Wi-Fi Attacks e CTFs.
+
+⭐ Se curtiu, deixa uma star no repo!
