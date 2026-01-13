@@ -1,7 +1,7 @@
 # Relatório OSINT - Análise de Consistência de Usernames
 **Rastreamento Cross-Platform e Evolução de Identificadores**
 
-**Data:** 08/01/2026  
+**Data:** 2025  
 **Autor:** Zafire Daniel  
 
 **Aviso Legal:** Todos os usernames foram mascarados/ofuscados. Exemplo simulado baseado em padrões reais de comportamento digital.
@@ -33,6 +33,8 @@
 - **Sherlock** – Verificação detalhada e persistente de usernames
 - Correlação manual com dados de breaches (e-mail como pivô inicial)
 - Exportação e análise de resultados em JSON/CSV
+
+** As evidências você pode ver aqui ** https://github.com/edenzafire/Portfolio_pentest/tree/main/01_Osint/01_ClearWeb/evidence
 
 ## Avaliação de Risco
 - **Nível: Alto**

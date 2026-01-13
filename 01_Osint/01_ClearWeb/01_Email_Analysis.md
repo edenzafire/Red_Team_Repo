@@ -1,6 +1,6 @@
 # Relatório OSINT - Análise de E-mail (Mascarado)
 **Demonstração Técnica de Coleta e Análise de Breaches**
-**Data:** 08/01/2026  
+**Data:** 2025  
 **Autor:** Zafire Daniel  
 **Objetivo:** Mostrar metodologia de OSINT passivo focada em e-mail como pivô central, sem expor dados reais.
 
