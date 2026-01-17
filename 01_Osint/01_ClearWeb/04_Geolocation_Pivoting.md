@@ -1,8 +1,25 @@
-# Relatório OSINT - Pivotagem Geográfica
+# Relatório OSINT - Geolocation & Pivoting (Mascarado)
+**Rastreamento de Movimentação e Infraestrutura Técnica**
 
-**Análise de Coordenadas e Artefatos de Rede**  
-**Data:** 2025  
-**Autor:** Zafire Daniel  
+## Resumo Executivo
+Através do pivoting de dados técnicos encontrados em vazamentos SQL, foi possível converter um e-mail em coordenadas geográficas precisas e identificadores civis.
+
+## Vetores Técnicos e Pivoting
+| Atributo | Dado Mascarado | Fonte Original |
+| :--- | :--- | :--- |
+| **Coordenadas** | -30.1***, -51.1*** (Precisão 500m) | Habibs SQL Dump |
+| **Endereço IP** | 187.6.***.*** (V Tal Telecom) | Log de Acesso App |
+| **Identificador** | CPF: 110.1**.***-92 (Situação Regular) | Consulta RFB (via Leak) |
+| **Device ID** | Token Firebase: APA91b... (parcial) | James Delivery SQL |
+
+## Análise de Pivoting
+1. **Email -> App Delivery:** Revelou endereço IP e geolocalização histórica.
+2. **IP -> ASN:** Identificou o provedor de internet e a região metropolitana.
+3. **Data de Nasc. + Nome -> CPF:** Permitiu a validação da identidade real junto a órgãos governamentais.
+
+## Avaliação de Risco Físico
+A precisão das coordenadas (-30.1156, -51.1653) demonstra o risco de **Doxxing** e vigilância física baseada em metadados de aplicativos de terceiros.
+
 
 ## Achados Geográficos (Leaks 2019)
 - Precisão aproximada de ~500m identificada em leak Habibs

@@ -1,7 +1,5 @@
 # Relatório OSINT - Footprint em Redes Sociais
 **Perfis Públicos e Privados Identificados**
-**Data:** 2025
-**Autor:** Zafire Daniel  
 
 ## Perfis Encontrados (Mascarados)
 - **Instagram Principal**: @r***.m********_ (privada, ~582 seguidores)
@@ -12,6 +10,22 @@ User ID numérico: 182***************** (típico de conta nova, criada em agosto
 Seguidores/Seguindo: 0 seguidores, atividade zero.
 Avatar: Foto de uma mulher jovem (cabelo escuro longo, camisa rosa com bolinhas brancas, fundo casual tipo sofá/ambiente interno)
 - **Pinterest**: https://www.pinterest.com/r***e****ig*****ro*****/_saved(mostra se muito ativo compartilhando gostos por artigos de casa, e beleza)
+
+## Resumo Executivo
+A análise de redes sociais permitiu a reconstrução da linha do tempo da persona, identificando transições geográficas e vínculos institucionais.
+
+## Perfis Identificados
+* **Rede Social A (Instagram):** 2 perfis (Principal/Secundário), confirmando transição de cidade (P*** A****** -> C*******).
+* **Rede Social B (Facebook):** Perfil ativo desde 2011, revelando histórico escolar (Escola Y**** P*******).
+* **Rede Social C (TikTok):** Presença confirmada via handle `r***r*********`.
+
+## Inteligência Coletada (Vetores de Engenharia Social)
+* **Background:** Histórico educacional identificado permite ataques de *Pretexting* fingindo ser ex-alunos ou administração escolar.
+* **Timeline:** Atividade digital consistente entre 2018 e 2023.
+* **Interesses:** Mapeamento de serviços de delivery e streaming para campanhas de *Smishing* segmentadas.
+
+## Conclusão de Risco
+A exposição de vínculos escolares e interesses pessoais permite a criação de iscas de phishing com **taxa de conversão estimada em >70%** devido ao alto nível de personalização.
 
 ## Observações
 - Consistência de username com padrões encontrados em breaches
@@ -27,4 +41,5 @@ Avatar: Foto de uma mulher jovem (cabelo escuro longo, camisa rosa com bolinhas 
 ** os Scripts estão disponiveis aqui** https://github.com/edenzafire/Portfolio_pentest/tree/main/Scripts/scripts_osint
 ** As evidências você pode ver aqui ** https://github.com/edenzafire/Portfolio_pentest/tree/main/01_Osint/01_ClearWeb/evidence 
 ## Risco
+
 Médio-Alto → Facilita engenharia social e doxing quando combinado com dados vazados.

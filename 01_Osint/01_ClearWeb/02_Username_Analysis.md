@@ -1,8 +1,5 @@
 # Relatório OSINT - Análise de Consistência de Usernames
-**Rastreamento Cross-Platform e Evolução de Identificadores**
-
-**Data:** 2025  
-**Autor:** Zafire Daniel  
+**Rastreamento Cross-Platform e Evolução de Identificadores** 
 
 **Aviso Legal:** Todos os usernames foram mascarados/ofuscados. Exemplo simulado baseado em padrões reais de comportamento digital.
 
@@ -11,16 +8,25 @@
 - Período de uso estimado: 2011 – presente
 - Padrão principal: Combinação de nome "R***" + sobrenome "R********" / "M********"
 - Observação chave: Evolução clara do username ao longo do tempo (de formal/completo para curto + número)
+- Handles identificados: **6 variações principais**
+- Padrão de nomenclatura: `[Nome][Iniciais][Dígitos]`
+- Objetivo: Criar um grafo de conexões entre perfis pessoais, educacionais e profissionais para ampliar a superfície de ataque.
 
-## Tabela de Variações de Usernames Encontradas
-| Username Mascarado       | Padrão Observado                  | Estimativa de Antiguidade | Exemplos de Plataformas (genéricos)          | Quantidade Aprox. de Hits |
-|---------------------------|-----------------------------------|---------------------------|---------------------------------------------|---------------------------|
-| R*** R. M********         | Nome completo abreviado           | Mais antigo (2011+)       | Redes sociais antigas, fóruns, e-mail       | Alto                      |
-| R*** R********            | Nome + Sobrenome completo         | Médio (2015–2018)         | Streaming, gaming, serviços brasileiros      | Médio-Alto                |
-| R******RM29               | Nome + Iniciais + Número (idade?)  | Médio                     | Apps mobile, delivery, educação online      | Médio                     |
-| R******_R***              | Nome + Underscore + Apelido       | Médio                     | Instagram, Threads, GitHub                  | Alto                      |
-| R***R********4            | Apelido + Sobrenome + Número      | Recente (2019+)           | Plataformas modernas, redes sociais         | Alto                      |
-| r***************          | Tudo minúsculo, juntinho          | Recente                   | Dev platforms, Discord, serviços técnicos   | Médio                     |
+## Tabela de Correlação de Identidade
+| Alias (Mascarado) | Plataforma Exemplo | Observação de Inteligência |
+| :--- | :--- | :--- |
+| `r***m********` | Dubsmash / Gerais | Handle padrão para serviços de entretenimento. |
+| `R******_R***` | Twitter / X | Utilizado para identificação em redes sociais abertas. |
+| `R******RM**` | Edmodo / Educação | Vinculação com ambiente acadêmico/estudantil. |
+| `r****.m********_` | Instagram | Perfil com maior volume de metadados sociais. |
+| `R***R*********` | James Delivery | Vinculação direta com dados de consumo (Pivoting Geográfico). |
+
+## Análise de Padrão (Behavioral Analysis)
+A persona demonstra baixa variabilidade na criação de nomes de usuário, o que permite o uso de técnicas de **Username Squatting** e buscas automatizadas (Sherlock/Maigret) com alta taxa de assertividade.
+
+## Mapeamento MITRE ATT&CK
+* **T1593.001:** Search Open Social Media Platforms.
+* **T1589.003:** Gather Victim Identity Information: Usernames.
 
 ## Achados Técnicos Relevantes
 - **Consistência extrema**: Mesmos padrões reutilizados em dezenas de sites de categorias diferentes (streaming de música, delivery, educação, redes sociais, dev platforms).

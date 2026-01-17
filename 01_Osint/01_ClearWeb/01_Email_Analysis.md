@@ -26,6 +26,12 @@
 | bee9...           | Habibs             | r***_1@h******.com      | R*** R********          | IP + Lat/Long + Device IDs                 | 2019    |
 | -                 | Canva / Toondoo    | r***_1@h******.com      | -                       | Mesmo hash SHA1 reutilizado                | 2019    |
 
+
+## Análise de Pivoting (Data Correlation)
+A partir do identificador de e-mail, foi possível realizar o *pivoting* para os seguintes módulos:
+* **Módulo 02:** Descoberta de handles e aliases consistentes.
+* **Módulo 04:** Extração de metadados geográficos e IPs associados a logins de apps.
+
 ## Achados Principais
 - Mesmo e-mail registrado em **mais de 15 serviços diferentes**
 - Reutilização confirmada de hashes (ex: mesmo SHA1 em Canva e Toondoo)
@@ -35,7 +41,7 @@
 - **Holehe** – Verificação de registros via recuperação de senha
 - **Have I Been Pwned (HIBP)** – Consulta de breaches
 - **BreachDirectory API** – Busca automatizada (script próprio)
-- **Script Python**: [bd_lookup.py](https://github.com/edenzafire/Portfolio_pentest/blob/main/Scripts/scripts_osint/bd_lookup.py)
+- **Script Python**: [bd_lookup.py](https://github.com/edenzafire/Portfolio_pentest/blob/main/Scripts/scripts_osint/)
 
 ## Avaliação de Risco
 | Categoria     | Nível   | Justificativa                          |
