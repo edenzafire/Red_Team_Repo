@@ -1,141 +1,67 @@
-# 🕵️ Ferramentas Utilizadas – Projeto OSINT
+# 🕵️ Toolset & Methodology – OSINT Framework Alignment
 
-Este documento lista as principais ferramentas, métodos e recursos utilizados durante a investigação OSINT, organizadas por categorias para facilitar referência, auditoria e reprodutibilidade dos resultados.
+![Framework: OSINT](https://img.shields.io/badge/Framework-OSINT_Framework-blue?style=for-the-badge)
+![Scope: Intelligence_Gathering](https://img.shields.io/badge/Scope-Recon-orange?style=for-the-badge)
 
----
-
-## 1. 🔍 Coleta de Dados – Identidades e Contas Online
-
-### **Holehe**
-
-* Função: verifica se um e-mail está registrado em diversos serviços online.
-* Utilidade: identificação de presença digital e possíveis plataformas vinculadas.
-
-### **Sherlock**
-
-* Função: busca usernames em centenas de sites e redes sociais.
-* Utilidade: enumeração de perfis associados ao mesmo nome de usuário.
-
-### **WhatsMyName**
-
-* Função: identifica a existência de usernames cadastrados em múltiplos sites.
-* Diferencial: complemento ao Sherlock com fontes diferentes.
-
-### **Google Dorks**
-
-* Função: consultas avançadas via Google para informações expostas.
-* Exemplos:
-
-  * `site:facebook.com "nome completo"`
-  * `inurl:pastebin email@dominio.com`
-* Utilidade: localizar dados indexados publicamente.
-
-### **Scraping / Navegação Manual**
-
-* Função: coleta manual de dados verificados diretamente na fonte.
-* Utilidade: validação visual, captura de metadados e cruzamento de informação.
+Este documento detalha o arsenal tecnológico utilizado na investigação, categorizado conforme a taxonomia do **OSINT Framework**. A estrutura abaixo reflete o fluxo lógico da coleta à análise de inteligência.
 
 ---
 
-## 2. 🧾 Vazamentos e Leaks
+## 1. 📧 Email Address (Digital Identity)
+Fase focada em validar a existência de contas e mapear a superfície de exposição vinculada a endereços de correio eletrônico.
 
-### **hstrike**
+* **Holehe:** Verificação de registros via API em centenas de sites (MFA/Account Discovery).
+* **HaveIBeenPwned:** Consulta de histórico de incidentes de segurança e violações de dados.
+* **E-mail Header Analysis:** Análise de metadados em mensagens recebidas para identificação de servidores de origem e saltos de rede.
 
-* Função: consulta bases de dados vazadas em massa.
-* Utilidade: localizar credenciais, informações pessoais e associações.
+## 2. 👤 Username (Persona Mapping)
+Utilização de identificadores únicos para correlacionar perfis entre diferentes ecossistemas digitais.
 
-### **HaveIBeenPwned**
+* **Sherlock:** Busca automatizada de *handles* em centenas de redes sociais e fóruns.
+* **WhatsMyName:** Motor de busca complementar para detecção de perfis ativos.
+* **Instant Username Check:** Validação de disponibilidade de aliases para predição de contas futuras.
 
-* Função: detecção de vazamentos públicos vinculados a e-mails.
-* Utilidade: confirmar exposição em leaks conhecidos.
+## 3. 🔎 Search Engines (Dorking & Discovery)
+Exploração avançada de índices públicos para localização de dados sensíveis não estruturados.
 
-### **DeHashed / Snusbase**
+* **Google Dorks:** Operadores avançados para filtragem de documentos (`filetype:pdf`), diretórios (`intitle:index.of`) e menções específicas.
+* **Bing/DuckDuckGo:** Motores complementares para neutralizar bolhas de busca e filtros de remoção do Google.
 
-* Função: mecanismos de busca em dumps e bancos de dados vazados.
-* Utilidade: validação de ocorrência e profundidade da exposição.
+## 4. 📂 Data Breaches & Leaks (Deep/Dark Web)
+Acesso a repositórios de informações comprometidas para extração de PII (Personally Identifiable Information).
 
-### **Dumps SQL e Bases Vazadas**
+* **DeHashed / Snusbase:** Motores de busca em bancos de dados vazados para validação de credenciais e endereços físicos.
+* **HStrike:** Consulta massiva de infraestrutura e correlação de leaks SQL.
+* **SQL Dumps Analysis:** Manipulação direta de bancos de dados vazados (CSV/JSON) para extração de hashes de senha, CPFs e tokens.
 
-* Função: análise direta de vazamentos obtidos.
-* Utilidade:
+## 5. 📱 Social Media (Digital Footprinting)
+Análise comportamental e extração de metadados em redes sociais populares.
 
-  * Confirmar CPF, telefone, hashes de senha, endereços etc.
-  * Cruzar dados entre vazamentos.
+* **Instagram OSINT API:** Coleta de grafos de seguidores e extração de metadados de mídia.
+* **ExifTool:** Análise forense de imagens para extração de coordenadas GPS, modelos de câmera e timestamps de criação.
 
----
+## 6. 🛠️ Automation & Analysis (Custom Scripts)
+Engenharia aplicada para normalização e processamento de grandes volumes de dados.
 
-## 3. 📱 Análise de Redes Sociais
-
-### **Instagram OSINT API**
-
-* Função: coleta de perfis, metadados, seguidores e informações públicas.
-* Utilidade: reconstrução de presença social.
-
-### **Ferramentas de Download/Análise de Mídia**
-
-* Função: baixar publicações para estudo local.
-* Informação importante:
-
-  * Instagram **não notifica o usuário** em downloads de fotos públicas.
-
----
-
-## 4. 🧠 Inteligência, Tratamento e Organização
-
-### **Scripts Python Produzidos**
-
-Utilizados para:
-
-* Extração e processamento de listas de vazamentos
-* Conversão de dumps para CSV
-* Normalização de dados
-* Cruzamento de fontes
-
-Os scripts serão organizados em uma pasta  separada (`scripts_osint`).
-
-### **grep / awk / sed / jq**
-
-* Função: análise e filtragem de grandes volumes de texto e JSON via terminal.
-
-### **Planilhas (CSV / Excel)**
-
-* Função: tabulação de resultados para visualização e documentação.
+* **Python Scripts:** Desenvolvimento de scripts customizados para limpeza de dados (Data Wrangling) localizados no diretório [/scripts_osint](./scripts_osint).
+* **Linux CLI (grep, awk, sed, jq):** Processamento rápido de grandes datasets SQL e arquivos JSON via terminal.
+* **Planilhamento Técnico:** Tabulação de resultados para análise de tendências e geração de relatórios de risco.
 
 ---
 
-## 5. 🧩 Metodologia
-
-A metodologia geral seguiu os seguintes passos:
-
-1. Coleta de identificadores (e-mail, nome, telefone, usuário)
-2. Busca sistemática em:
-
-   * redes sociais
-   * motores de busca
-   * bancos de dados vazados
-   * consultas por APIs e ferramentas OSINT
-3. Validação manual e automatizada
-4. Organização dos dados extraídos
-5. Montagem de relatório consolidado
+## 📈 Metodologia Operacional
+A investigação seguiu o ciclo de inteligência estruturado:
+1.  **Planejamento:** Definição dos identificadores iniciais (Seed Data).
+2.  **Coleta:** Varredura sistemática via ferramentas automatizadas e manuais.
+3.  **Processamento:** Normalização de dados brutos e cruzamento de fontes (Pivoting).
+4.  **Análise:** Avaliação crítica dos achados e atribuição de nível de risco.
+5.  **Produção:** Compilação de evidências e relatório final.
 
 ---
 
-## 6. 🔒 Considerações Éticas
-
-* Toda coleta realizada a partir de fontes públicas ou legalmente acessíveis.
-* A finalidade é educacional, de defesa e de análise de exposição digital.
-* Nenhuma tentativa de invasão, brute-force ou exploração ativa foi executada.
+## 📂 Evidências e Artefatos
+Os logs de execução, capturas de tela e evidências técnicas detalhadas podem ser acessados em:
+🔗 [**Evidence Repository - ClearWeb**](https://github.com/edenzafire/Portfolio_pentest/tree/main/01_Osint/01_ClearWeb/evidence)
 
 ---
-
-## 7. 📌 Status Atual
-
-* Estrutura de coleta concluída
-* Relatório compilado
-* Repositório organizado com:
-
-  * `/relatorios`
-  * `/scripts`
-  * `/fontes`
-  * `/dumps`
-
+**Nota Ética:** Nenhuma técnica de intrusão ativa foi realizada. Este projeto limita-se estritamente ao uso de fontes abertas e dados disponíveis publicamente em diretórios de terceiros.
