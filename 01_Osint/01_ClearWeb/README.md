@@ -44,11 +44,11 @@ Alinhado ao **MITRE ATT&CK – Reconnaissance (TA0043)**
 ## 🔗 Relatórios Detalhados
 Explore cada pivô de análise:
 
-- [📧 Análise de E-mail e Breaches](Email_Analysis/report_email.md)  
-- [👤 Consistência de Usernames](Username_Analysis/report_usernames.md)  
-- [📱 Footprint em Redes Sociais](Social_Media_Footprint/report_social.md)  
-- [🌍 Pivotagem Geográfica e Artefatos de Rede](Geolocation_Pivoting/report_geo.md)  
-- [☎️ Análise Telefônica](Phone_Analysis/report_phone.md) *(em desenvolvimento)*
+- [📧 Análise de E-mail e Breaches] https://github.com/edenzafire/Portfolio_pentest/blob/main/01_Osint/01_ClearWeb/01_Email_Analysis.md 
+- [👤 Consistência de Usernames] https://github.com/edenzafire/Portfolio_pentest/blob/main/01_Osint/01_ClearWeb/02_Username_Analysis.md  
+- [📱 Footprint em Redes Sociais] https://github.com/edenzafire/Portfolio_pentest/blob/main/01_Osint/01_ClearWeb/03_Social_Media_Footprint.md 
+- [🌍 Pivotagem Geográfica e Artefatos de Rede] https://github.com/edenzafire/Portfolio_pentest/blob/main/01_Osint/01_ClearWeb/04_Geolocation_Pivoting.md  
+- [☎️ Análise Telefônica] https://github.com/edenzafire/Portfolio_pentest/blob/main/01_Osint/01_ClearWeb/05_Phone_Analysis.md
 
 ## 🛡 Técnicas MITRE ATT&CK Mapeadas
 | ID            | Técnica                              | Aplicação no Projeto                     |
