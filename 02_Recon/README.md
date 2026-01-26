@@ -54,6 +54,6 @@ Alinhado ao **MITRE ATT&CK - Reconnaissance (TA0043)**
 
 ---
 
-📫 **Quer ver o fluxo completo?** Confira a [Fase 01 - OSINT](../Clear_Web/) ou entre em contato via LinkedIn: [SEU_LINK_AQUI]
+📫 **Quer ver o fluxo completo?** Confira a [Fase 01 - OSINT] https://github.com/edenzafire/Portfolio_pentest/tree/main/01_Osint ou entre em contato via LinkedIn: [SEU_LINK_AQUI]
 
 ⭐ Se o portfólio está te ajudando, deixa uma star no repo!
