@@ -1,75 +1,102 @@
-# 🛰️ Fase 02: Reconhecimento Ativo & Geolocalização
-![Status: Em Execução](https://img.shields.io/badge/Status-Em_Execu%C3%A7%C3%A3o-yellow?style=for-the-badge)
-![Nível: Intermediário](https://img.shields.io/badge/N%C3%ADvel-Intermedi%C3%A1rio-blue?style=for-the-badge)
-![MITRE: Reconnaissance](https://img.shields.io/badge/MITRE_ATT%26CK-TA0043-orange?style=for-the-badge)
+# 🛰️ Fase 02: Reconhecimento Ativo (Transição para Enumeração)
+
+**Status:** Em Execução  
+**Nível:** Intermediário  
+**MITRE ATT&CK:** Reconnaissance (TA0043) → Preparação para Discovery / Enumeration
 
 ## 📖 Visão Geral
-Nesta etapa, o objetivo é validar os dados coletados na **Fase 01 (OSINT)** e realizar a transição da inteligência digital para a infraestrutura física e lógica do alvo. O foco aqui é a identificação de ativos vivos e o mapeamento do perímetro de rede.
+Nesta fase, o objetivo foi validar e correlacionar informações obtidas durante o Reconhecimento Passivo (OSINT), promovendo a transição controlada da inteligência digital para a infraestrutura física e lógica associada ao alvo.
+
+Embora esta etapa ainda seja classificada como Reconhecimento, algumas atividades já envolvem interação técnica limitada, caracterizando um **Reconhecimento Ativo**, que antecede formalmente a Fase de Enumeração.
+
+O foco principal foi:
+* Validar a existência de ativos reais;
+* Identificar possíveis pontos de presença física;
+* Mapear o perímetro externo antes de qualquer enumeração profunda de serviços.
 
 ---
 
-## 🌐 1. Investigação de Infraestrutura: O Elo Histórico
-A investigação partiu de um ponto de extremidade técnico (Pivoting) identificado em vazamentos de bases SQL anteriores.
+## 🌐 1. Investigação de Infraestrutura – Correlação Histórica
+A investigação teve início a partir de um ponto técnico de **pivoting**, identificado previamente em vazamentos históricos de bases SQL associados à persona analisada. Esse ponto serviu como elo inicial entre a presença digital e a infraestrutura de conectividade utilizada pelo alvo.
 
-### 🕵️‍♂️ Ponto de Acesso Identificado (Legado)
+### 🕵️‍♂️ Ponto de Acesso Identificado (Infraestrutura Legada)
 * **IP Exposto:** `187.6.181.16`
 * **Hostname:** `187-6-181-16.3g.brasiltelecom.net.br`
 * **ASN:** `8167` (V Tal Telecom / Brasil Telecom)
 * **Localização Estimada (ISP):** `-30.1156, -51.1653`
-* **Precisão:** `~500m`
+* **Precisão Aproximada:** `~500 metros`
 
-> **🧠 Inteligência de Campo (OPSEC):** > Embora o IP aponte para uma localização em Porto Alegre, a análise de latência e metadados cruzados sugeriu um **Ponto de Acesso Dinâmico**. Em Red Teaming, classificar um IP como "Efêmero" evita o desperdício de recursos em ataques contra gateways que podem sofrer rotação a cada 24 horas.
+### 🧠 Inteligência Operacional (OPSEC)
+Embora o endereço IP indicasse geolocalização em Porto Alegre, a análise cruzada de latência, histórico de alocação ASN e características do hostname sugeriu tratar-se de um IP dinâmico e efêmero.
+
+> **Nota OPSEC:** Em operações de Red Team, classificar corretamente um IP como dinâmico evita o desperdício de recursos em tentativas de exploração contra gateways que podem sofrer rotação frequente (ex.: a cada 24h).
 
 ---
 
-## 📍 2. Reconhecimento Físico via Metadados (Pivoting)
-Para superar a limitação do IP dinâmico, foi realizada a técnica de **Image Metadata Extraction (T1590.001)**.
+## 📍 2. Reconhecimento Físico via Metadados (Pivoting Passivo)
+Diante da limitação imposta pelo IP dinâmico, foi aplicada a técnica de extração passiva de metadados de arquivos de mídia associados ao alvo, conforme a técnica **MITRE T1590.001 – Gather Victim Network Information: IP Addresses** (correlação indireta).
 
 ### 📸 Extração de Coordenadas Reais
-Através da análise de arquivos de mídia vinculados ao alvo, foram extraídos metadados **EXIF** que revelaram a localização estática e precisa do perímetro doméstico.
+A análise de metadados EXIF revelou coordenadas geográficas estáticas e precisas, associadas ao perímetro residencial real.
 
-* **Técnica:** Forense de imagem via `ExifTool`.
-* **Resultado:** Identificação do **Perímetro Estático** (Residência Real em Curitiba).
-* **Valor Estratégico:** A divergência entre o IP (Porto Alegre) e a coordenada real (Curitiba) confirmou o deslocamento da persona, permitindo o planejamento do reconhecimento wireless no local correto.
+* **Técnica:** Forense de imagem com `ExifTool`
+* **Resultado:** Identificação do perímetro físico real (**Curitiba – PR**)
+* **Valor Estratégico:** A divergência entre a localização estimada via IP (Porto Alegre) e as coordenadas reais (Curitiba) confirmou o deslocamento da persona, permitindo o direcionamento correto das etapas seguintes de reconhecimento físico e wireless.
 
 ---
 
-## 📶 3. Mapeamento de Radiofrequência (Wireless Recon)
-Com o perímetro físico delimitado, a operação focou no mapeamento do espectro de radiofrequência (RF) que serve o laboratório técnico.
+## 📶 3. Reconhecimento Wireless Passivo (RF Mapping)
+Com o perímetro físico delimitado, foi realizado o mapeamento passivo do espectro de radiofrequência, sem associação ou interação direta com a rede.
 
-* **Técnica:** Consulta passiva a bancos de dados de Wardriving (`WigLe.net`).
+* **Técnica:** Consulta passiva a bases públicas de wardriving ([Wigle.net](http://Wigle.net))
 * **SSID Identificado:** `[MASCARADO]`
-* **Protocolo de Segurança:** `WPA2-PSK (CCMP/AES)`.
-* **Vetor de Ataque:** Identificação de vazamento de sinal (Signal Leakage) para áreas públicas, permitindo a captura de Handshakes sem a necessidade de intrusão física imediata.
+* **Protocolo de Segurança:** `WPA2-PSK (CCMP/AES)`
 
-> 🛡️ **Nota de Metodologia:**
-> O processo de auditoria e ganho de acesso à rede sem fio identificada encontra-se detalhado em meu repositório especializado:
-> 🔗 [**Projeto: Wireless Pentest - Auditoria de Redes Locais**] https://github.com/edenzafire/Portfolio_pentest/tree/main/09_Wireless
+### 🎯 Observação Estratégica
+Foi identificada propagação de sinal para áreas públicas, caracterizando **Signal Leakage**, o que potencialmente permitiria a captura de handshakes sem intrusão física imediata.
 
----
-
-## 🏘️ 5. Mapeamento de Ativos e Topologia de Rede (Inventory)
-Após o reconhecimento do perímetro externo, a investigação focou na identificação dos ativos que compõem o ecossistema do laboratório de simulação. Esta etapa é crucial para definir os pontos de entrada e mapear potenciais vetores de **Movimentação Lateral**.
-
-### Tabela de Ativos Identificados
-
-| Ativo | Endereço IP | Função Primária | Sistema Operacional | Portas/Serviços Identificados |
-| :--- | :--- | :--- | :--- | :--- |
-| **Attack Box** | `192.168.1.X` | C2 & Auditoria | Lubuntu (PenTest Suite) | N/A (Source Node) |
-| **Web Server** | `192.168.1.10` | Hospedagem Lab | Linux (Kernel 5.x) | HTTP (80), HTTPS (443) |
-| **Workstation** | `192.168.1.15` | Endpoint Usuário | Windows 10 (22H2) | SMB (445), RDP (3389) |
-| **Mobile 01** | `192.168.1.20` | Persona Device | Android (v13/API 33) | ADB (5555), HTTP (8080) |
-| **Mobile 02** | `192.168.1.25` | Persona Device | iOS (v16.x) | Apple Service Ports |
-
-> **📝 Nota de Metodologia:**
-> Os serviços identificados preliminarmente nesta fase (como servidores HTTP e protocolos de compartilhamento) foram agendados para a **Fase 03: Enumeração**, onde serão realizados testes de *banner grabbing*, identificação de versões exatas e varredura de vulnerabilidades conhecidas (CVEs).
+> **⚠️ Nota Metodológica:** Qualquer tentativa de associação, captura de handshake ou auditoria ativa da rede wireless caracteriza Enumeração / Ataque e é tratada separadamente.
+> 🔗 **Projeto correlato:** [Wireless Pentest – Auditoria de Redes Locais]
 
 ---
 
-## 🚀 6. Conclusão e Próximos Passos
-O reconhecimento foi bem-sucedido em validar a infraestrutura lógica e física do alvo. A transição para a próxima fase focará em:
-1. **Enumerar** a versão do servidor Apache no ativo `192.168.1.10`.
-2. **Identificar** compartilhamentos SMB e versões de protocolos no Windows 10.
-3. **Auditar** portas de depuração abertas nos dispositivos móveis.
+## 🏘️ 4. Mapeamento Inicial de Ativos (Visão de Inventário)
+Com base no reconhecimento físico e lógico preliminar, foi possível identificar os ativos que compõem o ambiente do laboratório de simulação, permitindo o planejamento da fase seguinte.
+
+**⚠️ Importante:** A identificação detalhada de serviços, versões e portas é tratada formalmente na **Fase 03 – Enumeração**.
+
+| Ativo        | Endereço IP     | Função Primária        | Sistema Operacional           |
+|-------------|------------------|------------------------|--------------------------------|
+| Attack Box  | 192.168.1.X      | C2 & Auditoria         | Lubuntu (Pentest Suite)        |
+| Web Server  | 192.168.1.10     | Hospedagem de Lab      | Linux (Kernel 5.x)             |
+| Workstation | 192.168.1.15     | Endpoint Usuário       | Windows 10 (22H2)              |
+| Mobile 01   | 192.168.1.20     | Dispositivo Persona    | Android 13 (API 33)            |
+| Mobile 02   | 192.168.1.25     | Dispositivo Persona    | iOS 16.x                       |
 
 ---
+
+## 🛠️ 05 - Ferramentas Utilizadas
+* **Shodan** (consulta passiva de serviços expostos)
+* **Censys** (correlação de infraestrutura)
+* **ExifTool** (extração de metadados)
+* **[Wigle.net](http://Wigle.net)** (wardriving passivo)
+* **Whois / ASN Lookup**
+* 🔗 [**Link para a pasta de evidências (evidence)**](./evidence)
+
+---
+
+## 📝 Nota de Metodologia
+Os serviços e protocolos associados a esses ativos (HTTP, SMB, RDP, ADB, entre outros) não foram enumerados nesta fase. Essas atividades foram explicitamente planejadas para a **Fase 03 – Enumeração**, onde serão aplicadas técnicas como:
+* **Banner grabbing**
+* **Identificação de versões exatas**
+* **Correlação com vulnerabilidades conhecidas (CVEs)**
+
+---
+
+## 🚀 5. Conclusão e Próximos Passos
+O Reconhecimento Ativo foi bem-sucedido em validar a infraestrutura lógica e física associada ao alvo, reduzir incertezas geográficas e delimitar o perímetro correto para operações ativas.
+
+**A próxima fase (Enumeração) terá como foco:**
+1. Identificação precisa da versão do servidor web no ativo `192.168.1.10`;
+2. Enumeração de compartilhamentos e protocolos SMB no endpoint Windows;
+3. Validação de serviços de depuração expostos em dispositivos móveis.
