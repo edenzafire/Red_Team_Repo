@@ -78,3 +78,4 @@ Capturas de tela do ambiente Whonix e logs de busca (com dados sensíveis tarjad
 
 ---
 **Nota Ética:** Este projeto tem finalidade estritamente educacional e de auditoria de exposição. Não houve interação com cibercriminosos ou transações financeiras em mercados ilícitos.
+
