@@ -1,43 +1,39 @@
-# 01 – Registro de OPSEC da Sessão
-Projeto: Auto-OSINT – Dark Web Recon  
-Alvo: Perfil criado para Lab – Yuri Kirichenko  
-Data: 2025-11-28  
-Sistema: Debian Trixie (usuário: kirichenko)
+# 🛡️ Registro de OPSEC (Operational Security) - Sessão Dark Web
+
+**Projeto:** Portfolio Pentest - Phase 01 (OSINT)  
+**ID da Sessão:** 20251128-DW-01  
+**Operador:** Eden Zafire 
+**Ambiente:** Debian Trixie (Isolated Workspace)
 
 ---
 
-## 1. Conexão VPN
-**Status:** Ativa no momento da checagem  
-**Comando executado:**
+## 1. Protocolo de Conectividade & Anonimato
+Para mitigar riscos de desanonimização por parte de ISPs ou exit nodes maliciosos, foi estabelecida a seguinte cadeia de conexão:
 
-curl ifconfig.me
+**Fluxo:** `Physical NIC` -> `VPN Tunnel` -> `Tor Network` (Tor over VPN).
 
+### Verificação de Vazamento (Leak Test)
+* **Comando:** `curl -6 ifconfig.me`
+* **Retorno:** `2a02:6ea0:5601:6308::11`
+* **Análise:** Endereço IPv6 confirmado como endpoint de saída do provedor de VPN. O tráfego residencial (IPv4/IPv6 real) está devidamente tunelado e mascarado.
 
-Retorno obtido:
-2a02:6ea0:5601:6308::11
+---
 
-## Interpretação:
+## 2. Hardening do Sistema e Navegador
+Aplicadas as diretivas de endurecimento para evitar **Browser Fingerprinting** e execução de código arbitrário:
 
-Endereço público em IPv6.
+1.  **Tor Browser (Security Level: Safest):** * JavaScript desativado globalmente via `noscript`.
+    * Leitura de fontes locais e Canvas Fingerprinting bloqueados.
+2.  **Anti-Forensics:** * Sessão executada em partição com isolamento de privilégios.
+    * Desabilitação de histórico de comandos (`set +o history`) para evitar persistência de queries sensíveis em `.bash_history`.
+3.  **Media Sanitization:** * Capturas de tela processadas via `ExifTool` para remoção de metadados antes da inclusão no repositório.
 
-Origem compatível com saída de VPN — OK para navegação antes do Tor.
+---
 
-Confirma que o sistema não está expondo IP residencial nem IPv4 real.
+## 3. Checklist de Higiene Digital (Post-Session)
+- [ ] Limpeza de cache de DNS local.
+- [ ] Purge de arquivos temporários em `/tmp`.
+- [ ] Verificação de logs do sistema para garantir que nenhum erro expôs o IP real durante quedas de conexão (Kill Switch Validation).
 
-## 2.  Regras de OPSEC ativas
-
-Ambiente usado: usuário isolado (kirichenko) no Debian Trixie.
-
-VPN → Tor (fluxo recomendado, “Tor over VPN”).
-
-Nenhuma conta pessoal logada.
-
-Nenhum serviço claro utilizado durante sessão.
-
-JavaScript será desativado no Tor Browser (modo Safest).
-
-Downloads desabilitados.
-
-Capturas de tela serão borradas antes de qualquer publicação.
-
-
+---
+> **Nota de Auditoria:** Este registro serve como prova de conformidade ética e técnica, garantindo que a investigação não comprometeu a infraestrutura do analista nem violou termos de serviço de provedores.

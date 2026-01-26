@@ -1,6 +1,14 @@
-Analista: kirichenko_pentest
+# ⚙️ Network Validation: Tor Proxy & Routing Configuration
+
+![Category: Infrastructure Validation](https://img.shields.io/badge/Category-Infra_Validation-blue?style=for-the-badge)
+![Status: Verified](https://img.shields.io/badge/Status-Verified_Ready-brightgreen?style=for-the-badge)
+![Security: SOCKS5_Tunnel](https://img.shields.io/badge/Security-SOCKS5_Tunnel-purple?style=for-the-badge)
+
+Analista: Eden Zafire
+Data da Validação: 2025-11-28
 Sistema: Debian Trixie
 Objetivo: Validar funcionamento da rede Tor para início da fase OSINT Dark Web
+
 📌 1. Verificação do Serviço Tor
 🔎 Comando:
 
