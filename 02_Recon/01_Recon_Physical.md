@@ -81,7 +81,7 @@ Com base no reconhecimento físico e lógico preliminar, foi possível identific
 * **ExifTool** (extração de metadados)
 * **[Wigle.net](http://Wigle.net)** (wardriving passivo)
 * **Whois / ASN Lookup**
-* 🔗 [**Link para a pasta de evidências (evidence)**](./evidence)
+* 🔗 [**Link para a pasta de evidências (evidence)**](https://github.com/edenzafire/Portfolio_pentest/tree/main/02_Recon/evidences/exif)
 
 ---
 
