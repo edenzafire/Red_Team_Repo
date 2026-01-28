@@ -49,7 +49,6 @@ Este diretório centraliza a fase de **Intelligence Gathering (OSINT)** do proje
 
 ## 📁 Estrutura do Diretório
 
-```bash
 OSINT/
 │
 ├── README.md               # Este guia principal

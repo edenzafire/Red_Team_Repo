@@ -37,85 +37,128 @@ Aqui são organizadas subpastas que abrangem diferentes áreas da segurança —
 
 O objetivo é manter um repositório claro, estruturado e evolutivo que reflita o desenvolvimento contínuo dos estudos.
 
-## Esteprojeto está estruturado na seguinte ordem
+## Este projeto está estruturado na seguinte ordem
 
-## 🔎 1) Osint – Open Source Intelligence
+## 📁 01_OSINT — Open Source Intelligence
+[🔎 **Acessar Diretório**](https://github.com/edenzafire/Portfolio_pentest/tree/main/01_Osint)
 
-[🔎01_Osint](https://github.com/edenzafire/Portfolio_pentest/tree/main/01_Osint)  
-Coleta e análise de informações públicas a partir de fontes abertas, com foco em footprinting, exposição de dados e mapeamento inicial de riscos.
+Nesta fase foi realizada a coleta de informações exclusivamente a partir de fontes abertas, sem interação direta com o alvo. 
 
+Foram analisados dados publicamente acessíveis, tais como:
+* Perfis em redes sociais.
+* Presença digital.
+* Informações indexadas em motores de busca.
+* Conteúdos publicados voluntariamente.
+* Vazamentos e exposições históricas.
 
-## 🔎 2) Reconnaissance (Recon)
+**O objetivo do OSINT** é compreender o rastro digital deixado de forma pública, servindo como base para as fases subsequentes do laboratório.
 
-[🕵️‍♂️ 02_Recon](https://github.com/edenzafire/Portfolio_pentest/tree/main/02_Recon)  
-Reconhecimento ativo e passivo de alvos, incluindo fingerprinting, descoberta de serviços, tecnologias e mapeamento da superfície de ataque.
+---
 
+## 📁 02_Recon — Reconhecimento
+[🕵️‍♂️ **Acessar Diretório**](https://github.com/edenzafire/Portfolio_pentest/tree/main/02_Recon)
 
-## 🧩 3) Enumeration (Enumeração)
+A fase de Reconhecimento teve como foco mapear a superfície de ataque, correlacionando as informações obtidas no OSINT com possíveis ativos e contextos técnicos. 
 
-[🧩03_Enumeration](https://github.com/edenzafire/Portfolio_pentest/tree/main/03_Enumeration)  
-Enumeração detalhada de serviços, portas e aplicações, com foco na identificação de usuários, versões, recursos expostos e possíveis vetores de ataque.
+Nesta etapa foram conduzidas atividades de:
+* Identificação de ativos.
+* Análise de infraestrutura exposta.
+* Fingerprinting de serviços.
+* Correlação entre dados humanos e técnicos.
 
+**O Recon** permite transformar dados brutos em contexto estruturado, orientando a enumeração de forma mais precisa.
 
-##  🟦 4) Vulnerability Research (Pesquisa de Vulnerabilidades)
+---
 
-[🟦04_Vulnerability_Research](https://github.com/edenzafire/Portfolio_pentest/tree/main/04_Vulnerability-Research)  
-Pesquisa, análise e validação de vulnerabilidades, incluindo estudo de CVEs, avaliação de impacto e compreensão técnica das falhas.
+## 📁 03_Enumeration — Enumeração
+[🧩 **Acessar Diretório**](https://github.com/edenzafire/Portfolio_pentest/tree/main/03_Enumeration)
 
+A enumeração aprofunda a análise dos ativos e informações identificadas anteriormente. 
 
-## 💥 5) Exploitation
+Nesta fase foram observados:
+* Serviços e recursos acessíveis.
+* Usuários, padrões e comportamentos.
+* Dados sensíveis expostos publicamente.
+* Informações que ampliam a compreensão do alvo.
 
-[💥05_Exploitation](https://github.com/edenzafire/Portfolio_pentest/tree/main/05_Exploitation)  
-Exploração controlada de vulnerabilidades em ambientes de laboratório, visando validação prática das falhas e obtenção inicial de acesso.
+**O objetivo da enumeração** é reduzir incertezas e enriquecer o entendimento do ambiente, preparando o terreno para análises de risco mais aprofundadas.
 
+---
 
-## ⬆️  6) Privilege Escalation
+## 📁 04_Social_Engineering — Análise de Engenharia Social (Conscientização)
+[🧠 **Acessar Diretório**](https://github.com/edenzafire/Portfolio_pentest/tree/main/04_Social_Engineering)
 
-[⬆️ 06_Privilege_Escalation](https://github.com/edenzafire/Portfolio_pentest/tree/main/06_Privilege-Escalation)  
-Técnicas de escalada de privilégios em sistemas Linux e Windows, explorando configurações inseguras, permissões incorretas e falhas conhecidas.
+Esta fase tem caráter exclusivamente analítico, educativo e defensivo. Com base nos dados coletados durante o OSINT, foi possível identificar como informações públicas, tais como preferências pessoais, gostos, hábitos expostos em redes sociais e padrões de comportamento, podem facilitar ataques de engenharia social quando exploradas por agentes maliciosos.
 
+> ⚠️ **Importante:**
+> Nenhuma engenharia social foi executada, simulada ou aplicada contra pessoas reais. Não são apresentados roteiros, diálogos, técnicas operacionais ou passo a passo de phishing.
 
-## 🧠 7)  Post-Exploitation
+**O objetivo desta fase** é demonstrar o risco associado à superexposição digital, promovendo conscientização sobre privacidade, segurança da informação e higiene digital.
 
-[🧠 07_Post_Exploitation](https://github.com/edenzafire/Portfolio_pentest/tree/main/07_Post-Exploitation)  
-Atividades realizadas após a exploração inicial, incluindo enumeração interna, persistência, movimentação lateral e coleta de evidências.
+---
 
+## 📁 05_Vulnerability_Research — Pesquisa de Vulnerabilidades
+[🟦 **Acessar Diretório**](https://github.com/edenzafire/Portfolio_pentest/tree/main/04_Vulnerability-Research)
 
-## 🌐 8) Web Application Testing
+Com base nos ativos, serviços e contextos identificados, foi realizada a pesquisa de vulnerabilidades conhecidas. 
 
-[🌐08_Web_Application_Testing](https://github.com/edenzafire/Portfolio_pentest/tree/main/08_Web_Application_Testing)  
-Testes de segurança em aplicações web, abordando vulnerabilidades comuns como SQL Injection, XSS, CSRF, LFI/RFI e falhas de autenticação.
+As atividades incluem:
+* Estudo de CVEs relevantes.
+* Análise de falhas associadas a tecnologias identificadas.
+* Avaliação de impacto potencial.
+* Priorização teórica de riscos.
 
+**Esta fase busca compreender o risco, não explorá‑lo diretamente.**
 
-## 📡 9) Wireless
+---
 
-[📡09_Wireless](https://github.com/edenzafire/Portfolio_pentest/tree/main/09_Wireless)  
-Avaliação de segurança em redes sem fio, incluindo análise de protocolos, autenticação, criptografia e ataques comuns a ambientes Wi-Fi.
+## 📁 06_Exploitation — Exploração (Ambiente Controlado)
+[💥 **Acessar Diretório**](https://github.com/edenzafire/Portfolio_pentest/tree/main/05_Exploitation)
 
+Nesta etapa foi realizada a validação prática de vulnerabilidades, exclusivamente em ambiente de laboratório controlado. 
 
-## 🏁 10) CTFs
+Os objetivos incluem:
+* Confirmar a viabilidade das falhas identificadas.
+* Avaliar impacto técnico.
+* Coletar evidências controladas.
+* Simular acesso inicial de forma segura.
 
-[🏁 CTFs](https://github.com/edenzafire/Portfolio_pentest/tree/main/CTFs)  
-Resoluções documentadas de desafios Capture The Flag, demonstrando metodologia, raciocínio lógico e aplicação prática de técnicas ofensivas.
+**Nenhuma atividade foi conduzida contra sistemas de terceiros ou ambientes de produção.**
 
+---
 
+## 📁 07_Privilege_Escalation — Escalada de Privilégios
+[⬆️ **Acessar Diretório**](https://github.com/edenzafire/Portfolio_pentest/tree/main/06_Privilege-Escalation)
 
-## 🛠️  11)  Scripts
+Após o acesso inicial em laboratório, foram analisadas possibilidades de elevação de privilégios. Esta fase envolve:
+* Análise de permissões e configurações inseguras.
+* Falhas de isolamento.
+* Vetores comuns de escalada em sistemas Linux e Windows.
 
-[🛠️ Scripts](https://github.com/edenzafire/Portfolio_pentest/tree/main/Scripts)  
-Scripts e ferramentas desenvolvidas para automação de tarefas em OSINT, Recon, Enumeração e testes de segurança.
+**O objetivo** é demonstrar como falhas de configuração podem amplificar o impacto de um comprometimento inicial.
 
+---
 
-## 📄 12)  Reports
+## 📁 08_Post_Exploitation — Pós‑Exploração
+[💀 **Acessar Diretório**](https://github.com/edenzafire/Portfolio_pentest/tree/main/07_Post-Exploitation)
 
-[📄 Reports](https://github.com/edenzafire/Portfolio_pentest/tree/main/Reports)  
-Relatórios técnicos e executivos de atividades de OSINT e Pentest, seguindo boas práticas de documentação e padrões do mercado.
+A fase de pós‑exploração avalia o impacto completo do comprometimento, sempre em ambiente controlado. 
 
+Nesta etapa são analisados:
+* Possibilidades de persistência.
+* Coleta de informações internas.
+* Movimentação lateral simulada.
+* Artefatos deixados após o ataque.
 
-## 📝 13) Notes
+**Os resultados** subsidiam conclusões de risco, impacto e recomendações de mitigação, encerrando o ciclo técnico do laboratório.
 
-[📝 Notes](https://github.com/edenzafire/Portfolio_pentest/tree/main/Notes)  
-Anotações técnicas, estudos pessoais, cheatsheets e registros de aprendizado contínuo em segurança da informação.
+---
 
+## 📂 Outros Projetos e Recursos
 
-
+* **[🌐 09 Web Application Testing](https://github.com/edenzafire/Portfolio_pentest/tree/main/08_Web_Application_Testing):** Testes de segurança em aplicações web (SQLi, XSS, CSRF, LFI/RFI).
+* **[📡 10 Wireless](https://github.com/edenzafire/Portfolio_pentest/tree/main/09_Wireless):** Avaliação de segurança em redes sem fio e protocolos de criptografia.
+* **[🏁 11 CTFs](https://github.com/edenzafire/Portfolio_pentest/tree/main/CTFs):** Resoluções documentadas de desafios Capture The Flag.
+* **[🛠️ 12 Scripts](https://github.com/edenzafire/Portfolio_pentest/tree/main/Scripts):** Automações desenvolvidas para OSINT, Recon e Pentest.
+* **[📄 13 Reports](https://github.com/edenzafire/Portfolio_pentest/tree/main/Reports):** Relatórios técnicos e executivos seguindo padrões de mercado.
+* **[📝 14 Notes](https://github.com/edenzafire/Portfolio_pentest/tree/main/Notes):** Anotações técnicas e registros de aprendizado contínuo.
