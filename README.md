@@ -25,7 +25,7 @@ Olá! Sou **Éden Zafire**, entusiasta de cibersegurança com foco em **Penetrat
 
 <p align="center">
   <a href="https://github.com/edenzafire/Portfolio_pentest">
-    <img src="images/capa.jpg" alt="Capa do Portfólio Pentest" style="border-radius:50px; border:3px solid red;" />
+    <img src="images/capa.png" alt="Capa do Portfólio Pentest" style="border-radius:50px; border:3px solid red;" />
   </a>
 </p>
 
