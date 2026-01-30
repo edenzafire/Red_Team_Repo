@@ -7,7 +7,7 @@
 **Aviso Legal:** Todos os dados foram totalmente mascarados ou ofuscados para fins educacionais e portfólio público.
 
 ## Resumo Executivo
-- E-mail pivô (mascarado): r***_1@h******.com
+- E-mail pivô (mascarado): z*****_1@g******l.com
 - Total de breaches identificados: **10 fontes distintas**
 - Período: 2018–2023
 - Principais riscos: Reutilização extrema de credenciais e hashes crackeáveis
@@ -15,16 +15,16 @@
 ## Tabela de Vazamentos Encontrados
 | ID Leak (parcial) | Fonte              | E-mail (mascarado)      | Username (exemplo)     | Tipo de Hash / Observação                  | Ano     |
 |-------------------|--------------------|--------------------------|-------------------------|--------------------------------------------|---------|
-| 1bc2...           | Twitter 2023       | r***_1@h******.com      | R******_R***            | -                                          | 2023    |
-| 00f3...           | Deezer             | r***_1@h******.com      | R****** R******** M*****| Dados pessoais + nascimento                | 2019–20 |
-| 9c41...           | Dubsmash           | r***_1@h******.com      | r***m********           | PBKDF2-SHA256 (15.000 rounds)              | 2018    |
-| 7372...           | Edmodo             | r***_1@h******.com      | R******R***             | Custom salted hash                         | 2019    |
-| 7dcf...           | Descomplica        | r***_1@h******.com      | -                       | Campo codificado (provável Base64)         | 2018    |
-| 28fb...           | Leak isolado       | r***_1@h******.com      | R***R*********          | Apenas username                            | -       |
-| 3c44...           | Site .inf.br       | r***_1@h******.com      | -                       | bcrypt ($2y$10$) – custo 10                 | 2020    |
-| 2460...           | James Delivery     | r***_1@h******.com      | -                       | Coordenadas + token JWT + Firebase tokens  | 2019    |
-| bee9...           | Habibs             | r***_1@h******.com      | R*** R********          | IP + Lat/Long + Device IDs                 | 2019    |
-| -                 | Canva / Toondoo    | r***_1@h******.com      | -                       | Mesmo hash SHA1 reutilizado                | 2019    |
+| 1bc2...           | Twitter 2023       | z*****_1@g******l.com   | z******_d***            | -                                          | 2023    |
+| 00f3...           | Deezer             | z*****_1@g******l.com   | z****** g******** M*****| Dados pessoais + nascimento                | 2019–20 |
+| 9c41...           | Dubsmash           | z*****_1@g******l.com   | r***m********           | PBKDF2-SHA256 (15.000 rounds)              | 2018    |
+| 7372...           | Edmodo             | z*****_1@g******l.com   | z******d***             | Custom salted hash                         | 2019    |
+| 7dcf...           | Descomplica        | z*****_1@g******l.com   | -                       | Campo codificado (provável Base64)         | 2018    |
+| 28fb...           | Leak isolado       | z*****_1@g******l.com   | z***d*********          | Apenas username                            | -       |
+| 3c44...           | Site .inf.br       | z*****_1@g******l.com   | -                       | bcrypt ($2y$10$) – custo 10                 | 2020    |
+| 2460...           | James Delivery     | z*****_1@g******l.com   | -                       | Coordenadas + token JWT + Firebase tokens  | 2019    |
+| bee9...           | Habibs             | z*****_1@g******l.com   | z*** d********          | IP + Lat/Long + Device IDs                 | 2019    |
+| -                 | Canva / Toondoo    | z*****_1@g******l.com   | -                       | Mesmo hash SHA1 reutilizado                | 2019    |
 
 
 ## Análise de Pivoting (Data Correlation)

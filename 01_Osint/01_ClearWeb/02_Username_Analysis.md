@@ -6,7 +6,7 @@
 ## Resumo Executivo
 - Total de plataformas identificadas com variações do username: **~58 serviços**
 - Período de uso estimado: 2011 – presente
-- Padrão principal: Combinação de nome "R***" + sobrenome "R********" / "M********"
+- Padrão principal: Combinação de nome "z***" + sobrenome "g********" / "d********"
 - Observação chave: Evolução clara do username ao longo do tempo (de formal/completo para curto + número)
 - Handles identificados: **6 variações principais**
 - Padrão de nomenclatura: `[Nome][Iniciais][Dígitos]`
@@ -15,11 +15,11 @@
 ## Tabela de Correlação de Identidade
 | Alias (Mascarado) | Plataforma Exemplo | Observação de Inteligência |
 | :--- | :--- | :--- |
-| `r***m********` | Dubsmash / Gerais | Handle padrão para serviços de entretenimento. |
-| `R******_R***` | Twitter / X | Utilizado para identificação em redes sociais abertas. |
-| `R******RM**` | Edmodo / Educação | Vinculação com ambiente acadêmico/estudantil. |
-| `r****.m********_` | Instagram | Perfil com maior volume de metadados sociais. |
-| `R***R*********` | James Delivery | Vinculação direta com dados de consumo (Pivoting Geográfico). |
+| `z***d********` | Dubsmash / Gerais | Handle padrão para serviços de entretenimento. |
+| `z******_g***` | Twitter / X | Utilizado para identificação em redes sociais abertas. |
+| `z******gd**` | Edmodo / Educação | Vinculação com ambiente acadêmico/estudantil. |
+| `z****.d********_` | Instagram | Perfil com maior volume de metadados sociais. |
+| `z***g*********` | James Delivery | Vinculação direta com dados de consumo (Pivoting Geográfico). |
 
 ## Análise de Padrão (Behavioral Analysis)
 A persona demonstra baixa variabilidade na criação de nomes de usuário, o que permite o uso de técnicas de **Username Squatting** e buscas automatizadas (Sherlock/Maigret) com alta taxa de assertividade.

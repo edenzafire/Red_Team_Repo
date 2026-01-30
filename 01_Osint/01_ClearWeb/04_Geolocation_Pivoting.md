@@ -24,7 +24,7 @@ A precisão das coordenadas (-30.1156, -51.1653) demonstra o risco de **Doxxing*
 ## Achados Geográficos (Leaks 2019)
 - Precisão aproximada de ~500m identificada em leak Habibs
 - Segundo ponto corroborado em leak James Delivery (área metropolitana)
-- Cidades identificadas: C****** – PR (atual) e P**** A***** – RS (histórico)
+- Cidades identificadas: Araucária – PR (atual) e P**** A***** – RS (histórico)
 
 ## Artefato de Rede Isolado
 - **IP Histórico:** `187.6.181.16`
@@ -44,7 +44,8 @@ A precisão das coordenadas (-30.1156, -51.1653) demonstra o risco de **Doxxing*
 - **Precisão alcançada:** ~100m (elevação significativa em relação aos leaks anteriores)
 - **Correlação com achados prévios:** Compatível com IP histórico (Curitiba/PR metropolitana) e padrões de residência identificados
 
-- ** Prints e Evidências no seguinte link**
+* 🔗 [**Link para a pasta de evidências (evidence)**]( https://github.com/edenzafire/Red_Team_Repo/tree/main/02_Recon/evidences/exif )
+
 
 
 ## Relevância em Pentest / OSINT
