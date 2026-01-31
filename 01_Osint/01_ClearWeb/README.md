@@ -34,6 +34,9 @@ Alinhado ao **MITRE ATT&CK – Reconnaissance (TA0043)**
 | Python (pandas, regex)  | Normalização e parsing de dados        |
 
 📂 **Script principal**: [bd_lookup.py](https://github.com/edenzafire/Portfolio_pentest/blob/main/Scripts/scripts_osint/bd_lookup.py)
+## 👀 Demonstração em vídeo
+
+[![Clique para ver o vídeo](./01_Osint/01_ClearWeb/evidence/thumbnail.png)](https://raw.githubusercontent.com/edenzafire/Red_Team_Repo/main/01_Osint/01_ClearWeb/evidence/EvidenceHibp.mp4)
 
 ## 📊 Resultados em Números
 - **10+ breaches** identificados (2018–2023)
