@@ -162,3 +162,16 @@ Nesta etapa são analisados:
 * **[🛠️ 12 Scripts](https://github.com/edenzafire/Portfolio_pentest/tree/main/Scripts):** Automações desenvolvidas para OSINT, Recon e Pentest.
 * **[📄 13 Reports](https://github.com/edenzafire/Portfolio_pentest/tree/main/Reports):** Relatórios técnicos e executivos seguindo padrões de mercado.
 * **[📝 14 Notes](https://github.com/edenzafire/Portfolio_pentest/tree/main/Notes):** Anotações técnicas e registros de aprendizado contínuo.
+
+
+
+## 📬 Contato
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&l>
+[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoCol>
+
+---
+<p align="center">
+  <em>"A segurança é uma ilusão que perdura apenas até o primeiro 'Enter' bem planejado."</em>
+</p>
+
