@@ -12,14 +12,14 @@ Este repositório documenta minhas habilidades técnicas em testes de invasão �
 
 > **Aviso:** Nenhum ataque real foi realizado. Todos os exemplos são simulações ou demonstrações em ambientes controlados.
 
-## Sobre Mim
+## 👨‍💻 Sobre Mim
 
 Olá! Sou **Éden Zafire**, entusiasta de cibersegurança com foco em **Penetration Testing**, **Red Team** e **Threat Intelligence**.  
 
-- Apaixonado por OSINT avançado, automação de ferramentas e ambientes hardened (Whonix, Kali, Parrot OS).  
-- Experiência em metodologias como PTES, MITRE ATT&CK e OWASP Testing Guide.  
-- Sempre em busca de aprendizado contínuo: certificações em andamento (ex: OSCP, eJPT, Practical Ethical Hacking).  
-- Comprometido com ética, privacidade e segurança responsável.
+-🔍 Apaixonado por OSINT avançado, automação de ferramentas e ambientes hardened (Whonix, Kali, Parrot OS).  
+-⚙️  Experiência em metodologias como PTES, MITRE ATT&CK e OWASP Testing Guide.  
+-🎓 Sempre em busca de aprendizado contínuo: certificações em andamento (ex: OSCP, eJPT, Practical Ethical Hacking).  
+-🎓 Comprometido com ética, privacidade e segurança responsável.
 
 
 
