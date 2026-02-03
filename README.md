@@ -8,6 +8,8 @@
 
 **Bem-vindo ao meu portfólio profissional de Penetration Testing e Cibersegurança!**  
 
+> **Nota:** Este portfólio complementa minha atuação em [**Blue Team Operations**](https://github.com/edenzafire/Blue_Team_Repo). Juntos, eles formam minha base de Purple Teaming.
+
 Este repositório documenta minhas habilidades técnicas em testes de invasão éticos, OSINT, reconnaissance, exploit development e boas práticas de segurança. Todo o conteúdo é educacional, utiliza alvos autorizados e segue princípios de responsible disclosure.
 
 > **Aviso:** Nenhum ataque real foi realizado. Todos os exemplos são simulações ou demonstrações em ambientes controlados.
