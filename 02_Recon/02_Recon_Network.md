@@ -1,116 +1,67 @@
-Superfície de ataque por ASN (print mais importante)
+🌐 RECON_NETWORK.md - Reconhecimento de Infraestrutura Externa
 
-asn:8167 country:BR
+📖 Visão Geral
 
-Serviços mais comuns no ASN
+Esta etapa foca no Footprinting de Rede Passivo. O objetivo é mapear a presença da infraestrutura do alvo na internet sem disparar alertas de segurança (IDS/IPS). Diferente da Fase 02 (Física), aqui analisamos a "casca" digital: blocos de IP, ASN, certificados e serviços indexados por motores de busca de terceiros.
 
-asn:8167 port:80
-asn:8167 port:443
-asn:8167 port:22
+🛰️ 1. Inteligência de ASN e Roteamento (Backbone Analysis)
 
-Identificação de dispositivos de borda
+A análise partiu da identificação do provedor de serviços (ISP) para entender a topologia de borda.
 
-asn:8167 product:Router
-asn:8167 product:Modem
+ASN Identificado: 8167 (V Tal / Brasil Telecom).
 
-Dispositivos IoT expostos
+Técnica: ASN Lookup & BGP Routing Analysis.
 
-asn:8167 category:iot
+Ferramentas: BGPView, Whois, IPInfo.io.
 
-Tecnologias web comuns
+Insight de Red Team: O ASN 8167 é um backbone de grande escala. A análise de vizinhança de rede (Neighboring IPs) foi realizada para identificar se o alvo utiliza um IP estático (comum em servidores de lab) ou um pool dinâmico residencial, o que dita a persistência dos payloads de C2 (Command & Control).
 
-asn:8167 product:Apache
-asn:8167 product:nginx
+📡 2. Surface Mapping (Busca Passiva via Shodan/Censys)
 
-País + porta (visão macro)
-country:BR port:3389
-country:BR port:445
+Utilizando motores de busca que já possuem o "snapshot" da rede, mapeamos o que está exposto sem enviar um único pacote ao alvo.
 
-🌐 CENSYS — Se quiser complementar (opcional)
-🔹 7. Serviços TLS mais comuns
+A. Impressão Digital de Serviços (Fingerprinting)
 
-services.tls.certificates.leaf_data.subject.organization:*
+Filtros Shodan: asn:8167 net:[Seu_Bloco_IP]
 
-HTTP Titles interessantes
+Identificação: Mapeamento de portas comuns (80, 443, 22, 3389) indexadas no último scan do Shodan.
 
-services.http.response.html_title:*
+Tecnologias Identificadas: Identificação de banners de servidores Nginx e Apache, permitindo prever a stack do laboratório sem interação direta.
 
-🔍 WHOIS / ASN LOOKUP — Prints rápidos e limpos
-🔹 9. ASN detalhado
+B. Certificados e Identidade (Censys/CRT.sh)
 
-Nome da organização
+Técnica: Certificate Transparency (CT) Logs.
 
-Range de IP
+Ferramentas: Censys Search, CRT.sh.
 
-País
+Descoberta: Através da query services.tls.certificates.leaf_data.subject.organization:*, foi possível localizar certificados SSL/TLS emitidos para subdomínios legados vinculados à identidade digital do alvo, expondo nomes de host que não constam em registros DNS atuais.
 
-ISP
+🛠️ 3. Google Dorking de Infraestrutura
 
-📸 Print da página do ASN.
+Aplicação de operadores avançados para localizar documentos de configuração ou painéis de gerenciamento indexados.
 
-🧠 Demonstra:
+Dork para Painéis: ip:[Seu_IP] site:login | site:admin
 
-Entendimento de backbone e roteamento.
+Dork para Arquivos: site:[Seu_Dominio] filetype:log | filetype:conf
 
-🔹 10. Histórico de IP (se aparecer)
+Resultado: Localização de diretórios indexados que podem revelar versões de software antes mesmo da fase de Enumeração.
 
-Mudança de ASN
+🧰 Ferramentas Utilizadas (100% Passivo)
 
-Mudança de bloco
+Shodan: Consulta de serviços e dispositivos sem interação direta.
 
-🧠 Demonstra:
+Censys: Análise de certificados e histórico de hosts.
 
-Correlação histórica.
+ViewDNS.info** / IPInfo:** Histórico de DNS e detalhes de ASN.
 
-🧰 GOOGLE DORKS (Recon clássico)
-🔹 11. Dispositivos expostos
+BGPView: Mapeamento de peers e roteamento de rede.
 
-site:login "admin"
-site:panel "dashboard"
+Google Dorks: Mineração de dados indexados.
 
+🧠 Conclusão da Inteligência de Rede
 
+O reconhecimento de rede confirmou que o alvo opera sob uma infraestrutura de IP dinâmico, porém com vazamento de metadados em certificados TLS antigos. Isso permite que um atacante correlacione o IP efêmero a uma identidade fixa através de registros históricos de certificados.
 
+Próximo Passo: Integrar estes dados com a Fase 03 (Enumeração) para validar quais dessas portas indexadas ainda estão abertas e quais versões exatas estão rodando "ao vivo".
 
-## 🛠️ Metodologia Técnica: Footprinting de Infraestrutura (Shodan & Censys)
-
-Nesta etapa, utilizei motores de busca de dispositivos (IoT Search Engines) para mapear o ecossistema do ISP utilizado pelo alvo, permitindo entender o contexto de rede e os dispositivos de borda comuns na região.
-
-### 🌐 SHODAN — Inteligência de ASN e Serviços
-Utilizei as seguintes queries para identificar padrões de exposição no **ASN:8167 (V Tal / Brasil Telecom)**:
-
-* **Mapeamento de Superfície por ASN:** `asn:8167 country:BR`  
-    *(Demonstra: Visão macro da infraestrutura do provedor no país).*
-* **Identificação de Serviços Críticos:** * `asn:8167 port:80,443,22` (Web e Administração Remota)
-    * `asn:8167 product:Router` ou `product:Modem` (Dispositivos de Borda)
-* **Vetores de IoT e Protocolos Vulneráveis:**
-    * `asn:8167 category:iot` (Câmeras, DVRs e Smart Devices)
-    * `country:BR port:3389,445` (Exposição de RDP e SMB em nível nacional)
-
-> **🧠 Insight de Inteligência:** A análise de tecnologias comuns (`product:Apache`, `product:nginx`) no ASN permitiu prever o stack tecnológico que o alvo provavelmente utiliza em seu laboratório.
-
----
-
-### 📡 CENSYS — Fingerprinting TLS e HTTP
-O Censys foi utilizado para complementar a visão do Shodan, focando em certificados e cabeçalhos:
-
-* **Serviços TLS Dominantes:** `services.tls.certificates.leaf_data.subject.organization:*`
-* **Análise de Cabeçalhos HTTP:** `services.http.response.html_title:*`  
-    *(Útil para identificar painéis de login e dashboards de gerenciamento expostos).*
-
----
-
-### 🔍 WHOIS & HISTORICAL LOOKUP
-Documentação do backbone e roteamento para entender a persistência do alvo na rede:
-
-1.  **ASN Detail:** Identificação do range de IP, Organização e ISP oficial.
-2.  **IP History:** Análise de mudanças históricas de blocos e ASN, demonstrando correlação entre a persona e diferentes períodos de conectividade.
-
----
-
-### 🧰 GOOGLE DORKS (Advanced Recon)
-Consultas avançadas para localizar pontos de entrada administrativos indexados:
-
-* `site:login "admin"` – Busca por portais de autenticação.
-* `site:panel "dashboard"` – Identificação de painéis de controle e monitoramento.
-
----
+Nota: Todas as consultas foram realizadas de forma anônima e passiva, respeitando a integridade do ambiente do alvo.
