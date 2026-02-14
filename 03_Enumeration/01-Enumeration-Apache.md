@@ -5,12 +5,8 @@
 ![Nível: Intermediário](https://img.shields.io/badge/N%C3%ADvel-Intermedi%C3%A1rio-blue?style=for-the-badge)
 ![MITRE: T1595](https://img.shields.io/badge/MITRE%20ATT%26CK-T1595-red?style=for-the-badge)
 
-## 1. 🛡️ Defesa e Remediação (Blue Team)
-As contrapartidas técnicas, regras de Firewall e patches de correção para este cenário estão detalhados em nosso repositório de **Blue Team**:
-
-👉 [Acessar Repositório Blue Team - Mitigação Apache](./link-para-seu-outro-repo)
-
 ---
+
 ## 1. Informações do Alvo
 * **Hostname:** `MAC-DEBIAN-SRV` (MacBook Pro - Lab)
 * **Endereço IP:** `192.168.x.y` 
