@@ -51,6 +51,7 @@ AutoEnum (Bash): Orquestração de ferramentas legadas para varredura em massa.
 
 BannerHunter (Python): Script de baixo nível para extração de assinaturas de serviços e análise de risco preliminar.
 
+"A automação nesta fase visa reduzir a margem de erro humano e garantir a padronização na coleta de evidências, permitindo que o operador foque na análise lógica dos dados enquanto as ferramentas realizam o trabalho repetitivo de varredura."
 ---
 ## 📄 Relatórios Detalhados nesta Pasta
 1.  [**01-Enumeration-Apache.md**](./01-Enumeration-Apache.md): Foco em Web App e exploração de RCE.
