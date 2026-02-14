@@ -4,30 +4,14 @@
 ![Status: Concluído](https://img.shields.io/badge/Status-Conclu%C3%ADdo-success?style=for-the-badge)
 ![Nível: Intermediário](https://img.shields.io/badge/N%C3%ADvel-Intermedi%C3%A1rio-blue?style=for-the-badge)
 ![MITRE: T1595](https://img.shields.io/badge/MITRE%20ATT%26CK-T1595-red?style=for-the-badge)
----
 
-## 1. Análise de Risco
-
-> [!CAUTION]
-> **Impacto no Negócio:** O comprometimento deste servidor Apache representa um risco **Crítico**. Por estar mal segmentado, ele permite que um atacante ganhe um "pé" na rede interna (Foothold), expondo dados sensíveis no Windows 10 e sistemas legados (Metasploitable). A queda deste serviço interrompe a operação da aplicação web principal.
-
----
-
-## 2. Recomendações de Mitigação (Preview)
-Para sanar as falhas encontradas nesta fase de enumeração, as seguintes medidas são necessárias:
-* **Desativação de Banners:** Impedir que o Apache exiba sua versão exata.
-* **Sanitização de Inputs:** Corrigir o código da aplicação para impedir Command Injection.
-* **Segmentação de Rede:** Isolar o servidor web em uma DMZ para impedir o Pivoting.
-
----
-
-## 3. 🛡️ Defesa e Remediação (Blue Team)
+## 1. 🛡️ Defesa e Remediação (Blue Team)
 As contrapartidas técnicas, regras de Firewall e patches de correção para este cenário estão detalhados em nosso repositório de **Blue Team**:
 
 👉 [Acessar Repositório Blue Team - Mitigação Apache](./link-para-seu-outro-repo)
 
 ---
-## 4. Informações do Alvo
+## 1. Informações do Alvo
 * **Hostname:** `MAC-DEBIAN-SRV` (MacBook Pro - Lab)
 * **Endereço IP:** `192.168.x.y` 
 * **Sistema Operacional:** Debian 12 (Bookworm)
@@ -36,7 +20,7 @@ As contrapartidas técnicas, regras de Firewall e patches de correção para est
 
 ---
 
-## 5. Foco de Enumeração e Ataques
+## 2. Foco de Enumeração e Ataques
 
 Nesta fase, o objetivo estratégico é mapear a superfície de ataque da aplicação web para encontrar um vetor de **RCE (Remote Code Execution)**. Este acesso inicial no MacBook servirá como "Pivot" para alcançar a rede interna onde residem o Windows 10 e o Metasploitable 2.
 
@@ -89,7 +73,23 @@ A enumeração confirmou que o Apache está vulnerável a injeção de comandos.
 
 Isso permitirá que o atacante utilize este MacBook como um **Jump Server** (Pivô) para escanear e atacar os alvos protegidos na rede interna:
 
-* **Alvo 2: Windows 10 Pro** (Foco: SMB/WinRM)
-* **Alvo 3: Metasploitable 2** (Foco: Serviços Legados)
+
+---
+
+## 4. Análise de Risco
+
+> [!CAUTION]
+> **Impacto no Negócio:** O comprometimento deste servidor Apache representa um risco **Crítico**. Por estar mal segmentado, >
+
+---
+
+## 5. Recomendações de Mitigação (Preview)
+Para sanar as falhas encontradas nesta fase de enumeração, as seguintes medidas são necessárias:
+* **Desativação de Banners:** Impedir que o Apache exiba sua versão exata.
+* **Sanitização de Inputs:** Corrigir o código da aplicação para impedir Command Injection.
+* **Segmentação de Rede:** Isolar o servidor web em uma DMZ para impedir o Pivoting.
+
+## 6. 🛡️ Defesa e Remediação (Blue Team)
+As contrapartidas técnicas, regras de Firewall e patches de correção para este cenário estão detalhados em nosso repositório 
 
 ---
