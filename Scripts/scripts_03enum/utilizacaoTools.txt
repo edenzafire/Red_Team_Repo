@@ -1,0 +1,26 @@
+🛠️ Guia de Execução das Ferramentas Autorais
+1. AutoEnum.sh (Bash Script)
+Pré-requisitos: Ter nmap e gobuster instalados no seu Debian 12.
+
+Como utilizar:
+
+Dê permissão de execução ao arquivo:
+
+Bash
+chmod +x AutoEnum.sh
+Execute o script passando o IP do alvo (ex: o MacBook ou o Windows 10):
+
+Bash
+./AutoEnum.sh -t 192.168.x.x
+O que esperar: O script criará automaticamente a árvore de diretórios ./evidencias/[IP]/nmap e ./evidencias/[IP]/web, salvando os logs de forma organizada para que você só precise anexá-los ao relatório.
+
+2. BannerHunter.py (Python Script)
+Pré-requisitos: Python 3 instalado (padrão no Debian 12). Não requer bibliotecas externas (usa apenas bibliotecas nativas como socket e sys).
+
+Como utilizar:
+
+Execute o script chamando o interpretador Python e o IP do alvo:
+
+Bash
+python3 BannerHunter.py 192.168.x.x
+O que esperar: Uma tabela formatada no seu terminal mostrando exatamente o que o serviço "respondeu" ao ser tocado. Se ele identificar o banner do vsFTPd 2.3.4 (comum no Metasploitable 2), ele emitirá um alerta visual de vulnerabilidade crítica.
