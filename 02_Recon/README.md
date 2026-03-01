@@ -1,59 +1,89 @@
-# 🛰 Fase 02: Reconhecimento Ativo & Expansão de Superfície de Ataque
+🛰️ Fase 02: Reconhecimento (Active & Network Recon)
 
-![Status: Parcialmente Concluído](https://img.shields.io/badge/Status-Parcialmente_Conclu%C3%ADdo-yellowgreen?style=for-the-badge)
-![Nível: Intermediário](https://img.shields.io/badge/N%C3%ADvel-Intermedi%C3%A1rio-blue?style=for-the-badge)
+![Status: Concluído](https://img.shields.io/badge/Status-Conclu%C3%ADdo-success?style=for-the-badge)
+![Nível: Intermediário/Avançado](https://img.shields.io/badge/N%C3%ADvel-Intermedi%C3%A1rio-blue?style=for-the-badge)
 ![MITRE: Reconnaissance](https://img.shields.io/badge/MITRE_ATT%26CK-TA0043-orange?style=for-the-badge)
 ![Foco: Red Teaming](https://img.shields.io/badge/Foco-Red_Teaming-critical?style=for-the-badge&logo=kali-linux&logoColor=white)
 
 **Data:** Janeiro 2026  
 **Autor:** Zafire Daniel  
 
+---
+
 ## 📖 Visão Geral
-Transição estratégica da inteligência passiva (**Fase 01 - OSINT**) para reconhecimento direcionado e ativo. Aqui transformamos dados vazados (e-mails, usernames, IPs históricos) em ativos técnicos reais: localização física, perímetro wireless e mapeamento da rede interna.
-
-> **Objetivo Principal:** Expandir a superfície de ataque identificada via OSINT, validando achados e descobrindo vetores prioritários para enumeração.
-
-## 🌉 Ponte de Inteligência: Do Dado OSINT ao Ativo Técnico
-| 📥 Output da Fase 01 (OSINT)      | ⚙ Processo de Recon Ativo                  | 📤 Resultado Obtido                          |
-|-----------------------------------|---------------------------------------------|---------------------------------------------|
-| IP histórico vazado (2019)        | Análise de persistência + hostname lookup   | Classificado como ponto efêmero (dinâmico)  |
-| Metadados vinculados ao alvo      | Extração EXIF (T1590.001)                   | Coordenadas precisas da residência (<10m)   |
-| Coordenadas geográficas           | Consulta Wigle.net (T1593.002)              | SSID e criptografia da rede doméstica       |
-| Presença confirmada na LAN        | Descoberta passiva/ativa de hosts           | 3 ativos vivos mapeados (incl. web server)  |
-
-## 🛠 Stack Tecnológica & Técnicas Aplicadas
-Alinhado ao **MITRE ATT&CK - Reconnaissance (TA0043)**
-
-| Técnica MITRE         | Ferramentas Utilizadas                  | Aplicação no Projeto                          |
-|-----------------------|-----------------------------------------|-----------------------------------------------|
-| T1590.001             | ExifTool                                | Extração de GPS de imagens vinculadas         |
-| T1593.002             | Wigle.net                               | Mapeamento de redes Wi-Fi por coordenadas     |
-| T1595 / T1046         | Nmap (inicial), arp-scan                | Descoberta de hosts e fingerprinting básico   |
-| Planejado: T1590      | Amass, Subfinder, DNSRecon              | Enumeração de subdomínios (domínios de e-mail)|
-| Planejado: T1593      | TruffleHog, GitHub Dorks                | Busca de segredos em repositórios públicos    |
-
-## 📊 Achados Principais (Mascarados)
-- Localização física precisa obtida sem interação direta com o alvo
-- Rede wireless doméstica identificada (WPA2-PSK AES)
-- Sub-rede interna mapeada: Gateway, Attack Box, Web Server Apache (192.168.1.10), Workstation Windows
-- Banner HTTP exposto → versão Apache identificada (vetor prioritário)
-
-## 🔗 Módulos Detalhados
-- [🌍 01_Recon_Physical.md](01_Recon_Physical.md) → Pivot geográfico via EXIF + Wigle
-- [🏠 02_Recon_Network.md](02_Recon_Network.md) → Mapeamento da LAN e fingerprinting inicial
-- [📂 Evidências](evidence/) → Screenshots, outputs ExifTool, banners, etc.
-
-## 🖼 Teaser Visual
-![Exemplo EXIF + Wigle](evidence/teaser_geo.png)  
-*(Screenshot real mascarado do fluxo EXIF → coordenadas → consulta Wigle)*
-
-## Próximos Passos
-- Expansão para recon externo (subdomínios, serviços expostos)
-- Scanning profundo com Nmap (scripts NSE)
-- Transição para **Fase 03: Enumeração & Vulnerability Research**
+Esta etapa consolida a transição estratégica da inteligência passiva (**Fase 01 - OSINT**) para o reconhecimento direcionado. O objetivo foi validar dados históricos e transformá-los em inteligência operacional (GEOINT e NETINT), mapeando o perímetro físico, vetores de rádio-frequência (RF) e a infraestrutura de rede de borda.
 
 ---
 
-📫 **Quer ver o fluxo completo?** Confira a [Fase 01 - OSINT] https://github.com/edenzafire/Portfolio_pentest/tree/main/01_Osint ou entre em contato via LinkedIn: [SEU_LINK_AQUI]
+## 🌉 Fluxo de Inteligência (Pivoting)
+O diagrama abaixo ilustra o racional técnico utilizado para desmascarar o perímetro do alvo partindo de dados voláteis.
 
-⭐ Se o portfólio está te ajudando, deixa uma star no repo!
+```mermaid
+graph TD
+    A[OSINT: Dados Vazados] -->|Pivoting Técnico| B(IP: 187.6.181.16)
+    B -->|ASN/BGP Analysis| C{Infra de Borda}
+    C -->|Identificação| D[IP Estático / ISP Direto]
+    A -->|Forense de Imagem| E[Metadados EXIF]
+    E -->|GPS Extraction| F[Perímetro: Curitiba-PR]
+    F -->|Wardriving Passivo| G[WiFi Signal Leakage]
+    D -->|Snapshot Passivo| H[Asset Inventory Preview]
+``` 
+
+
+## 🏗️ Ponte de Inteligência: Do OSINT ao Ativo Técnico
+
+| 📥 Output OSINT             | ⚙️ Processo de Recon      | 📤 Resultado Obtido                          |
+| :-------------------------- | :------------------------ | :------------------------------------------- |
+| **IP Histórico (2019)**     | BGPView / ASN Lookup      | Identificado IP Estático (Persistência Alta) |
+| **Metadados de Mídia**      | Extração EXIF (T1590.001) | Geolocalização precisa do Laboratório        |
+| **Coordenadas Geográficas** | Consulta Wigle.net        | SSID e Protocolo de Segurança (WPA2)         |
+| **Identidade Digital**      | Shodan / Censys Snapshots | Previsão de Ativos (Nginx/Apache)            |
+
+---
+
+## 🛠️ Stack Tecnológica & MITRE Mapping
+
+| Técnica MITRE | Ferramentas | Aplicação Prática |
+| :--- | :--- | :--- |
+| **T1590.001** (Gather Network Info) | ExifTool / Python Script | Localização física via Forense Digital |
+| **T1593.002** (Search Open Websites) | Wigle.net | Identificação de Signal Leakage WiFi |
+| **T1583.001** (Acquire Infrastructure) | BGPView / Whois | Análise de estabilidade e persistência de IP |
+| **T1594** (Search Victim Hosts) | Shodan / Censys | Snapshot de serviços expostos (Sem Scan Direto) |
+
+---
+
+## 📂 Módulos Detalhados (Deep Dive)
+
+A fase foi dividida em dois pilares fundamentais para garantir **OpSec** e precisão na transição técnica:
+
+* 🌍 [**01_Recon_Physical.md**](./01_Recon_Physical.md): Focado em **GEOINT**, Radiofrequência (WiFi/BLE) e análise de perímetro físico.
+* 🌐 [**02_Recon_Network.md**](./02_Recon_Network.md): Focado em **Inteligência de Rede**, análise de ASN/BGP e mapeamento passivo de ativos de borda.
+
+---
+
+## 📊 Principais Descobertas (Insight de Red Team)
+
+> [!CAUTION]
+> **Signal Leakage:** A rede wireless `[MASCARADO_LAB]` propaga sinal ~15m além do perímetro físico, permitindo ataques de proximidade e captura de handshakes em via pública.
+
+> [!IMPORTANT]
+> **Infra de Borda:** A ausência de camadas de WAF/Cloudflare e o uso de IP Estático tornam o alvo vulnerável a ataques de enumeração direta e garantem estabilidade para persistência de C2 (Command & Control).
+
+---
+
+## 🖼️ Evidências Visuais
+
+![Fluxo Operacional](evidence/teaser_geo.png)  
+*Legenda: Fluxo operacional de conversão de metadados em coordenadas de wardriving.*
+
+---
+
+## 🚀 Próximos Passos
+
+Com o terreno mapeado e a infraestrutura física localizada, a operação avança para a interação técnica direta:
+
+1.  **Fase 03: Enumeração Ativa** (Banner Grabbing e Scanning direcionado).
+2.  **Auditoria Wireless:** Captura de handshake em áreas de *Signal Leakage* para quebra de criptografia.
+
+---
+[⬅️ Voltar para a Raiz do Projeto](../)
