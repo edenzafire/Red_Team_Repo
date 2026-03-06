@@ -90,7 +90,7 @@ graph TD
 ## 📄 Relatórios Detalhados nesta Pasta
 
 1.  [**01-Enumeration-Apache.md**](./01-Enumeration-Apache.md): Foco em Web App e exploração de RCE.
-2.  [**02-Enumeration-Win10.md**](./02-Enumeration-Win10.md): Foco em protocolos de rede interna (SMB/WinRM).
+2.  [**02-Enumeration-Win10.md**](01-Enumeration-Win10.md): Foco em protocolos de rede interna (SMB/WinRM).
 3.  [**03-Enumeration-Metasploitable2.md**](./03-Enumeration-Metasploitable2.md): Foco em infraestrutura legada e backdoors.
 4.  [**04-Enumeration-THM-AD.md**](./04-Enumeration-THM-AD.md): Foco em Pivoting e reconhecimento de Active Directory.
 

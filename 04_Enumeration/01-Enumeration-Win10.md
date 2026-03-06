@@ -1,5 +1,5 @@
 # Relatório Técnico de Enumeração e Movimentação Lateral
-## Alvo 02 – Windows 10 Pro (Rede Interna)
+## Alvo 01 – Windows 10 Pro (Rede Interna)
 
 **Author:** Zafire Daniel / Nikolay (Lab Environment)  
 **Data:** 28 de Fevereiro de 2026  
@@ -11,18 +11,21 @@
 
 # 1. Executive Summary
 
-Este relatório descreve a enumeração do segundo alvo na cadeia de ataque, o host **WIN10-CLIENT-01**. O acesso a este ativo foi viabilizado através do pivô estabelecido no Servidor Apache (Alvo 01).
+Este relatório descreve a enumeração do primeiro  alvo na cadeia de ataque, o host **WIN10-CLIENT-01**. O acesso a este ativo foi viabilizado através da fase 03_Social_Enginering onde foi encaminhado um Prishing direcionado para o e-mail e****d*****@***.com ############################################################.
 
-A análise técnica identificou:
-- **Protocolos Administrativos Ativos:** Exposição de SMB e WinRM.
-- **Superfície de Movimentação:** Potencial para exploração de sessões nulas e força bruta administrativa.
-- **Risco de Propagação:** A configuração atual permite que um invasor tente a escalada de privilégios para comprometer credenciais de domínio.
+ #  1.1 Persistence
+O objetivo neste primeiro momento é estabelecer a persistência neste primeiro dispositivo, para que caso a vitima desligue o aparelho não percamos a comunicação.
 
-O risco foi classificado como **Alto**, devido ao papel do ativo como estação de trabalho de usuário, o que geralmente contém tokens de acesso e documentos sensíveis.
+ #1.2 Reconoissence
+ Após o estabelecimento da persistência, em nosso alvo, foi necessário realizar um reconhecimento, do ambiente em que estou para assim, partir para as próximas fazes deste  projeto.
+ * foi utilizado  para o reconhecimento as seguintes ferramentas, e comandos.
+ * 
+ 
 
 ---
 
 # 2. Escopo
+Através da varredura acima foi descoberto o seguinte:
 
 **Host Alvo:**
 - **Hostname:** WIN10-CLIENT-01

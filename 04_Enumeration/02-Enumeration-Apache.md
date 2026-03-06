@@ -1,5 +1,5 @@
 # Relatório Técnico de Enumeração e Exploração Inicial
-## Alvo 01 – Apache / DVWA (Ponto de Entrada)
+## Alvo 02– Apache / DVWA (Ponto de Entrada)
 
 **Author:** Eden Zafire  / Nikolay (Lab Environment)  
 **Data:** 28 de Fevereiro de 2026  
