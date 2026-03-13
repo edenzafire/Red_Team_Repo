@@ -1,0 +1,5 @@
+4239d434b32133090e9bfd5d5845fe5e6efdf061c67ae0515cfe5f19752e8304  /home/osint/Desktop/TL-Vault/01_Osint/evidences/resultado_h8mail.txt
+02c325508e1d6e8022ebb719a802b58d113005816ea63d1489df0f692add6965  /home/osint/Desktop/TL-Vault/01_Osint/evidences/resultado_holehe_filtrado.txt
+778592359c432f5d300d2220c69cc5b193eca7512a2a7de7956fec3eca174af5  /home/osint/Desktop/TL-Vault/01_Osint/evidences/resultado_holehe.txt
+fc90563d9a777444d09c37612014399e6d6bb2e3a376549bc65e45bbb559edf7  /home/osint/Desktop/TL-Vault/01_Osint/evidences/resultado_socialscan.txt
+566f8d9593df6ac8fae2a0517d5c4dba5b5997f074b906ce15ceca9a6d6866d2  /home/osint/Desktop/TL-Vault/01_Osint/evidences/SESSAO_COMPLETA.log

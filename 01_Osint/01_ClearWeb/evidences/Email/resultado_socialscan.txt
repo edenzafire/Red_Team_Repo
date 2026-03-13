@@ -1,0 +1,10 @@
+----------------------------------------
+        alvo_investigado@email.com
+----------------------------------------
+Instagram
+Firefox
+Tumblr
+Twitter
+
+Available, Taken/Reserved, Invalid, Error
+Completed 8 queries in 4.12s

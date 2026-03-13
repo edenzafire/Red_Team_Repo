@@ -1,0 +1,10 @@
+----------------------------------------
+               target_user
+----------------------------------------
+GitLab
+Reddit
+Tumblr
+Twitter
+
+Available, Taken/Reserved, Invalid, Error
+Completed 8 queries in 1.44s

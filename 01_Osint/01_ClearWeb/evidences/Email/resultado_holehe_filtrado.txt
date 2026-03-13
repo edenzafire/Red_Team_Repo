@@ -1,0 +1,8 @@
+[+] amazon.com
+[+] codepen.io
+[+] firefox.com
+[+] office365.com
+[+] replit.com
+[+] spotify.com
+[+] twitter.com
+[+] Email used, [-] Email not used, [x] Rate limit
