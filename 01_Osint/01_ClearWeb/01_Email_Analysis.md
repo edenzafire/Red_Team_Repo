@@ -111,13 +111,17 @@ graph TD
 ### 🛡️ Verificação de Integridade
 | Arquivo | Descrição | SHA-256 Hash |
 | :--- | :--- | :--- |
-| `resultado_holehe.txt` | Log Bruto Holehe | `[COLE_O_HASH_AQUI]` |
-| `resultado_h8mail.txt` | Log de Vazamentos | `[COLE_O_HASH_AQUI]` |
+| `resultado_holehe.txt` | Log Bruto Holehe | `02c325508e1d6e8022ebb719a802b58d113005816ea63d1489df0f692add6965` |
+| `resultado_socialscan.txt`| SocialScan | `fc90563d9a777444d09c37612014399e6d6bb2e3a376549bc65e45bbb559edf7 `|
+| `resultado_h8mail.txt` | Log de Vazamentos | `4239d434b32133090e9bfd5d5845fe5e6efdf061c67ae0515cfe5f19752e8304` |
+| `SESSAO_COMPLETA.log`| Sessão completa | `566f8d9593df6ac8fae2a0517d5c4dba5b5997f074b906ce15ceca9a6d6866d2 `| 
 
 ### 📄 Logs e Evidências
-* 📜 [Log de Presença (Holehe)](../evidences/resultado_holehe.txt)
-* 📜 [Log de Vazamentos (h8mail)](../evidences/resultado_h8mail.txt)
-* 🖼️ [Captura de Tela - Resultados SocialScan](../evidences/screenshots/socialscan_results.png)
+* 📜 [Log de Presença (Holehe)](https://github.com/edenzafire/Red_Team_Repo/blob/main/01_Osint/01_ClearWeb/evidences/Email/resultado_holehe_filtrado.txt)
+* 📜 [Log de Vazamentos (h8mail)](https://github.com/edenzafire/Red_Team_Repo/blob/main/01_Osint/01_ClearWeb/evidences/Email/resultado_h8mail.txt)
+* 📜 [Log de Vazamentos (SocialScan)](https://github.com/edenzafire/Red_Team_Repo/blob/main/01_Osint/01_ClearWeb/evidences/Email/resultado_socialscan.txt)
+* 📜 [Log de gravação do Terminal ](https://github.com/edenzafire/Red_Team_Repo/blob/main/01_Osint/01_ClearWeb/evidences/Email/SESSAO_COMPLETA.log)
+* 🖼️ [Captura de Tela - Resultados](https://github.com/edenzafire/Red_Team_Repo/tree/main/01_Osint/01_ClearWeb/evidences/Email/screenshots)
 
 ---
 
