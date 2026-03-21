@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Relatório -Tecnico.md",
+                "file": "Relatório -Tecnico-2.0.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Relatório -Tecnico"
+              "title": "Relatório -Tecnico-2.0"
             }
           },
           {
@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Relatorio_01.md",
+                "file": "Relatório -Tecnico-2.0.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Relatorio_01"
+              "title": "Relatório -Tecnico-2.0"
             }
           },
           {
@@ -49,7 +49,8 @@
               "title": "html Smugling"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -211,8 +212,11 @@
       "bases:Criar nova base": false
     }
   },
-  "active": "5a5c80df90df11ab",
+  "active": "eb000f79771db497",
   "lastOpenFiles": [
+    "Relatorio-Tecnico-1.md",
+    "Relatório -Tecnico-2.0.md",
+    "html Smugling.md",
     "evidence/01_Relatorio/06.png",
     "evidence/01_Relatorio/05.png",
     "evidence/01_Relatorio/04.png",
@@ -226,9 +230,6 @@
     "evidence/01_Relatorio",
     "evidence/phishingpronto.png",
     "evidence/Aguardando o phishing enciado.png",
-    "Relatorio_01.md",
-    "html Smugling.md",
-    "Relatório -Tecnico.md",
     "README.md",
     "tools_and_implementation.md"
   ]
