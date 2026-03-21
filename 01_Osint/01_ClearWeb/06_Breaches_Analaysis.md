@@ -125,6 +125,19 @@ A partir do processamento dos dados brutos do **Módulo 06**, isolamos os seguin
 
 ---
 
+### Links De evidências
+ 
+* 🖼️ [Capturas de Tela Breaches](https://github.com/edenzafire/Red_Team_Repo/tree/main/01_Osint/01_ClearWeb/evidences/breach)
+
+⚠️ Sensitive data partially redacted for ethical disclosure purposes.
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/edenzafire/Red_Team_Repo/main/01_Osint/01_ClearWeb/evidences/breach/portf%C3%B3lio.gif" width="700">
+</p>
+
+
+
+---
 ### 🧠 Análise de Persistência de Identidade
 A repetição parcial de caracteres nos aliases (`e***...`) confirma que o alvo não utiliza identidades dissociadas (sock puppets), mas sim variações de um mesmo padrão de identidade real. Isso facilita a **Atribuição de Identidade** em casos onde o e-mail não está visível, permitindo que o analista "salte" de uma rede social para outra apenas seguindo o padrão de nomenclatura.
 
