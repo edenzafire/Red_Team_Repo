@@ -175,10 +175,12 @@ Com base nos resultados obtidos, foram identificados os seguintes vetores de exp
 | **Audit Log** | `[[SESSAO_USERNAME.log]]` |
 
 ## 📂 Evidências Sanitizadas
-* [📜 Log Sherlock](../evidences/UserName/evidence_sherlock_sanitized.txt)
-* [📜 Log Nexfil](../evidences/UserName/resultado_nexfil.txt)
-* [🌐 Relatório Maigret (Versão Sanitizada)](../evidences/UserName/report_sanitized.html)
-* [📄 Log de Execução do Maigret](../evidences/UserName/maigret_run.log)
+* [📜 Log Sherlock](https://github.com/edenzafire/Red_Team_Repo/blob/main/01_Osint/01_ClearWeb/evidences/UserName/resultado_sherlock.txt)
+* [📜 Log Nexfil](https://github.com/edenzafire/Red_Team_Repo/blob/main/01_Osint/01_ClearWeb/evidences/UserName/resultado_nexfil.txt)
+* [📜 Log SocialScan-User](https://github.com/edenzafire/Red_Team_Repo/blob/main/01_Osint/01_ClearWeb/evidences/UserName/resultado_socialscan_user.txt)
+* [🌐 Relatório Maigret (Versão Sanitizada)](https://github.com/edenzafire/Red_Team_Repo/blob/main/01_Osint/01_ClearWeb/evidences/UserName/report_maigret_REDACTED.html)
+* [📄 Log de Gravação do terminal](https://github.com/edenzafire/Red_Team_Repo/blob/main/01_Osint/01_ClearWeb/evidences/UserName/SESSAO_USERNAME.log)
+* [📂 Screemshots Evidences](https://github.com/edenzafire/Red_Team_Repo/tree/main/01_Osint/01_ClearWeb/evidences/UserName/screenshots)
 
 > [!NOTE] Informação de Auditoria
 > O link acima aponta para a versão higienizada do relatório para proteção de PII (Informações Pessoais Identificáveis). A evidência bruta original está preservada localmente e validada via Hash SHA-256.
