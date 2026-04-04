@@ -1,69 +1,94 @@
-# 🚩Operação "Paco de Lucía" - Ataque de Spear Phishing
+# 🚩 Technical Report: Operation "Paco de Lucía"
 
-**Alvo:** Host Windows 10 (Build 19045) **Nível:** Médio/Realista **Status:** **Mitigado (Veredito: Vitória Defensiva)**
+**Security Researcher:** Nikolay (Zafire Daniel)
+
+**Target:** Windows 10 x64 (Build 19045)
+
+**Threat Actor Profile:** Social Engineering & RTLO Masquerading
+
+**Verdict:** **[MITIGATED]** - Endpoint Security (AV/EDR) Blocked Execution.
+
+---
+
+## 0x01. Executive Overview
+
+Este relatório detalha uma tentativa de **Spear Phishing** baseada em scripts. A operação visava testar a eficácia da técnica de **RTLO (Right-to-Left Override)** contra a percepção do usuário e a resposta do **Windows Defender** a _payloads_ gerados via Metasploit. Embora o vetor de entrega tenha sido bem-sucedido, a detecção baseada em assinaturas impediu o comprometimento do host.
+
+## 0x02. Initial Access & Masquerading
+
+O ataque explorou um interesse específico do alvo (**Luteria Flamenca**) para facilitar a execução de arquivos não confiáveis.
+
+### 2.1 The RTLO Trick ([T1036.002](https://attack.mitre.org/techniques/T1036/002/))
+
+Para ocultar a natureza real do script malicioso, foi utilizado o caractere Unicode `U+202E`.
+
+- **Filename on disk:** `Medidas_Paco_De_Lucia_vbs.fdp`
+    
+- **User UI Display:** `Medidas_Paco_De_Lucia_pdf.vbs`
+    
+- **Analysis:** Esta técnica explora a falha humana na interpretação de extensões, mas é irrelevante para o kernel do Windows, que identifica o arquivo pelo seu _Magic Header_ e extensão real.
+    
 
 ---
 
-## 1. 🎯 Vetor de Entrada (Initial Access)
+## 0x03. Adversary Tactics & Techniques (MITRE ATT&CK)
 
-O ataque foi planejado utilizando **Engenharia Social** focada em um interesse específico do alvo (Luteria/Violão Flamenco).
+|**Tática**|**Técnica**|**ID**|**Link**|
+|---|---|---|---|
+|**Initial Access**|Spearphishing Link|T1566.002|[Link](https://attack.mitre.org/techniques/T1566/002/)|
+|**Defense Evasion**|Masquerading: RTLO|T1036.002|[Link](https://attack.mitre.org/techniques/T1036/002/)|
+|**Execution**|PowerShell Interpreter|T1059.001|[Link](https://attack.mitre.org/techniques/T1059/001/)|
 
-- **Arquivo Isca:** `projeto-original.pdf`
+---
+
+## 0x04. Execution Flow & Detection Analysis
+
+### 4.1 Delivery Infrastructure
+
+Utilizou-se um servidor efêmero para hospedagem do artefato:
+
+`python3 -m http.server 80` -> `192.168.1.112`
+
+### 4.2 The "AMSI" Barrier
+
+O payload utilizado foi um script PowerShell (`psh-reflection`).
+
+- **Behavior:** No momento em que o script VBS tentou invocar o PowerShell para carregar o código em memória, o **AMSI (Antimalware Scan Interface)** interceptou o buffer.
     
-- **Payload:** Script PowerShell (`luthier_script.ps1`) via `msfvenom`.
+- **Detection:** O Windows Defender identificou a assinatura `Trojan:PowerShell/Meterpreter.A`.
     
-- **Disfarce (Obfuscation):** Utilização do caractere Unicode **RTLO** (Right-to-Left Override) para inverter a extensão de `.vbs` para `.pdf`.
-    
-    - _Nome real:_ `Medidas_Paco_De_Lucia_vbs.fdp` (visualizado como `.pdf`).
-        
-
-## 2. 🎣 A Armadilha (Delivery)
-
-Foi configurado um servidor HTTP via Python (`python3 -m http.server 80`) para hospedar o pacote `Medidas_Tecnicas_Hermanos_Conde_1971.zip`.
-
-> **Log do Atacante:** `192.168.1.112 - - [05/Mar/2026] "GET /Medidas_...zip HTTP/1.1" 200 -`
-  Você podera ver no seguinte link.
-* 🎣 [server py](https://github.com/edenzafire/Red_Team_Repo/blob/main/03_Social_Engineering/evidence/01_Relatorio/Aguardando%20o%20ReverseShell.png)
-
-## 3. 🛡️ O Confronto: Atacante vs Defender
-
-Ao realizar o download e a extração no host alvo, o sistema de proteção entrou em ação.
-
-### **Cronologia da Detecção:**
-
-1. **Extração:** O usuário extraiu o conteúdo do arquivo `.zip`.
-    
-2. **Escaneamento em Tempo Real:** O Windows Defender detectou a assinatura estática do arquivo `luthier_script.ps1`.
-    
-3. **Veredito do Antivírus:** Detecção de `Trojan:PowerShell/Meterpreter.A`.
-    
-4. **Ação Automática:** O arquivo foi movido para quarentena e a execução do script VBS falhou ao tentar localizar o componente PowerShell removido.
-    
-
-## 4. 📝 Análise Pós-Incidente (A Derrota Vitoriosa)
-
-**Por que falhou?**
-
-- **Assinatura estática:** O payload do Metasploit (`psh-reflection`) é amplamente conhecido. Sem um _encoder_ customizado ou técnica de _AMSI Bypass_, a detecção é de 99%.
-    
-- **Vigilância do Usuário:** O Windows Chrome alertou sobre "Download Inseguro", exigindo que o usuário forçasse o recebimento.
-    
-
-**O que aprendemos?**
-
-- A engenharia social (o e-mail e o nome do arquivo) funcionou 100%, pois o alvo baixou e tentou abrir.
-    
-- A camada de **Endpoint Protection (EDR)** cumpriu seu papel, provando que a defesa em profundidade funciona.
+- **Outcome:** Interrupção imediata do processo. Como o _payload_ era "puro" (sem ofuscação), a entropia do arquivo era baixa, facilitando a análise estática do AV.
     
 
 ---
-## 4.1 📝Evidências Screenshots
 
-* 📝[Evidencias Phishing](https://github.com/edenzafire/Red_Team_Repo/tree/main/03_Social_Engineering/evidence/01_Relatorio)
+## 0x05. Operation Timeline
 
+|**Time (UTC)**|**Action**|**Method**|**Result**|
+|---|---|---|---|
+|**14:00**|Recon|OSINT|Identified interest in "Conde/Paco de Lucía".|
+|**14:30**|Weaponization|MSFVenom|Generated standard PSH-Reflection payload.|
+|**15:00**|Delivery|HTTP Server|User initiated download via Chrome.|
+|**15:05**|Execution|User Action|**Blocked by Windows Defender (Signature Match).**|
 
-## 5. 🛠️ Recomendações (Remediação)
+---
 
-- **Para o Atacante (Próximo Lab):** Utilizar técnicas de **SFX** para comprimir tudo em um executável com ícone de PDF e aplicar ofuscação de código (base64) para tentar evadir o Defender.
+## 0x06. Post-Mortem & Mitigation
+
+### Why it failed?
+
+1. **Static Signatures:** O uso de ferramentas _out-of-the-box_ (Metasploit) sem modificação de bytes é trivialmente detectado por qualquer solução de segurança moderna.
     
-- **Para a Defesa:** Manter o Windows Defender atualizado e bloquear a execução de scripts `.vbs` e `.ps1` por usuários comuns via GPO.
+2. **Reputation Check:** O Google Chrome utilizou o _Safe Browsing_ para alertar o usuário sobre o download de um domínio sem reputação prévia.
+    
+
+### Blue Team Recommendations
+
+- **GPO (Group Policy):** Desabilitar o interpretador `Windows Script Host` para bloquear arquivos `.vbs` e `.js` nativamente.
+    
+- **Attack Surface Reduction (ASR):** Ativar a regra de bloqueio para que o Adobe Reader ou navegadores não possam lançar processos filhos como `powershell.exe`.
+    
+
+---
+
+**Researcher's Note:** _Esta operação serviu como Baseline para a V2.0. A principal lição é que o RTLO engana o humano, mas não engana o AMSI. Para sucesso futuro, a ofuscação de baixo nível (XOR/C++) é mandatória._
