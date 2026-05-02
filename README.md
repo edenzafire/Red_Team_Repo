@@ -8,7 +8,7 @@
 
 **Bem-vindo ao meu portfólio profissional de Penetration Testing e Cibersegurança!**  
 
-> **Nota:** Este portfólio complementa minha atuação conjunta em [**Low Level Security**](https://github.com/edenzafire/Low-Level-Security) Utilizado para explicação do estudo na base profunda do computador &&  [**Blue Team Operations**](https://github.com/edenzafire/Blue_Team_Repo). Juntos, eles formam minha base de Purple Teaming.
+Este portfólio integra o meu ecossistema de estudos em Purple Teaming, conectando-se diretamente aos meus repositórios de[** Low Level Security (análise profunda de artefatos e memória)**]() e [**Blue Team Operations (detecção e resposta)**](https://github.com/edenzafire/Blue_Team_Repo). Essa tríade me permite não apenas executar o ataque, mas compreender sua mecânica interna e como mitigá-lo de forma eficiente.
 
 Este repositório documenta minhas habilidades técnicas em testes de invasão éticos, OSINT, reconnaissance, exploit development e boas práticas de segurança. Todo o conteúdo é educacional, utiliza alvos autorizados e segue princípios de responsible disclosure.
 
