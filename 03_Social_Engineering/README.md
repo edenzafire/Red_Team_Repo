@@ -63,6 +63,9 @@ Este ataque não é um fim em si mesmo, mas a base para o fortalecimento do **Bl
 *   **Defesa 03 (Conscientização):** Gamificação de treinamentos de análise de cabeçalhos e verificação de integridade de links.
 
 👉 [Ver análize detalhada do ataque no portfólio low level](#)
+
+---
+
 👉 [Ver Remediação Detalhada no Portfólio Blue Team](https://github.com/edenzafire/Blue_Team_Repo/tree/main/03_Identity_Access_Management_IAM)
 
 ---
