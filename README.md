@@ -72,7 +72,7 @@ Nesta etapa foram conduzidas atividades de:
 
 ---
 
-## 📁 0_Social_Engineering — Análise de Engenharia Social (Conscientização)
+## 📁 03_Social_Engineering — Análise de Engenharia Social (Conscientização)
 [🧠 **Acessar Diretório**](https://github.com/edenzafire/Portfolio_pentest/tree/main/03_Social_Engineering)
 
 Esta fase tem caráter exclusivamente analítico, educativo e defensivo. Com base nos dados coletados durante o OSINT, foi possível identificar como informações públicas, tais como preferênci>
