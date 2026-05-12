@@ -72,8 +72,20 @@ Nesta etapa foram conduzidas atividades de:
 
 ---
 
-## 📁 03_Enumeration — Enumeração
-[🧩 **Acessar Diretório**](https://github.com/edenzafire/Portfolio_pentest/tree/main/03_Enumeration)
+## 📁 0_Social_Engineering — Análise de Engenharia Social (Conscientização)
+[🧠 **Acessar Diretório**](https://github.com/edenzafire/Portfolio_pentest/tree/main/03_Social_Engineering)
+
+Esta fase tem caráter exclusivamente analítico, educativo e defensivo. Com base nos dados coletados durante o OSINT, foi possível identificar como informações públicas, tais como preferênci>
+
+> ⚠️ **Importante:**
+> Nenhuma engenharia social foi executada, simulada ou aplicada contra pessoas reais. Não são apresentados roteiros, diálogos, técnicas operacionais ou passo a passo de phishing.
+
+**O objetivo desta fase** é demonstrar o risco associado à superexposição digital, promovendo conscientização sobre privacidade, segurança da informação e higiene digital.
+
+---
+
+## 📁 04_Enumeration — Enumeração
+[🧩 **Acessar Diretório**](https://github.com/edenzafire/Portfolio_pentest/tree/main/04_Enumeration)
 
 A enumeração aprofunda a análise dos ativos e informações identificadas anteriormente. 
 
@@ -84,18 +96,6 @@ Nesta fase foram observados:
 * Informações que ampliam a compreensão do alvo.
 
 **O objetivo da enumeração** é reduzir incertezas e enriquecer o entendimento do ambiente, preparando o terreno para análises de risco mais aprofundadas.
-
----
-
-## 📁 04_Social_Engineering — Análise de Engenharia Social (Conscientização)
-[🧠 **Acessar Diretório**](https://github.com/edenzafire/Portfolio_pentest/tree/main/04_Social_Engineering)
-
-Esta fase tem caráter exclusivamente analítico, educativo e defensivo. Com base nos dados coletados durante o OSINT, foi possível identificar como informações públicas, tais como preferências pessoais, gostos, hábitos expostos em redes sociais e padrões de comportamento, podem facilitar ataques de engenharia social quando exploradas por agentes maliciosos.
-
-> ⚠️ **Importante:**
-> Nenhuma engenharia social foi executada, simulada ou aplicada contra pessoas reais. Não são apresentados roteiros, diálogos, técnicas operacionais ou passo a passo de phishing.
-
-**O objetivo desta fase** é demonstrar o risco associado à superexposição digital, promovendo conscientização sobre privacidade, segurança da informação e higiene digital.
 
 ---
 
