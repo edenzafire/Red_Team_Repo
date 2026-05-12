@@ -40,7 +40,8 @@ A fase de entrega não utiliza anexos diretos, o que evita filtros de gateway de
 
 O arquivo `phishing.html` contém o binário da ISO convertido em uma string **Base64** gigante. Ao ser acessado, o JavaScript reconstrói o arquivo localmente no navegador do alvo.
 
-> **Figura 1:** _Exibição do diretório de arquivos no servidor atacante (IP: 192.168.1.143). O arquivo `phishing.html` atua como o dropper de primeiro estágio._ ![Inserir d42a58b4-7f30-4b0b-9fa0-f47afcdd750c aqui]
+> **Figura 1:** _Exibição do diretório de arquivos no servidor atacante (IP: 192.168.1.143). O arquivo `phishing.html` atua como o dropper de primeiro estágio._
+ ![https://github.com/edenzafire/Red_Team_Repo/blob/main/03_Social_Engineering/evidence/02_Relatorio/AnatomiaDoPhishing.png]
 
 ### O Contêiner ISO:
 
