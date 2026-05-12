@@ -23,7 +23,7 @@ Nesta etapa, demonstro a conversão de dados brutos de **OSINT** (Open Source In
 ## 🧠 Estrutura Estratégica (The Human Exploit)
 
 ### A. Gatilhos Mentais (Psychological Triggers)
-Para romper a barreira de desconfiança do alvo, explorei os seguintes gatilhos do *Social Engineering Framework*:
+Para romper a barreira de desconfiança do alvo, explorei os seguintes gatilhos do [*Social Engineering Framework*](https://www.social-engineer.org/framework/attack-vectors/)
 
 *   **Afinidade (Rapport):** Uso de temas de nicho (Luthieria Flamenca) para baixar a guarda através de interesses comuns identificados via OSINT.
 *   **Autoridade Simulada:** Comunicação estruturada como "Especialista em Medidas Técnicas", evocando respeito técnico.
