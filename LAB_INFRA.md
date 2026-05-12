@@ -60,7 +60,7 @@ Abaixo, explico o que cada pasta do meu laboratório faz, traduzindo o "Hackerê
 08_Post_Exploitation (O Objetivo Final): Com as chaves na mão, fazemos o Pivoting. Usamos o Windows 10 como uma ponte para chegar ao cofre principal: o Servidor de Domínio (ADDS), onde ficam todas as senhas e segredos da empresa.
 
 ---
-```
+```mermaid
 graph TD
     %% Fase de Inteligência
     subgraph "Fase 1: Inteligência"
