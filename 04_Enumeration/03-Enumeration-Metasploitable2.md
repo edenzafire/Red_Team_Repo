@@ -1,113 +1,105 @@
-# Relatório Técnico de Enumeração e Vulnerabilidades Críticas
-## Alvo 03 – Metasploitable 2 (Serviços Legados)
+# Relatório Técnico: Enumeração Profunda de Alvo Crítico
 
-**Author:** Zafire Daniel / Nikolay (Lab Environment)  
-**Data:** 28 de Fevereiro de 2026  
-**MITRE ATT&CK:** T1046, T1595.002, T1210  
-**Status:** Concluído  
-**Ambiente:** Rede Interna (Identificado via Pivoting)
+**ID:** 04-ENUM-METASPLOITABLE2
 
----
+**Operador:** Nikolay (Lab Environment)
 
-# 1. Executive Summary
+**Alvo:** 192.168.1.145
 
-Este relatório detalha a enumeração do host **METASPLOITABLE-02**, identificado na rede interna. O sistema opera com uma versão obsoleta do Linux (Ubuntu 8.04) e foi configurado com múltiplos serviços propositalmente vulneráveis.
+**Pivoting via:** 192.168.1.113 (WIN10-LAB)
 
-A análise técnica revelou:
-- **Exposição Extrema:** Múltiplas portas abertas com serviços sem patches.
-- **Backdoor Crítico:** Confirmação de backdoor no serviço FTP (vsftpd 2.3.4).
-- **Vetor de Comprometimento Instantâneo:** Possibilidade de obtenção de privilégios de **ROOT** sem necessidade de credenciais.
-
-O risco associado a este ativo é **Catastrófico**, representando uma vulnerabilidade sistêmica para toda a infraestrutura interna.
-
----
-> [!NOTE]
-> **Nota de Escopo Técnica:** Embora o alvo **Metasploitable 2** apresente uma superfície de ataque extremamente vasta, com dezenas de serviços obsoletos e vulneráveis por design, este relatório foca deliberadamente nas vulnerabilidades de **FTP (vsftpd 2.3.4)** e **Enumeração de Serviços Críticos**. Esta escolha estratégica para o portfólio visa demonstrar a capacidade de identificar vetores de **RCE (Remote Code Execution)** imediato e backdoors de alto impacto, que são cruciais em cenários de movimentação lateral e elevação de privilégios. O objetivo é evidenciar a análise crítica sobre a severidade dos riscos, priorizando falhas que permitem o comprometimento total do sistema (**Root**) em detrimento de vulnerabilidades de menor relevância técnica para este estudo de caso.
----
-
-# 2. Escopo
-
-**Host Alvo:**
-- **Hostname:** METASPLOITABLE-02
-- **IP:** 192.168.x.w
-- **OS:** Linux (Ubuntu 8.04 - Kernel 2.6.x)
-- **Contexto:** Servidor de serviços legados e banco de dados.
-
-**Objetivo:**
-Mapear vulnerabilidades exploráveis em serviços de rede para demonstrar o risco de manter sistemas sem suporte (End-of-Life) na rede corporativa.
+**Framework:** MITRE ATT&CK (T1046, T1595.002, T1210)
 
 ---
 
-# 3. Metodologia
+## 0x01. Sumário Executivo
 
-A análise seguiu as fases do **MITRE ATT&CK**:
-1.  **Reconhecimento Ativo:** Varredura completa de portas (65535 TCP).
-2.  **Fingerprinting de Versão:** Identificação de softwares e versões obsoletas.
-3.  **Vulnerability Validation:** Uso de scripts NSE (Nmap Scripting Engine) para confirmar backdoors conhecidos.
+Este documento detalha a fase de enumeração do host **Metasploitable 2**, identificado através de pivô na rede interna. O sistema apresenta uma superfície de ataque legada (Ubuntu 8.04), operando com serviços propositalmente vulneráveis e sem patches de segurança. Foram confirmados múltiplos vetores de **RCE (Remote Code Execution)** e um **Backdoor de Root** ativo.
 
 ---
 
-# 4. Timeline Técnica
+## 0x02. Timeline de Execução (Metodologia)
 
-* **T+02:10** – Início da varredura exaustiva de todas as portas TCP.
-* **T+02:25** – Identificação de banners de serviços críticos (FTP, Telnet, Ingreslock).
-* **T+02:40** – Execução de scripts NSE direcionados à porta 21.
-* **T+02:50** – Confirmação de vulnerabilidade de execução remota de comandos via Backdoor.
+Seguindo o fluxo operacional de exploração, a enumeração foi dividida por protocolos para garantir a captura de banners e versões exatas.
 
----
-
-# 5. Descobertas Técnicas
-
-## 5.1 Varredura de Serviços e Versões (Full Scan)
-
-### Técnica MITRE
-**T1595.002** – Active Scanning: Vulnerability Scanning
-
-### Comando Executado
-```bash
-nmap -sV -p- -T4 192.168.x.w -oN ./evidencias/meta2/nmap_full.txt
-```
-### Análise
-O host expõe uma superfície de ataque anormalmente vasta. Portas como **21 (FTP)**, **23 (Telnet)** e **1524 (Ingreslock)** estão ativas. A ausência de um firewall host-based (iptables) permite o mapeamento completo e irrestrito da infraestrutura de rede do alvo.
+1. **Varredura Inicial:** Identificação de portas abertas via túnel Meterpreter.
+    
+2. **Fingerprinting:** Coleta de banners de serviços críticos (FTP, SSH, SMB, MySQL, Java RMI).
+    
+3. **Mapeamento Web:** Enumeração de diretórios e interfaces de gerenciamento (phpMyAdmin).
+    
 
 ---
 
-### 5.2 Enumeração de FTP e Backdoor vsftpd
+## 0x03. Descobertas Técnicas (Evidências)
 
-**Técnica MITRE:** T1210 – Exploitation of Remote Services
+### A. Serviço FTP (Porta 21) - Backdoor Detectado
 
-**Comando Executado:**
-```bash
-nmap -sV --script ftp-anon,ftp-vsftpd-backdoor -p 21 192.168.x.w
-```
+A identificação da versão do serviço revelou o vetor mais crítico do sistema.
 
-### Análise Técnica
-O serviço **vsftpd 2.3.4** identificado contém um **backdoor histórico**. O gatilho para a vulnerabilidade ocorre durante a autenticação: quando um nome de usuário enviado termina com a sequência de caracteres `:)`, o serviço aciona automaticamente a abertura de um *bind shell* na porta **6200/TCP**.
+- **Serviço:** vsFTPd 2.3.4
+    
+- **Risco:** Crítico (RCE como Root).
+    
+- **Evidência Técnica:** [01varreduraFTP.jpg](https://www.google.com/search?q=01varreduraFTP.jpg)
+    
+- **Análise:** O banner confirma a versão vulnerável ao backdoor `:)` na autenticação, permitindo bypass total de controle.
+    
 
-* **Impacto:** Permite acesso imediato com privilégios de **ROOT** (superusuário), contornando completamente qualquer mecanismo de autenticação, política de senhas ou controle de acesso local.
+### B. Serviços SMB e SSH (Portas 445/22)
+
+Identificação de versões para busca de exploits de transbordamento de buffer ou má configuração.
+
+- **Samba:** Versão 3.0.20 (Unix).
+    
+- **SSH:** OpenSSH 4.7p1 Debian.
+    
+- **Evidência Técnica (SMB):** [02SMBServices.jpg](https://www.google.com/search?q=02SMBServices.jpg)
+    
+- **Evidência Técnica (SSH):** [03SSHVersion.jpg](https://www.google.com/search?q=03SSHVersion.jpg)
+    
+
+### C. Camada Web e Banco de Dados (Portas 80/3306)
+
+Enumeração de diretórios e versões de database.
+
+- **HTTP:** Identificado diretório `/phpMyAdmin/` funcional.
+    
+- **MySQL:** Versão 5.0.51a-3ubuntu5.
+    
+- **Evidência Técnica (HTTP):** [04HttpEnum.jpg](https://www.google.com/search?q=04HttpEnum.jpg)
+    
+- **Evidência Técnica (MySQL):** [05MySqlVersion.jpg](https://www.google.com/search?q=05MySqlVersion.jpg)
+    
+
+### D. Java RMI (Porta 1099)
+
+- **Serviço:** GNU Classpath grmiregistry.
+    
+- **Evidência Técnica:** [06JavaRMIVersion.jpg](https://www.google.com/search?q=06JavaRMIVersion.jpg)
+    
+- **Análise:** Serviço suscetível a ataques de desserialização Java.
+    
+
 ---
-## 6. Análise de Risco
 
-> [!CAUTION]
-> **Impacto no Negócio:** A presença deste ativo em rede é equivalente a uma porta aberta para o núcleo da infraestrutura. Um invasor pode utilizar este host para armazenar ferramentas de ataque (C2), realizar **pivoting** para outros servidores críticos ou destruir logs de auditoria em segundos. O impacto é classificado como **Perda Total de Controle Operacional**.
+## 0x04. Matriz de Vulnerabilidades Identificadas
 
----
-
-## 7. Recomendações de Mitigação
-
-### 7.1 Remediação Imediata
-* **Desativação:** O sistema deve ser desconectado da rede imediatamente. Devido à obsolescência crítica do kernel e dos serviços, não existem patches de segurança modernos para mitigar os riscos.
-* **Substituição:** Migrar as funções e serviços essenciais para uma distribuição Linux atualizada e com suporte de segurança ativo (Ex: **Debian 12** ou **Ubuntu 24.04 LTS**).
-
-### 7.2 Defesa (Blue Team Perspective)
-* **Isolamento (Sandboxing):** Caso o sistema seja estritamente necessário para operações legadas, ele deve ser isolado em uma **VLAN estrita**, sem qualquer acesso à internet e protegida por regras de firewall "Deny All" por padrão.
-* **Detecção e Resposta:** Configurar alertas prioritários no SIEM/IDS para qualquer tráfego originado ou destinado à porta **6200/TCP**, que constitui um **Indicador de Comprometimento (IoC)** definitivo para esta exploração.
+|**Serviço**|**Versão**|**CVE Referência**|**Impacto**|
+|---|---|---|---|
+|**FTP**|vsFTPd 2.3.4|CVE-2011-2523|**Comprometimento Total (Root)**|
+|**Samba**|3.0.20|CVE-2007-2447|**Execução Remota de Código**|
+|**MySQL**|5.0.51a|CVE-2012-2122|Acesso não autorizado a dados|
 
 ---
 
-## 8. Apêndice – Evidências
+## 0x05. Conclusão Operacional
 
-* **Evidence 01:** `[./evidencias/meta2/nmap_full_scan.png]` – Output técnico do Nmap detalhando a vasta superfície de ataque exposta e serviços vulneráveis.
-* **Evidence 02:** `[./evidencias/meta2/ftp_backdoor.png]` – Captura de tela da confirmação via script NSE da presença ativa do backdoor no serviço vsftpd.
+O host 192.168.1.145 não possui defesas ativas (IPS/IDS ou Firewall host-based). O vetor de ataque prioritário para a fase **05_Vulnerability_Research** é o serviço **vsFTPd 2.3.4**, seguido pela exploração do **Samba (UserMap Script)**. Ambos garantem persistência e privilégios elevados.
+
+---
+
+**Log Completo da Sessão:** [EnumMetasploitable.log](https://www.google.com/search?q=EnumMetasploitable.log)
+
 
 ---

@@ -1,122 +1,104 @@
-# Relatório Técnico de Enumeração e Movimentação Lateral
-## Alvo 01 – Windows 10 Pro (Rede Interna)
+# Relatório de Inteligência Técnica: Enumeração e Persistência
 
-**Author:** Zafire Daniel / Nikolay (Lab Environment)  
-**Data:** 28 de Fevereiro de 2026  
-**MITRE ATT&CK:** T1046, T1021.002, T1021.006  
-**Status:** Em Andamento  
-**Ambiente:** Rede Interna (Pivoting via MAC-DEBIAN-SRV)
+**Operação:** Luthieria Flamenca
 
----
+**Alvo:** WIN10-LAB (192.168.1.113)
 
-# 1. Executive Summary
+**Data:** 15 de Maio de 2026
 
-Este relatório descreve a enumeração do primeiro  alvo na cadeia de ataque, o host **WIN10-CLIENT-01**. O acesso a este ativo foi viabilizado através da fase 03_Social_Enginering onde foi encaminhado um Prishing direcionado para o e-mail e****d*****@***.com ############################################################.
-
- #  1.1 Persistence
-O objetivo neste primeiro momento é estabelecer a persistência neste primeiro dispositivo, para que caso a vitima desligue o aparelho não percamos a comunicação.
-
- #1.2 Reconoissence
- Após o estabelecimento da persistência, em nosso alvo, foi necessário realizar um reconhecimento, do ambiente em que estou para assim, partir para as próximas fazes deste  projeto.
- * foi utilizado  para o reconhecimento as seguintes ferramentas, e comandos.
- * 
- 
+**Status:** Consolidado
 
 ---
 
-# 2. Escopo
-Através da varredura acima foi descoberto o seguinte:
+## 0x01. Resumo Executivo
 
-**Host Alvo:**
-- **Hostname:** WIN10-CLIENT-01
-- **IP:** 192.168.x.z (Rede Interna)
-- **OS:** Windows 10 Pro
-- **Contexto:** Estação de trabalho cliente.
-
-**Objetivo:**
-Identificar serviços de gerenciamento remoto e compartilhamentos de rede que permitam o salto (hop) do servidor web para a rede de usuários.
+Após o acesso inicial, procedeu-se com a enumeração completa do host alvo. A análise confirmou um ambiente Windows 10 Pro virtualizado em **pt_PT**. Foram identificadas táticas de persistência via masquerading e mapeada a topologia de rede local para movimentação lateral. O sistema apresenta-se atualizado, porém com configurações de firewall que permitem comunicação externa via C2.
 
 ---
 
-# 3. Metodologia
+## 0x02. Táticas, Técnicas e Procedimentos (MITRE ATT&CK)
 
-A enumeração foi realizada de forma indireta (através do túnel estabelecido no Alvo 01), focando em:
-1.  **Network Service Scanning:** Descoberta de portas TCP específicas do ecossistema Windows.
-2.  **SMB Interaction:** Verificação de permissões de compartilhamento e IPC$.
-3.  **Remote Management Analysis:** Validação de endpoints PowerShell Remoting (WinRM).
-
----
-
-# 4. Timeline Técnica
-
-* **T+01:05** – Estabelecimento do túnel de rede para a sub-rede interna.
-* **T+01:15** – Início da varredura de portas SMB (139/445) e WinRM (5985).
-* **T+01:30** – Execução do script de descoberta de SO via Nmap.
-* **T+01:45** – Enumeração detalhada de usuários e grupos via `enum4linux-ng`.
+|**Tática**|**ID**|**Técnica**|**Observação**|
+|---|---|---|---|
+|**Reconnaissance**|T1590|Gather Victim Network Info|Coleta de IPs, MAC e Cache ARP (Imagens 03 e 08).|
+|**Discovery**|T1082|System Information Discovery|Identificação do SO e Build 19045 (Imagem 01).|
+|**Discovery**|T1497|Virtualization/Sandbox Evasion|Identificação de ambiente VirtualBox.|
+|**Discovery**|T1012|Query Registry|Verificação de privilégios e usuários locais (Imagem 06).|
+|**Defense Evasion**|T1562.001|Disable or Modify Tools|Verificação do estado do Firewall (Imagem 07).|
+|**Command and Control**|T1071.001|Web Protocols|Comunicação via porta 4444 (Imagem 04).|
 
 ---
 
-# 5. Descobertas Técnicas
+## 0x03. Evidências Técnicas (Análise de Host)
 
-## 5.1 Enumeração de SMB (Server Message Block)
+### 3.1 Identificação do Sistema e Contexto
 
-### Técnica MITRE
-	**T1021.002** – Remote Services: SMB/Windows Admin Shares 
+O alvo foi confirmado como um Windows 10 x64. A sessão foi estabelecida no contexto do usuário `vboxuser`, que possui privilégios administrativos.
 
-### Comando Executado
-```bash
-nmap -p 139,445 --script smb-os-discovery,smb-enum-shares 192.168.x.z
-```
+![[01Sysinfo.jpg]]
 
----
+_Figura 1: Coleta de informações do sistema._
 
-## 5. Descobertas Técnicas (Continuação)
+![[02Getuid.jpg]]
 
-### 5.1 Enumeração de SMB (Server Message Block)
+_Figura 2: Verificação do contexto de usuário atual._
 
-**Análise:**
-A presença do SMB ativo é um vetor crítico. A análise buscou identificar se o "Guest Access" (acesso convidado) está habilitado ou se há compartilhamentos administrativos (`C$`, `ADMIN$`) visíveis, o que facilitaria a exfiltração de dados ou movimentação lateral.
+### 3.2 Configurações de Rede e Firewall
 
----
+O adaptador Intel PRO/1000 opera no IP `192.168.1.113`. O firewall está ativo, porém permite o tráfego de saída do beacon.
 
-### 5.2 Enumeração de WinRM (Windows Remote Management)
+![[03Ipconfig.jpg]]
 
-**Técnica MITRE:**
-T1021.006 – Remote Services: Windows Remote Management
+_Figura 3: Configuração de interfaces de rede._
 
-**Comando Executado:**
-```bash
-nmap -p 5985,5986 -sV 192.168.x.z
-```
-### Análise Técnica
-O serviço **WinRM** na porta **5985** confirma que o host está preparado para gerenciamento remoto via **PowerShell Remoting**.
+![[07StatusFirewall.jpg]]
 
-* **Impacto:** Caso credenciais sejam capturadas no Alvo 01 ou através de ataques de rede como **LLMNR poisoning**, este serviço permite a obtenção de uma shell interativa de alta performance no Windows, facilitando a execução de scripts de pós-exploração.
+_Figura 4: Auditoria do estado do Windows Firewall._
 
 ---
 
-## 6. Análise de Risco e Impacto
+## 0x04. Persistência e Processos
 
-> [!CAUTION]
-> **Impacto no Negócio:** O comprometimento de uma estação Windows 10 Pro frequentemente leva à captura de **hashes NTLM** e **tickets Kerberos**. Se o usuário logado possuir privilégios elevados (como um Administrador de Domínio), todo o ambiente (AD DS) estará em risco crítico de **Domain Takeover** (comprometimento total do domínio).
+A persistência é mantida pelo binário `WindowsUpdater.exe`, camuflado na árvore de processos para simular uma atualização legítima do Windows.
 
----
+![[04Netstat.jpg]]
 
-## 7. Recomendações de Mitigação
+_Figura 5: Conexão ativa (ESTABLISHED) com o C2 (192.168.1.143)._
 
-### 7.1 Defesa Local (Hardening)
-* **SMB:** Desativar o protocolo legado SMBv1 e restringir o acesso a compartilhamentos administrativos (`C$`, `ADMIN$`) apenas para IPs de gerência autorizados.
-* **WinRM:** Configurar o WinRM para aceitar exclusivamente conexões via **HTTPS (porta 5986)** e exigir autenticação baseada em certificados ou Kerberos forte.
+![[05Ps.jpg]]
 
-### 7.2 Defesa de Rede (Blue Team)
-* **Micro-segmentação:** Implementar regras de firewall para impedir que servidores localizados na DMZ (como o Alvo 01) iniciem conexões diretas para as portas **445** e **5985** das estações de trabalho da rede interna.
-* **Monitoramento:** Implementar alertas SIEM para tentativas de login falhas (**Event ID 4625**) originadas especificamente do endereço IP do servidor Apache.
+_Figura 6: Mapeamento de PIDs e caminhos de execução dos processos._
 
 ---
 
-## 8. Apêndice – Evidências
+## 0x05. Matriz de Usuários e Atualizações
 
-* **Evidence 01:** `[./evidencias/win10/smb_scan.png]` – Resultados da enumeração de compartilhamentos e sessões SMB.
-* **Evidence 02:** `[./evidencias/win10/winrm_port.png]` – Captura do banner do serviço WinRM identificado durante a varredura.
+A enumeração revelou os grupos administrativos locais. O sistema possui patches instalados até a data presente (Maio de 2026).
+
+![[06EnumUsers.jpg]]
+
+_Figura 7: Identificação de usuários e grupos locais (pt_PT)._
+
+![[09PatchesDeSeguranca.jpg]]
+
+_Figura 8: Listagem de Hotfixes instalados (WMIC QFE)._
 
 ---
+
+## 0x06. Inteligência de Rede e Próximos Passos
+
+### Análise do Cache ARP
+
+> **Insight Crítico:** Durante a varredura do cache ARP, o host **MACBOOK-SRV** não foi detectado. Isso indica que o dispositivo pode estar em _sleep mode_, isolado por isolamento de porta (PVLAN) ou simplesmente não houve tráfego recente entre as máquinas.
+
+![[08Arp.jpg]]
+
+_Figura 9: Mapeamento de vizinhança de rede (Cache ARP)._
+
+**Próximas Ações:**
+
+1. **Varredura Ativa:** Iniciar `nmap -sn 192.168.1.0/24` para forçar a descoberta do Macbook.
+    
+2. **Pivoting:** Utilizar a sessão atual para atacar o **Metasploitable2** e o **Active Directory** identificados na rede interna.
+    
+3. **Credential Dumping:** Realizar o dump de hashes para capturar a senha do usuário `Suporte_TI`.
