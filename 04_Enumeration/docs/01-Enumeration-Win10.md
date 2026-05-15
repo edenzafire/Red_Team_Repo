@@ -35,11 +35,11 @@ Após o acesso inicial, procedeu-se com a enumeração completa do host alvo. A 
 
 O alvo foi confirmado como um Windows 10 x64. A sessão foi estabelecida no contexto do usuário `vboxuser`, que possui privilégios administrativos.
 
-![[01Sysinfo.jpg]]
+![01Sysinfo.jpg](https://github.com/edenzafire/Red_Team_Repo/blob/main/04_Enumeration/evidences/01Win10/01Sysinfo.png)
 
 _Figura 1: Coleta de informações do sistema._
 
-![[02Getuid.jpg]]
+![02Getuid.jpg](https://github.com/edenzafire/Red_Team_Repo/blob/main/04_Enumeration/evidences/01Win10/02Getuid.png)
 
 _Figura 2: Verificação do contexto de usuário atual._
 
@@ -47,11 +47,11 @@ _Figura 2: Verificação do contexto de usuário atual._
 
 O adaptador Intel PRO/1000 opera no IP `192.168.1.113`. O firewall está ativo, porém permite o tráfego de saída do beacon.
 
-![[03Ipconfig.jpg]]
+![03Ipconfig.jpg](https://github.com/edenzafire/Red_Team_Repo/blob/main/04_Enumeration/evidences/01Win10/03Ipconfig.png)
 
 _Figura 3: Configuração de interfaces de rede._
 
-![[07StatusFirewall.jpg]]
+![07StatusFirewall.jpg](https://github.com/edenzafire/Red_Team_Repo/blob/main/04_Enumeration/evidences/01Win10/07StatusFirewall.png)
 
 _Figura 4: Auditoria do estado do Windows Firewall._
 
@@ -61,11 +61,11 @@ _Figura 4: Auditoria do estado do Windows Firewall._
 
 A persistência é mantida pelo binário `WindowsUpdater.exe`, camuflado na árvore de processos para simular uma atualização legítima do Windows.
 
-![[04Netstat.jpg]]
+![04Netstat.jpg](https://github.com/edenzafire/Red_Team_Repo/blob/main/04_Enumeration/evidences/01Win10/04Netstat.png)
 
 _Figura 5: Conexão ativa (ESTABLISHED) com o C2 (192.168.1.143)._
 
-![[05Ps.jpg]]
+![05Ps.jpg](https://github.com/edenzafire/Red_Team_Repo/blob/main/04_Enumeration/evidences/01Win10/05Ps.png)
 
 _Figura 6: Mapeamento de PIDs e caminhos de execução dos processos._
 
@@ -75,11 +75,11 @@ _Figura 6: Mapeamento de PIDs e caminhos de execução dos processos._
 
 A enumeração revelou os grupos administrativos locais. O sistema possui patches instalados até a data presente (Maio de 2026).
 
-![[06EnumUsers.jpg]]
+![06EnumUsers.jpg](https://github.com/edenzafire/Red_Team_Repo/blob/main/04_Enumeration/evidences/01Win10/06EnumUsers.png)
 
 _Figura 7: Identificação de usuários e grupos locais (pt_PT)._
 
-![[09PatchesDeSeguranca.jpg]]
+![09PatchesDeSeguranca.jpg](https://github.com/edenzafire/Red_Team_Repo/blob/main/04_Enumeration/evidences/01Win10/09PatchesDeSeguranca.png)
 
 _Figura 8: Listagem de Hotfixes instalados (WMIC QFE)._
 
@@ -91,7 +91,7 @@ _Figura 8: Listagem de Hotfixes instalados (WMIC QFE)._
 
 > **Insight Crítico:** Durante a varredura do cache ARP, o host **MACBOOK-SRV** não foi detectado. Isso indica que o dispositivo pode estar em _sleep mode_, isolado por isolamento de porta (PVLAN) ou simplesmente não houve tráfego recente entre as máquinas.
 
-![[08Arp.jpg]]
+![08Arp.jpg](https://github.com/edenzafire/Red_Team_Repo/blob/main/04_Enumeration/evidences/01Win10/08Arp.png)
 
 _Figura 9: Mapeamento de vizinhança de rede (Cache ARP)._
 
@@ -102,3 +102,4 @@ _Figura 9: Mapeamento de vizinhança de rede (Cache ARP)._
 2. **Pivoting:** Utilizar a sessão atual para atacar o **Metasploitable2** e o **Active Directory** identificados na rede interna.
     
 3. **Credential Dumping:** Realizar o dump de hashes para capturar a senha do usuário `Suporte_TI`.
+)
