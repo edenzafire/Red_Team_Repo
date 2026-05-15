@@ -34,7 +34,9 @@ Identificação inicial da superfície de ataque exposta.
 
 - **Portas Ativas:** 22 (SSH), 80 (HTTP), 445 (SMB).
     
-- **Evidência:** [01Listando oque tem aberto.jpg](01Listando oque tem aberto.jpg)
+- **Evidência:** 
+
+![01Listando oque tem aberto.jpg](https://github.com/edenzafire/Red_Team_Repo/blob/main/04_Enumeration/evidences/02MacbookApache/01Listando%20oque%20tem%20aberto.png)
     
 
 ### 2. Enumeração de Usuários (SMB SID Lookup)
@@ -47,7 +49,13 @@ Exploração de sessões nulas para coletar contas válidas no sistema.
     
 - **Análise:** O RID 1000 indica o usuário principal/administrador do sistema.
     
-- **Evidência:** [02VarreduraSmb.jpg](https://www.google.com/search?q=02VarreduraSmb.jpg) e [06VersãoSmb.jpg](https://www.google.com/search?q=06Vers%C3%A3oSmb.jpg)
+- **Evidência:** 
+
+![02VarreduraSmb.jpg](https://github.com/edenzafire/Red_Team_Repo/blob/main/04_Enumeration/evidences/02MacbookApache/02VarreduraSmb.png)
+
+ etambém:
+
+![06VersãoSmb.jpg](https://github.com/edenzafire/Red_Team_Repo/blob/main/04_Enumeration/evidences/02MacbookApache/06Vers%C3%A3oSmb.png)
     
 
 ### 3. Fingerprinting de Versões (Software Identification)
@@ -69,7 +77,12 @@ Uso de `smbclient` para validar o acesso a pastas sem credenciais.
     
 - **Status:** **Leitura anônima permitida** no compartilhamento de IPC e listagem de recursos.
     
-- **Evidência:** [09SmbClient.jpg](https://www.google.com/search?q=09SmbClient.jpg) e [08SmbNmap.jpg](https://www.google.com/search?q=08SmbNmap.jpg)
+- **Evidência:**
+ ![09SmbClient.jpg](https://github.com/edenzafire/Red_Team_Repo/blob/main/04_Enumeration/evidences/02MacbookApache/09SmbClient.png)
+
+ e Também:
+
+ ![08SmbNmap.jpg](https://github.com/edenzafire/Red_Team_Repo/blob/main/04_Enumeration/evidences/02MacbookApache/08SmbNmap.png)
     
 
 ---
@@ -97,4 +110,4 @@ A enumeração do host 192.168.1.126 foi concluída com sucesso. Embora o sistem
 
 ---
 
-**Log de Operação Completo:** [relatorio_completo.txt](https://www.google.com/search?q=relatorio_completo.txt)
+**Log de Operação Completo:** [relatorio_completo.txt](https://github.com/edenzafire/Red_Team_Repo/blob/main/04_Enumeration/evidences/02MacbookApache/relatorio_completo.txt)
