@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04_Enumeration/README.md",
+                "file": "04_Enumeration/src/ComandosMacbookApache.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "ComandosMacbookApache"
             }
           }
         ]
@@ -185,6 +185,7 @@
   },
   "active": "1f1b7f2c3b6b8097",
   "lastOpenFiles": [
+    "04_Enumeration/README.md",
     "04_Enumeration/02-Enumeration-Apache.md",
     "04_Enumeration/src/Configuração.md",
     "04_Enumeration/src/config WIN-Samba-ADDS.md",
