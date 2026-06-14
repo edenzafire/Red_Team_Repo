@@ -14,7 +14,7 @@ Este repositório documenta minhas habilidades técnicas em testes de invasão �
 
 > **Aviso:** Nenhum ataque real foi realizado. Todos os exemplos são simulações ou demonstrações em ambientes controlados.
 
-**para verificar a infraestrutura a qual utilizo no seguinte link**
+**Para verificar a infraestrutura a qual utilizo no seguinte link**
 
 ![Infra Lab](https://github.com/edenzafire/Red_Team_Repo/blob/main/LAB_INFRA.md)
 
