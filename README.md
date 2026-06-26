@@ -16,7 +16,7 @@ Este repositório documenta minhas habilidades técnicas em testes de invasão �
 
 **Para verificar a infraestrutura a qual utilizo no seguinte link**
 
-🏗️  ![Infra Lab](https://github.com/edenzafire/Red_Team_Repo/blob/main/LAB_INFRA.md)
+![🏗️  Infra Lab](https://github.com/edenzafire/Red_Team_Repo/blob/main/LAB_INFRA.md)
 
 ## 👨‍💻 Sobre Mim
 
