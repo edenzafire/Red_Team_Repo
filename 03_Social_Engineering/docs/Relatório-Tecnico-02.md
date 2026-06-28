@@ -19,7 +19,14 @@ Este relatório documenta a evolução de uma cadeia de desenvolvimento de múlt
 ### Componentes da Cadeia de Ataque:
 
 - **Entrega:** O alvo acesse uma página HTML legítima. Um script JS reconstrói um objeto `Blob`na memória.
-- 
+
+![](https://github.com/edenzafire/Red_Team_Repo/blob/main/03_Social_Engineering/evidence/02_Relatorio/Emailentregue.png)
+
+![](https://github.com/edenzafire/Red_Team_Repo/blob/main/03_Social_Engineering/evidence/02_Relatorio/htmlSmuggling.png)
+
+![](https://github.com/edenzafire/Red_Team_Repo/blob/main/03_Social_Engineering/evidence/02_Relatorio/AposClicarnodownload.png)
+
+ 
 - **Ofuscação:** Payload XOR (Chave 0x77) embutido em código C++.
     
 - **Contêiner:** Imagem ISO para evasão de Mark-of-the-Web (MotW).
