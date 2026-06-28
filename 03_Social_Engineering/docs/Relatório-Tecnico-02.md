@@ -18,13 +18,13 @@ Este relatório documenta a evolução de uma cadeia de desenvolvimento de múlt
 
 ### Componentes da Cadeia de Ataque:
 
-- **Entrega:** O alvo acesse uma página HTML legítima. Um script JS reconstrói um objeto `Blob`na memória.
+- **Entrega:** O alvo acessa uma página HTML legítima. Um script JS reconstrói um objeto `Blob`na memória.
 
-> **Evidência 01:** O recebimento do E-mail bem sucedido.  ![](https://github.com/edenzafire/Red_Team_Repo/blob/main/03_Social_Engineering/evidence/02_Relatorio/Emailentregue.png)
+> **Evidência 01:** O recebimento do E-mail bem sucedido. ![](https://github.com/edenzafire/Red_Team_Repo/blob/main/03_Social_Engineering/evidence/02_Relatorio/Emailentregue.png)
 
-> **Evidência 02:** Após clicar clicar no download .   ![](https://github.com/edenzafire/Red_Team_Repo/blob/main/03_Social_Engineering/evidence/02_Relatorio/htmlSmuggling.png)
+> **Evidência 02:** Após clicar no download. ![](https://github.com/edenzafire/Red_Team_Repo/blob/main/03_Social_Engineering/evidence/02_Relatorio/htmlSmuggling.png)
 
-> **Evidência 03:** Após o download o artefato legítmo abre no navegador . ![](https://github.com/edenzafire/Red_Team_Repo/blob/main/03_Social_Engineering/evidence/02_Relatorio/AposClicarnodownload.png)
+> **Evidência 03:** Após o download o artefato legítmo abre no navegador. ![](https://github.com/edenzafire/Red_Team_Repo/blob/main/03_Social_Engineering/evidence/02_Relatorio/AposClicarnodownload.png)
 
  
 - **Ofuscação:** Payload XOR (Chave 0x77) embutido em código C++.
