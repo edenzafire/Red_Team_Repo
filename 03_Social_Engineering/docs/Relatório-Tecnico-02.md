@@ -22,7 +22,7 @@ Este relatório documenta a evolução de uma cadeia de desenvolvimento de múlt
 
 > **Evidência 01:** O recebimento do E-mail bem sucedido. ![](https://github.com/edenzafire/Red_Team_Repo/blob/main/03_Social_Engineering/evidence/02_Relatorio/Emailentregue.png)
 
-> **Evidência 02:** Após clicar no download. ![](https://github.com/edenzafire/Red_Team_Repo/blob/main/03_Social_Engineering/evidence/02_Relatorio/htmlSmuggling.png)
+> **Evidência 02:** Após clicar no download abre o htmlSmuggling no navegador. ![](https://github.com/edenzafire/Red_Team_Repo/blob/main/03_Social_Engineering/evidence/02_Relatorio/htmlSmuggling.png)
 
 > **Evidência 03:** Após o download o artefato legítmo abre no navegador. ![](https://github.com/edenzafire/Red_Team_Repo/blob/main/03_Social_Engineering/evidence/02_Relatorio/AposClicarnodownload.png)
 
