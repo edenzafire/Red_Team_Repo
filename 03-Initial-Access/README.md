@@ -33,10 +33,13 @@ Nesta etapa, utilizamos os dados coletados e mapeados durante a **Fase 01 (OSINT
 ## 📂 Estrutura do Diretório
 
 ```text
-├── social_engineering/
-│   ├── templates/          # Templates de e-mails/páginas utilizadas nos testes
-│   └── docs/               # Documentação dos cenários simulados
-└── README.md               # Este arquivo de documentação
+.
+├── custom-tooling/           # Scripts, payloads e ferramentas customizadas para o vetor de entrada
+├── infrastructure-as-code/   # Provisionamento da infraestrutura Cloud (AWS, DNS, servidores C2/Redirectors)
+├── Social-Engineering/       # Templates de e-mails, landing pages e documentação dos cenários
+├── win10/                    # Artefatos, testes de execução e validações no ambiente Windows 10
+├── win7/                     # Artefatos, testes de execução e validações no ambiente Windows 7
+└── README.md                 # Documentação principal da fase de Acesso Inicial
 ```
 
 # ⚠️ Disclaimer e Termo de Isenção de Responsabilidade
