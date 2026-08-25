@@ -1,143 +1,124 @@
-# 🔍 Estudo de Caso: Auto-OSINT e Pegada Digital Legada
-> **Refatoração Forense: Metodologia Trace Labs, NIST & Framework MITRE ATT&CK**
+# 🔍 Estudo de Caso: Self-OSINT & Gestão de Superfície de Ataque
+> **Arquitetura de Inteligência Forense: Metodologia Trace Labs, NIST SP 800-115 & MITRE ATT&CK**
 
-![Status: Concluído](https://img.shields.io/badge/Status-Concluído-brightgreen)
+![Status: Em Andamento](https://img.shields.io/badge/Status-Em_Andamento-yellow)
 ![Methodology: Trace_Labs](https://img.shields.io/badge/Methodology-Trace_Labs-blue)
 ![Compliance: NIST_SP_800_115](https://img.shields.io/badge/Compliance-NIST-red)
 ![Framework: MITRE_ATT%26CK](https://img.shields.io/badge/Framework-MITRE_ATT%26CK-orange)
 ![Standard: PTES](https://img.shields.io/badge/Standard-PTES-lightgrey)
 
 ## 📌 Visão Geral
-Este projeto demonstra o mapeamento completo da superfície de ataque digital de um indivíduo a partir de dados legados (2018–2023). A refatoração deste laboratório utilizou a **Trace Labs OSINT VM**, priorizando a cadeia de custódia, integridade forense e conformidade com padrões internacionais de testes de invasão e inteligência de fontes abertas.
+Este repositório 3.0  documenta a execução de um ciclo completo de **Self-OSINT (Auto-Inteligência em Fontes Abertas)** e **Privacy Hardening**. O objetivo principal é auditar a pegada digital pessoal, identificar Informações Pessoalmente Identificáveis (PII) expostas e avaliar a superfície de ataque a partir de dados semente.
 
-> **Aviso Legal:** Todos os dados reais foram mascarados/ofuscados. Este é um exercício de **Red Team/Blue Team** simulado para fins educacionais e de portfólio.
+A estrutura foi totalmente refatorada em um pipeline modular de 12 etapas correlacionadas, priorizando a cadeia de custódia, a reprodutibilidade dos achados e a conformidade com frameworks globais de cibersegurança e perícia digital.
+
+> **Aviso Legal & Ética:** Este laboratório é voltado exclusivamente para fins educacionais, auditoria pessoal (Self-OSINT) e construção de portfólio defensivo. Todos os dados sensíveis e relatórios finais são higienizados/mascarados.
 
 ---
 
 ## 🛡️ Alinhamento Metodológico e Frameworks
 
-O projeto foi executado sob o rigor técnico dos seguintes frameworks:
+O ecossistema do repositório foi projetado para cobrir todas as fases de uma investigação de inteligência cibernética profissional:
 
-* **Trace Labs Methodology:** Implementação do conceito de *Case Management* e *TL-Vault* para isolamento de evidências.
-* **MITRE ATT&CK (Reconnaissance):** Mapeamento das táticas de coleta de identidade e informações de rede.
-* **NIST SP 800-115:** Diretrizes técnicas para revisão de segurança e coleta de dados.
-* **PTES (Penetration Testing Execution Standard):** Execução da fase de *Intelligence Gathering* estruturada.
-
+* **Trace Labs Methodology:** Estruturação estrita de *Case Management*, segregação de evidências brutas e geração de inteligência acionável.
+* **MITRE ATT&CK (Reconnaissance):** Mapeamento direto das táticas de coleta de identidade (**TA0043**), infraestrutura e vetores de entrada.
+* **NIST SP 800-115:** Aplicação de diretrizes técnicas para revisão de segurança, análise de vulnerabilidade passiva e validação de exposição.
+* **PTES (Penetration Testing Execution Standard):** Execução padronizada da fase 2 (*Intelligence Gathering / Passive Footprinting*).
+* **NIST CSF:** Categoria *Identify (ID.RA)* para gestão de superfície de ataque.
 ---
 
-## 🛠 Metodologia e Stack Tecnológica (Toolchain)
+## 🛠️ Pipeline de Investigação & Fluxo de Inteligência
 
-### Fluxo de Investigação (Mermaid Graph)
 ```mermaid
 graph TD
-    %% Ponto Central
-    B_DB[(06: Breaches Analysis)] 
+    %% Nós de Origem
+    Start([Dado Semente: Nome / E-mail]) --> P01[01-Planejamento]
     
-    %% Início
-    Start([Username/Email Inicial]) --> Phase1
-    
-    %% Fases
-    subgraph Investigacao_Estruturada
-        Phase1[01: Email Analysis] --> Phase2[02: Usernames Analysis]
-        Phase2 --> Phase3[03: Social Media Footprinting]
-        Phase3 --> Phase4[04: Phone Analysis]
-        Phase4 --> Phase5[05: Geolocalization Pivoting]
+    %% Fluxo Sequencial de Coleta e Resolução
+    subgraph Fase_1_Identidade_e_Fontes
+        P01 --> P02[02-Resolução de Identidade]
+        P02 --> P03[03-Registros-Públicos]
     end
 
-    %% Conexões dos Breaches
-    B_DB -.-> Phase1
-    B_DB -.-> Phase2
-    B_DB -.-> Phase3
-    B_DB -.-> Phase4
-    B_DB -.-> Phase5
+    subgraph Fase_2_Votores_de_Coleta_OSINT
+        P03 --> P04[04-Inteligência por e-mail]
+        P04 --> P05[05-Nome de usuário-Inteligência]
+        P05 --> P06[06-Inteligência em Mídias Sociais]
+        P06 --> P07[07-Inteligência Telefônica]
+        P07 --> P08[08-Geolocalização-Inteligência]
+        P08 --> P09[09-Violações-Inteligência]
+    end
+
+    subgraph Fase_3_Analise_e_Entrega
+        P09 --> P10[10-Correlação de Dados]
+        P10 --> P11[11-Validação-Confiança]
+        P11 --> P12[12-Relatório de Inteligência]
+    end
+
+    %% Integração com DarkWeb e Evidências
+    DarkWeb[(DarkWeb Intel)] -.- P09
+    P10 -. Evidências Brutas .-> Evid[evidências/]
 
     %% Estilização
-    style B_DB fill:#f96,stroke:#333,stroke-width:2px
     style Start fill:#bbf,stroke:#333,stroke-width:2px
+    style P12 fill:#9f9,stroke:#333,stroke-width:2px
+    style DarkWeb fill:#f96,stroke:#333,stroke-width:2px
+    style Evid fill:#eee,stroke:#333,stroke-width:1p
 ```
-### 🛠️ Detalhamento das Ferramentas e Ecossistema Técnico
 
-| Ferramenta | Framework / Padrão | Descrição Detalhada e Aplicação |
-| :--- | :--- | :--- |
-| **SpiderFoot** | **OSINT Automation** | Framework de automação utilizado para correlacionar +200 fontes de dados. Foi o motor principal para identificar a superfície de ataque externa, cruzando IPs, domínios e e-mails de forma passiva. |
-| **PhoneInfoga** | **NIST SP 800-115** | Scanner avançado de numeração internacional. Aplicado para identificar a operadora de origem, geolocalização de prefixo e realizar "Dorking" automatizado em motores de busca para encontrar menções ao terminal. |
-| **Maigret / Sherlock** | **MITRE T1593** | Utilizados para o rastreamento exaustivo de usernames em mais de 3.000 diretórios web. Esta etapa permitiu consolidar a identidade digital do alvo através da repetição de padrões de nomes de usuário. |
-| **Holehe** | **MITRE T1589** | Ferramenta de verificação de registro em serviços via análise de endpoints de recuperação de conta. Essencial para validar onde o alvo possui cadastro ativo sem gerar alertas de segurança (Silent Recon). |
-| **TG-OSINT** | **Messaging Intel** | Focada na extração de metadados do Telegram. Permitiu identificar o UserID permanente do alvo, fotos de perfil legadas e participação em grupos/canais públicos de interesse. |
-| **Have I Been Pwned** | **Threat Intel** | Base de consulta para identificar o histórico de comprometimento de credenciais em breaches globais, servindo como ponto de partida para a análise de vazamentos. |
-| **BreachDirectory** | **Data Leak Analysis** | Utilizada para recuperar metadados específicos de vazamentos, como hashes de senhas e e-mails parciais, permitindo a pivotagem para dados mais sensíveis. |
-| **Ignorant** | **Account Validation** | Aplicada para validar de forma silenciosa se o número de telefone está vinculado a contas de redes sociais específicas (Instagram, Snapchat), confirmando o elo entre o mundo físico e digital. |
-| **Libphone** | **Technical Valid.** | Implementação da biblioteca oficial do Google para validar se o terminal segue o padrão E.164, extrair a operadora atual e a localização geográfica técnica (HLR-like data). |
+##📂 Arquitetura do Repositório (Estrutura Modular de Pastas)
 
----
+A organização dos diretórios reflete a progressão lógica da investigação. Cada pasta contém sua própria documentação em Markdown (.md) contextualizando os achados, ferramentas utilizadas e mitigações:
 
-### 📊 Resultados e Métricas (KPIs da Investigação)
-
-* **10+ Breaches Correlacionados:** Identificação de vazamentos críticos (2018–2023) que expuseram senhas, IPs de login e hábitos de consumo do alvo.
-* **Consistência de Identidade (94%):** O username mapeado apresentou alta taxa de reuso em 58+ plataformas, facilitando o rastreamento multiplataforma.
-* **Triangulação Geográfica Precisa:** Cruzamento de dados de prefixos telefônicos com metadados de vazamentos de serviços locais, confirmando a zona de operação em **Minas Gerais (DDD 38)**.
-* **Integridade Forense (Zero-Trust):** 100% da operação foi registrada via comando `script` do Linux, gerando logs auditáveis que garantem que nenhum dado foi alterado manualmente durante a coleta.
-
----
-
-### 🛡️ Técnicas MITRE ATT&CK Mapeadas (Reconnaissance)
-
-| ID | Técnica | Aplicação Prática no Projeto |
-| :--- | :--- | :--- |
-| **T1589.002** | *Gather Victim Identity Info* | Extração de PII (Informações de Identificação Pessoal) como nome completo, data de nascimento e endereços históricos através de pivôs de e-mail. |
-| **T1593.001** | *Search Open Tech Databases* | Consulta ativa em repositórios de vazamentos e diretórios técnicos para identificar credenciais e hashes vinculados ao alvo. |
-| **T1594** | *Search Victim-Owned Websites* | Localização e análise de perfis em redes sociais e portfólios profissionais para entender a árvore de relacionamentos do indivíduo. |
-| **T1592.005** | *Gather Digital Network Info* | Coleta de metadados técnicos de rede, incluindo operadoras de telecomunicações e identificadores únicos de dispositivos (Telegram IDs). |
-
----
-
-### 📂 Estrutura de Evidências (Padrão Trace Labs VM)
-
-A organização segue o rigor de uma investigação real, separando a coleta por vetores de ataque:
-
-```text
-📂 Estrutura de Evidências (Padrão Trace Labs VM - Refatorada)
-
-TL-Vault/
-└── 01_Osint/
-    ├── tools_configs/              # Chaves de API, Configs SpiderFoot e Scripts Custom
-    ├── evidences/                  # Artefatos Brutos (Integridade Assegurada)
-    │   ├── 01_Email_Analysis/      # Logs Holehe e validação de existência de contas
-    │   ├── 02_Username_Analysis/   # Outputs Maigret, Sherlock e histórico de reuso
-    │   ├── 03_Social_Footprint/    # Capturas de perfis, perfis arquivados e bio-data
-    │   ├── 04_Phone_Analysis/      # PhoneInfoga, TG-OSINT e registros Libphone
-    │   │   ├── 01_phoneinfoga.txt
-    │   │   ├── 02_tg_discovery.txt
-    │   │   └── 03_libphone_technical.txt
-    │   ├── 05_Geo_Pivoting/        # Triangulação de prefixos, fuso horário e mapas
-    │   └── 06_Breach_Central/      # Dados brutos de vazamentos (H.I.B.P, BreachDirectory)
-    │       ├── hashes_encontrados.txt
-    │       └── correlacao_vazamentos.csv
-    ├── logs/                       # Logs de Sessão (Cadeia de Custódia)
-    │   └── 00_session_history.log  # Registro mestre de todos os comandos (Script)
-    └── report/                     # Inteligência Processada (Final)
-        ├── Final_Target_Dossier.md # Relatório técnico detalhado
-        └── Executive_Summary.pdf   # Sumário de risco para nível C-Level
 ```
-## 💡 Lições Aprendidas e Conclusão Técnica
+.
+├── 📁 01-Planejamento/               # Escopo, regras de engajamento, matriz de riscos e Dorks
+├── 📁 02-Resolução de Identidade/    # Descarte de homônimos, pivotes e perfil consolidado
+├── 📁 03-Registros-Públicos/         # Consultas em Diários Oficiais, portais governamentais e Jusbrasil
+├── 📁 04-Inteligência por e-mail/    # Enumeração de serviços (Holehe), repositórios e registros
+├── 📁 05-Nome de usuário-Inteligência/# Mapeamento de handles (Sherlock/Maigret/WhatsMyName)
+├── 📁 06-Inteligência em Mídias Sociais/# SOCMINT: Mapeamento de pegada em redes sociais
+├── 📁 07-Inteligência Telefônica/    # Análise de numeração (PhoneInfoga/Libphone/Pix)
+├── 📁 08-Geolocalização-Inteligência/# GEOINT: Metadados EXIF, análise visual e triangulação
+├── 📁 09-Violações-Inteligência/     # Breach OSINT (Have I Been Pwned/DeHashed/LeakCheck)
+├── 📁 10-Correlação de Dados/        # Mapeamento em grafos de relacionamento e cruzamento de vetores
+├── 📁 11-Validação-Confiança/        # Matriz de confiabilidade das fontes e eliminação de ruído
+├── 📁 12-Relatório de Inteligência/  # Dossiê final processado e plano de privacy hardening
+├── 📁 DarkWeb/                       # Monitoramento de menções e PII expostas em fóruns não indexados
+├── 📁 evidências/                    # Artefatos brutos, hashes SHA-256 e capturas de tela forenses
+├── 📄 .História                      # Log incremental de histórico e alterações do ambiente
+├── 📄 00_Guia_Forense..md            # Diretrizes metodológicas e procedimentos operacionais (SOP)
+├── 📄 README.md                      # Documento mestre de apresentação do repositório
+└── 📄 ferramentas.md                 # Curadoria da stack tecnológica e utilitários de OSINT
+```
 
-### 1. Maturidade Forense e Padronização
-A transição da coleta *ad-hoc* (manual) para o ambiente controlado da **Trace Labs VM** foi o divisor de águas deste laboratório. 
-* **Doxing vs. Inteligência:** O uso de metodologias estruturadas transforma a simples "busca de dados" em uma operação de inteligência de ameaças (**Threat Intelligence**). 
-* **Reprodutibilidade:** Através de diretórios padronizados e do uso de `script logs`, garantimos que qualquer analista de incidentes ou perito possa auditar e reproduzir a investigação, validando a integridade das provas coletadas.
+## 🧰 Stack Tecnológica e Ferramental (Toolchain)
 
-### 2. A Persistência do Risco Legado (Digital Persistence)
-O estudo confirmou que dados expostos em 2018 não perdem a relevância com o tempo; eles se tornam **âncoras de identidade**.
-* **Pivoting Histórico:** Credenciais e PII vazados há quase uma década serviram como chaves mestras para correlacionar contas ativas em 2026. 
-* **Pegada Permanente:** A investigação evidenciou que o "esquecimento digital" é um mito em ambientes de dados vazados, onde um único e-mail antigo pode desvendar toda uma árvore de relacionamentos e atividades atuais do alvo.
-
-### 3. Otimização do Ciclo de Inteligência (Análise vs. Coleta)
-A implementação do **SpiderFoot** e outras ferramentas de automação alterou o foco do esforço humano dentro do ciclo de OSINT.
-* **Redução de Ruído:** A automação reduziu o tempo gasto em tarefas repetitivas de mineração em aproximadamente 70%.
-* **Foco Cognitivo:** Com a coleta automatizada, o esforço do analista foi deslocado para a **correlação e análise de contexto**. Isso permitiu identificar conexões complexas, como o vínculo direto entre um e-mail de um breach de 2018 e a entrada do alvo em grupos específicos de Telegram em 2025, algo que passaria despercebido em buscas manuais isoladas.
+| Categoria | Ferramenta | Padrão / Framework | Aplicação no Projeto |
+| :--- | :--- | :--- | :--- |
+| **Automação & Enriquecimento** | **SpiderFoot** | OSINT Automation | Mapeamento passivo de ativos, IPs, registros DNS e subdomínios. |
+| **Enumeração de Usernames** | **Maigret / Sherlock** | MITRE T1593.001 | Varredura de nomes de usuário em +3.000 serviços web para análise de reuso. |
+| **Inteligência de E-mail** | **Holehe** | MITRE T1589.002 | Validação silenciosa de cadastro de e-mail em endpoints de recuperação. |
+| **Telecom & Mensageria** | **PhoneInfoga / Libphone** | NIST SP 800-115 | Parsing do padrão E.164, identificação de operadora e Dorking de terminal. |
+| **Breach Intelligence** | **Have I Been Pwned** | Threat Intel | Consulta e correlação de credenciais vazadas em incidentes globais. |
+| **Análise de Metadados** | **ExifTool** | GEOINT / Forense | Extração de marcas temporal, modelo de dispositivo e coordenadas GPS. |
 
 ---
 
-## 🏁 Conclusão
-Este laboratório solidifica a importância de manter uma postura de **Segurança Ofensiva** preventiva. A facilidade com que ferramentas de código aberto e dados legados podem reconstruir a vida digital de um indivíduo reforça a necessidade de políticas de higiene digital mais rigorosas, uso de MFA e monitoramento constante de superfícies de ataque para mitigar o impacto de
+## 🛡️ Táticas MITRE ATT&CK Mapeadas
 
+| Tática | ID | Técnica / Sub-técnica | Aplicação no Repositório |
+| :--- | :--- | :--- | :--- |
+| **Reconnaissance** | **T1589.001** | *Gather Victim Identity: Credentials* | Mapeamento de usernames e vazamentos de senhas (`05` e `09`). |
+| **Reconnaissance** | **T1589.002** | *Gather Victim Identity: Email Addresses* | Coleta e pivoteamento a partir de e-mails semente (`04`). |
+| **Reconnaissance** | **T1593.001** | *Search Open Technical Databases* | Consulta em bases públicas de registros e vazamentos (`03` e `09`). |
+| **Reconnaissance** | **T1594** | *Search Victim-Owned Websites* | Auditoria de perfis públicos, portfólios e redes sociais (`06`). |
+
+---
+
+## 💡 Próximos Passos & Roadmap
+
+- [x] Estruturação da arquitetura de diretórios e documentação base.
+- [ ] Execução da fase de coleta de vetores semente (`01` a `03`).
+- [ ] Mapeamento e enumeração ativa dos vetores (`04` a `09`).
+- [ ] Triangulação dos achados e confecção do relatório final de hardening (`10` a `12`).
