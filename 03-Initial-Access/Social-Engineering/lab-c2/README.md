@@ -1,12 +1,8 @@
 
 ![MITRE ATT&CK](https://img.shields.io/badge/MITRE%20ATT%26CK-Red%20Team-red?style=for-the-badge&logo=matrix&logoColor=white)
-
 ![Cyber Kill Chain](https://img.shields.io/badge/Cyber%20Kill%20Chain-Lockheed%20Martin-005691?style=for-the-badge&logo=shield&logoColor=white)
-
 ![PTES](https://img.shields.io/badge/PTES-Standard-orange?style=for-the-badge&logo=securityScorecard&logoColor=white)
-
 ![Go](https://img.shields.io/badge/Go-00ADD8?style=for-the-badge&logo=go&logoColor=white)
-
 ![Status](https://img.shields.io/badge/Status-Em%20Andamento-yellow?style=for-the-badge&logo=github&logoColor=white)
 
 # LabC2 — Framework C2 Educacional para Estudos Red Team
