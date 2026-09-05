@@ -138,51 +138,12 @@ Arquivos exfiltrados são salvos em `loot/` já descriptografados.
 - ✅ TLS self-signed gerado em runtime (server)
 - ✅ Cross-compile Windows x64 com um comando
 
-## Limitações Conhecidas (roadmap)
-
-| Limitação | Solução real (a implementar) |
-|---|---|
-| Arquivo inteiro num beacon só | Chunking de ~256 KB como Cobalt Strike |
-| Segredo hardcoded no binário | `-ldflags -X` por build + chave por implante |
-| `InsecureSkipVerify` (IOC forte) | Certificate pinning com CA embutida |
-| Strings detectáveis por YARA | Ofuscação de strings + decodificação em runtime |
-| Sem autenticação mútua | mTLS + nonce de sessão |
-
 ---
 
 ## Exercício Blue Team — Detecção do Próprio C2
 
-Testei regras de detecção contra o binário que eu mesmo compilei:
+Para visualização de regras de detecção Blue team, e estudo de segurança defensiva clicar aqui ![Blue team }(https://github.com/edenzafire/Blue_Team_Repo/tree/main/03_Identity_Access_Management_IAM)
 
-### YARA (estática)
-
-```bash
-yara -s detection/lab_c2_implant.yar implant.exe
-```
-
-**Resultado**: `LabC2_Implant_Go_Beacon` — match por strings do protocolo
-(`/api/v1/beacon`, `"kind"`, segredo embutido) + runtime Go + PE header.
-*(inserir screenshot aqui)*
-
-### Sigma (comportamental)
-
-Regra de processo criado a partir de diretório Temp + beacon de rede.
-Testado com Wazuh no lab. *(inserir screenshot aqui)*
-
-### Ciclo de evasão documentado
-
-| Iteração | Mudança no implant | Resultado da detecção |
-|---|---|---|
-| 1 | Build padrão | YARA v1 detecta |
-| 2 | Segredo via ldflags | YARA v2 (protocolo) ainda detecta |
-| 3 | Cert pinning (sem InsecureSkipVerify) | YARA v3 (estrutura JSON) detecta |
-| 4 | Ofuscação de strings | Estática falha → Sigma/comportamental pega |
-
-**Conclusão**: detecção estática degrada a cada iteração de evasão;
-a detecção comportamental é o limite prático — motivo pelo qual a indústria
-prioriza EDR/telemetria sobre assinaturas.
-
----
 
 ## Referências
 
