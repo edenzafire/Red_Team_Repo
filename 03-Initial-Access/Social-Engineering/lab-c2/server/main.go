@@ -23,7 +23,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/seuusuario/lab-c2/internal/proto"
+	"https://github.com/edenzafire/Red_Team_Repo/tree/main/03-Initial-Access/Social-Engineering/lab-c2/internal/proto"
 )
 
 const TASK_TTL = 10 * time.Minute // deadline: tasks expiram se não coletadas
