@@ -12,7 +12,7 @@
 # LabC2 — Framework C2 Educacional para Estudos Red Team
 
 > ⚠️ **Aviso**: Projeto desenvolvido exclusivamente para estudo em laboratório
-> autorizado, como parte de um portfólio de segurança ofensiva & defensiva, o qual faz parte de um estudo Purpleteeam *![red Team]* para simulação do ataque *![Low level]* Para estudo do comportamento em memória e o *![Blue team] Para estudo de detecção e segurança defensiva . Nenhum código
+> autorizado, como parte de um portfólio de segurança ofensiva & defensiva, o qual faz parte de um estudo Purpleteeam [red Team, este repositório] para simulação do ataque [Low level](https://github.com/edenzafire/Low-Level-Security/tree/main/artifact-analysis-PurpleTeam), Para estudo do comportamento em memória e o [Blue team](https://github.com/edenzafire/Blue_Team_Repo/tree/main/03_Identity_Access_Management_IAM) Para estudo de detecção e segurança defensiva . Nenhum código
 > deste repositório deve ser utilizado contra sistemas sem autorização explícita.
 
 Framework C2 (Command & Control) minimalista escrito em **Go**, implementado
@@ -142,8 +142,7 @@ Arquivos exfiltrados são salvos em `loot/` já descriptografados.
 
 ## Exercício Blue Team — Detecção do Próprio C2
 
-Para visualização de regras de detecção Blue team, e estudo de segurança defensiva clicar aqui ![Blue team }(https://github.com/edenzafire/Blue_Team_Repo/tree/main/03_Identity_Access_Management_IAM)
-
+Para visualização de regras de detecção Blue team, e estudo de segurança defensiva Veja o repositório [Blue team](https://github.com/edenzafire/Blue_Team_Repo/tree/main/03_Identity_Access_Management_IAM)
 
 ## Referências
 
