@@ -22,7 +22,7 @@ import (
 
 	_ "embed"
 
-	"github.com/seuusuario/lab-c2/internal/proto"
+	"https://github.com/edenzafire/Red_Team_Repo/tree/main/03-Initial-Access/Social-Engineering/lab-c2/internal/proto"
 )
 
 // ============================================================
