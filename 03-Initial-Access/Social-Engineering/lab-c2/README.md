@@ -91,8 +91,10 @@ lab-c2/
 ```bash
 sudo apt install -y golang-go
 
-git clone https://github.com/seuusuario/lab-c2.git
-cd lab-c2
+git clone https://github.com/edenzafire/Red_Team_Repo/tree/main
+
+cd Red_Team_Repo/03-Initial-Access/Social-Engineering/lab-c2
+
 
 make            # compila c2-server + implant.exe (Windows x64)
 make hex        # hash do binário (documentação)
@@ -149,7 +151,6 @@ Para visualização de regras de detecção Blue team, e estudo de segurança de
 - [MITRE ATT&CK — Command and Control (TA0011)](https://attack.mitre.org/tactics/TA0011/)
 - [Sliver C2 (BishopFox)](https://github.com/BishopFox/sliver) — arquitetura de referência
 - [Havoc Framework](https://github.com/HavocFramework/Havoc) — evasion
-- [YARA](https://github.com/VirusTotal/yara) / [SigmaHQ](https://github.com/SigmaHQ/sigma)
 - PTES — Post-Exploitation: https://www.pentest-standard.org/index.php/Post_Exploitation
 
 ---
