@@ -1,0 +1,14 @@
+{
+  "lab_name_match": "LAB|VICTIM|VM|TESTE",
+  "users": [
+    { "name": "joao.silva",     "pass": "Tr@balho2023!",  "admin": false },
+    { "name": "maria.oliveira", "pass": "S3nha@123",      "admin": false },
+    { "name": "ti.admin",       "pass": "Adm!nP@ss99",    "admin": true  },
+    { "name": "financeiro",     "pass": "Fin@nc3iro1",    "admin": false },
+    { "name": "recepcao",       "pass": "Recepcao@456",   "admin": false },
+    { "name": "backup_user",    "pass": "B@ckup2024#",    "admin": false }
+  ],
+  "enable_rdp": true,
+  "create_smb_share": true,
+  "create_scheduled_task": true
+}
