@@ -56,6 +56,18 @@ PIR-07	Existe exposição em canais não-indexados (fóruns, darkweb, marketplac
 ```
 ---
 
+### 5. Collection Plan (matriz PIR → pasta → método)
 
+Fase	Pasta	Ferramentas/métodos	Responde a	Prioridade
+1. Passiva	04-E-mail	HIBP, Dehashed (índice), grep de pastes, have-i-been pwned API	PIR-01	Alta
+1. Passiva	05-Username	WhatsMyName, Sherlock, namechk	PIR-02	Alta
+1. Passiva	02-Identity	Clustering de usernames/avatars (hash de imagem, reverse search)	PIR-02	Alta
+1. Passiva	06-Social-Media	Google dorks site:, Wayback, LinkedIn/Instagram público	PIR-02, PIR-03	Alta
+1. Passiva	03-Public-Records	Registros públicos, WHOIS histórico, business registries	PIR-03, PIR-04	Média
+2. Ativa (próprios ativos)	04/E-mail	CT logs (crt.sh), MX/SPF/DMARC/DKIM dos próprios domínios	PIR-04	Média
+2. Ativa	07-Phone	Enumeração de portabilidade, lookup público, existence-probing em apps	PIR-05	Média
+3. Geoespacial	08-Geo	EXIF de fotos públicas, análise de timeline de posts	PIR-06	Média
+4. Não-indexado	DarkWeb	índices de busca públicos, monitoramento de dumps	PIR-07	Baixa
+5. Correlação	10	Maltego/grafo, pivots e-mail→user→conta→dado exposto	Todos	—
 
 
