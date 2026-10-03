@@ -58,6 +58,7 @@ PIR-07	Existe exposição em canais não-indexados (fóruns, darkweb, marketplac
 
 ### 5. Collection Plan (matriz PIR → pasta → método)
 
+```
 Fase	Pasta	Ferramentas/métodos	Responde a	Prioridade
 1. Passiva	04-E-mail	HIBP, Dehashed (índice), grep de pastes, have-i-been pwned API	PIR-01	Alta
 1. Passiva	05-Username	WhatsMyName, Sherlock, namechk	PIR-02	Alta
@@ -69,5 +70,29 @@ Fase	Pasta	Ferramentas/métodos	Responde a	Prioridade
 3. Geoespacial	08-Geo	EXIF de fotos públicas, análise de timeline de posts	PIR-06	Média
 4. Não-indexado	DarkWeb	índices de busca públicos, monitoramento de dumps	PIR-07	Baixa
 5. Correlação	10	Maltego/grafo, pivots e-mail→user→conta→dado exposto	Todos	—
+
+```
+
+### 6. Modelo de Adversário (Threat Model)
+
+```
+Perfil	Capacidade	O que interessa a ele
+Atacante oportunista	Baixo	Credenciais vazadas → credential stuffing (T1110.004)
+Phisher direcionado	Médio	Dados de PIR-03/05/06 → spearphishing crível (T1566, T1598)
+APT/stalker avançado	Alto	Correlação completa de identidade, padrão de rotina, superfície técnica
+
+```
+
+### 7. Validação e Confiança
+
+*  Sistema de confiança: Admiralty Code (confiabilidade da fonte A–F; credibilidade do dado 1–6) — documentado em 11-Validation-Confidence.
+* Nenhum achado entra no relatório final sem ≥1 evidência bruta arquivada em evidences/ com hash SHA-256 e timestamp.
+
+### 8. Critérios de Sucesso (Definition of Done)
+
+1. Todos os PIRs respondidos ou explicitamente marcados como "não determinável" (com justificativa).
+2. Cada achado mapeado a técnica MITRE ATT&CK PRE e vetor de initial access correspondente.
+3. Relatório final com: executive summary, matriz de risco, plano de remediação priorizado (CIS v8 + hábitos operacionais).
+4. Repo limpo: zero credenciais reais, zero PII de terceiros, evidências redigidas e hashadas.
 
 
