@@ -1,0 +1,43 @@
+# =============================================================================
+# 04_enumeration/.gitignore
+# Rule of thumb: raw evidence never enters VCS. Sanitized copies, if any,
+# live in evidence/raw-sanitized/ and are committed explicitly.
+# =============================================================================
+
+# --- Raw evidence (chain of custody: stays local only) -----------------------
+evidence/raw/
+evidence/raw/*
+!evidence/raw/.gitkeep
+
+# --- Credential / key material, in any form ----------------------------------
+*.key
+*.pem
+*.pfx
+*.p12
+id_rsa*
+id_ed25519*
+authorized_keys
+shadow*
+*hashes*
+*.kdbx
+*credentials*
+*password*
+
+# --- Sensitive structured outputs ---------------------------------------------
+evidence/findings.json   # replace with a sanitized example (findings.example.json)
+
+# --- Logs and session artifacts ------------------------------------------------
+*.log
+*.session
+loot/
+sessions/
+
+# --- Transient local enum output -------------------------------------------------
+enum_*/
+.tmp/
+
+# --- Editor / OS noise ------------------------------------------------------------
+.vscode/
+.idea/
+*.swp
+.DS_Store

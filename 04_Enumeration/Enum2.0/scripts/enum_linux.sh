@@ -1,8 +1,7 @@
-
 #!/usr/bin/env bash
 # ==============================================================================
 # enum_linux.sh — Automated post-exploitation enumeration (Linux)
-# Author: Eden Zafire | License: MIT
+# Author: <your-name> | License: MIT
 # ATT&CK Enterprise mapping: Discovery (TA0007) + Credential Access (T1555/T1552)
 # Usage: ./enum_linux.sh [--output DIR] [--quiet]
 # Dependencies: native tooling only (bash, grep, find, ip/ss, id, sudo)
@@ -17,11 +16,11 @@ QUIET=0
 # --- argument parsing ---------------------------------------------------------
 while [[ $# -gt 0 ]]; do
   case "$1" in
-    --output) OUT_DIR="$2"; shift 2 ;;
+    --output)   OUT_DIR="$2"; shift 2 ;;
     --output=*) OUT_DIR="${1#*=}"; shift ;;
     --quiet)    QUIET=1; shift ;;
     -h|--help)  echo "Usage: $0 [--output DIR] [--quiet]" >&2; exit 0 ;;
-    *) echo "[!] Unknown arg: $1" >&2; exit 2 ;;
+    *)          echo "[!] Unknown arg: $1" >&2; exit 2 ;;
   esac
 done
 
@@ -30,8 +29,24 @@ log() { (( QUIET )) || echo "[*] ${*}" >&2; }
 MANIFEST="${OUT_DIR}/manifest.jsonl"
 : > "${MANIFEST}"
 
+# --- explicit check -> ATT&CK technique map (auditable, no guessing) ----------
+technique_of() {
+  case "$1" in
+    system_info|kernel_version|packages_audit)  echo "T1082"   ;;
+    current_user|local_users|groups)            echo "T1087"   ;;
+    creds_search)                               echo "T1555"   ;;
+    ssh_material)                               echo "T1552.004" ;;
+    cron_tasks)                                 echo "T1053.003" ;;
+    network_config|hosts_neighbors)             echo "T1016"   ;;
+    listening_svcs)                             echo "T1046"   ;;
+    suid_binaries)                              echo "T1548.001" ;;
+    writable_confs)                             echo "T1574"   ;;
+    *)                                          echo "T1082"   ;;
+  esac
+}
+
 # run <check> -- <cmd...>
-#   Executes command, saves raw output, appends metadata to manifest.
+#   Executes command, saves raw output, appends metadata to manifest.jsonl.
 run() {
   local check="$1"; shift
   [[ "${1:-}" == "--" ]] && shift
@@ -41,8 +56,7 @@ run() {
     "$@" 2>&1
   } > "${OUT_DIR}/${check}.txt"
   printf '{"check":"%s","technique":"%s","file":"%s","ts":"%s"}\n' \
-    "${check}" "$(grep -oP "(?<=@)\S+" <<<"$(declare -f "_t_${check}")" 2>/dev/null || echo T1082)" \
-    "${check}.txt" "${TS}" >> "${MANIFEST}" 2>/dev/null || true
+    "${check}" "$(technique_of "${check}")" "${check}.txt" "${TS}" >> "${MANIFEST}"
 }
 
 # --- T1082 System discovery ----------------------------------------------------
@@ -67,12 +81,10 @@ run network_config  -- sh -c 'ip a 2>/dev/null || ifconfig -a; echo; ip r 2>/dev
 run hosts_neighbors -- sh -c 'cat /etc/hosts 2>/dev/null; echo; arp -a 2>/dev/null || ip neigh'
 run listening_svcs  -- sh -c 'ss -tulnp 2>/dev/null || netstat -tulnp 2>/dev/null'
 
-# --- T1548.001 Privesc candidates ----------------------------------------------
+# --- T1548 Privesc candidates ---------------------------------------------------
 run suid_binaries   -- sh -c 'find / -perm -4000 -type f 2>/dev/null | head -n 40'
-run writable_confs  -- sh -c \
-  'find /etc -writable -type f 2>/dev/null | head -n 20'
+run writable_confs  -- sh -c 'find /etc -writable -type f 2>/dev/null | head -n 20'
 
-# --- summary -------------------------------------------------------------------
+# --- summary ---------------------------------------------------------------------
 log "Done. $(ls -1 "${OUT_DIR}" | wc -l) artifacts in ${OUT_DIR}"
 exit 0
-chmod +x 04_enumeration/scripts/enum_linux.sh
