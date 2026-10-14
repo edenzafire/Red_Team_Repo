@@ -1,0 +1,19 @@
+# --- CRÍTICO: nunca commitar ---
+*.pem
+*.key
+*.exe
+*.iso
+*.bin
+*.enc
+*.log
+iso_base64.txt
+shellcode*
+
+# --- credenciais/infra ---
+*/credentials*
+.env
+aws/
+
+# --- build artifacts ---
+recurso.res
+conteudo_iso/
