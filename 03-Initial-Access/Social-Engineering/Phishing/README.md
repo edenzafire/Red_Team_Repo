@@ -9,7 +9,7 @@ TLS), payload customizado com loader in-memory.
 > Nenhum alvo real foi utilizado.
 
 ### Estrutura do Repositório 
-
+```
 03_Initial-Access_Phishing/
 ├── README.md                    # visão geral, pretexto, fluxo, resultados
 ├── .gitignore                   # CRÍTICO
@@ -32,7 +32,7 @@ TLS), payload customizado com loader in-memory.
 │   └── phishing_email.md        # corpo do e-mail da campanha (pretexto)
 └── report/
     └── IOC.md                   # hashes, domínios, IPs, assinatura de detecção
-
+```
 ## Metodologia (MITRE ATT&CK)
 
 | Tática | Técnica | ID |
