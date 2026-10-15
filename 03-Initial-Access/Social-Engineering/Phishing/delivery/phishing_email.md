@@ -1,7 +1,4 @@
-## 6. `delivery/phishing_email.md` — pretexto da campanha
-
-```bash
-# Pretexto da Campanha — E-mail
+### Pretexto da Campanha — E-mail
 
 ## Remetente / assunto
 
