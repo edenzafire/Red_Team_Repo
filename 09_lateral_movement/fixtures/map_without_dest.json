@@ -1,0 +1,8 @@
+{
+  "schema": "credentials-map-v2",
+  "generated": "FIXTURE",
+  "material": [],
+  "destinations": [
+    { "host": "10.0.2.20", "user": "app-service", "confidence": "speculative" }
+  ]
+}

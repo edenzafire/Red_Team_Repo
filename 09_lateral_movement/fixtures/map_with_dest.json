@@ -1,0 +1,2 @@
+{ "schema": "credentials-map-v2",
+  "destinations": [ { "host": "10.0.2.9", "user": "svc-deploy", "confidence": "likely" } ] }

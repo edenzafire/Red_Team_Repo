@@ -1,0 +1,12 @@
+evidence/raw/*
+!evidence/raw/.gitkeep
+lat_evidence/
+exploit_*/
+attempted.list
+credstore/
+*.hive
+*.dump
+*password*
+*.key
+*.pem
+id_rsa*
