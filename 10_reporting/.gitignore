@@ -1,0 +1,7 @@
+evidence/raw/*
+!evidence/raw/.gitkeep
+*.pem
+id_rsa*
+*password*
+*.hive
+*.dump
