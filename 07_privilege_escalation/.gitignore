@@ -1,0 +1,11 @@
+evidence/raw/*
+!evidence/raw/.gitkeep
+dp_evidence/
+tok_evidence/
+exploit_*/
+*.hive
+*hashes*
+*.key
+*.pem
+id_rsa*
+*.exe
