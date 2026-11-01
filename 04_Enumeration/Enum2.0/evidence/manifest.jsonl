@@ -1,0 +1,17 @@
+{"check":"system_info","technique":"T1082","file":"system_info.txt","ts":"2026-10-24T21:18:05Z"}
+{"check":"patch_level","technique":"T1082","file":"patch_level.txt","ts":"2026-10-24T21:18:05Z"}
+{"check":"current_user","technique":"T1087","file":"current_user.txt","ts":"2026-10-24T21:18:05Z"}
+{"check":"local_users","technique":"T1087","file":"local_users.txt","ts":"2026-10-24T21:18:05Z"}
+{"check":"local_admins","technique":"T1087","file":"local_admins.txt","ts":"2026-10-24T21:18:05Z"}
+{"check":"creds_files","technique":"T1555","file":"creds_files.txt","ts":"2026-10-24T21:18:05Z"}
+{"check":"dpapi_candidates","technique":"T1552","file":"dpapi_candidates.txt","ts":"2026-10-24T21:18:05Z"}
+{"check":"wifi_profiles","technique":"T1552","file":"wifi_profiles.txt","ts":"2026-10-24T21:18:05Z"}
+{"check":"network_config","technique":"T1016","file":"network_config.txt","ts":"2026-10-24T21:18:05Z"}
+{"check":"listening_svcs","technique":"T1046","file":"listening_svcs.txt","ts":"2026-10-24T21:18:05Z"}
+{"check":"arp_cache","technique":"T1018","file":"arp_cache.txt","ts":"2026-10-24T21:18:05Z"}
+{"check":"services_unquoted","technique":"T1574.009","file":"services_unquoted.txt","ts":"2026-10-24T21:18:05Z"}
+{"check":"writable_service_paths","technique":"T1574.011","file":"writable_service_paths.txt","ts":"2026-10-24T21:18:05Z"}
+{"check":"always_installelevated","technique":"T1548.002","file":"always_installelevated.txt","ts":"2026-10-24T21:18:05Z"}
+{"check":"token_privileges","technique":"T1134","file":"token_privileges.txt","ts":"2026-10-24T21:18:05Z"}
+{"check":"scheduled_tasks","technique":"T1053.005","file":"scheduled_tasks.txt","ts":"2026-10-24T21:18:05Z"}
+{"check":"defenses_state","technique":"T1562.001","file":"defenses_state.txt","ts":"2026-10-24T21:18:05Z"}

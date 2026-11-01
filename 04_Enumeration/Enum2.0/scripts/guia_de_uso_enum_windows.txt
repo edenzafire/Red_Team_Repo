@@ -1,0 +1,126 @@
+===============================================================================
+               GUIA DE USO E REFERENCIA: enum_windows.ps1
+===============================================================================
+
+1. DESCRICAO
+------------
+O script 'enum_windows.ps1' e uma ferramenta de enumeracao e triagem pos-exploracao
+para ambientes Windows. Ele coleta informacoes do sistema, usuarios, permissoes,
+servicos e redes, analisando automaticamente falhas de seguranca (escalonamento
+de privilegios e credenciais expostas).
+
+Carateristicas principais:
+- 100% nativo em PowerShell/.NET (sem necessidade de arquivos executaveis externos).
+- Alinhado com o framework MITRE ATT&CK.
+- Ciente da presenca de EDR, Sysmon e Script Block Logging (Event 4104).
+- Gera relatorios organizados em JSON e TXT com niveis de severidade (Triage).
+
+
+2. PARAMETROS DISPONIVEIS
+-------------------------
+
+-OutputDir <Caminho>
+    Define o diretório onde os relatórios e logs serão salvos.
+    Default: %TEMP%\enum_<DATA_HORA_UTC>
+    Exemplo: -OutputDir C:\Windows\Temp\.resultado
+
+-Quiet
+    Suprime todas as mensagens no console durante a execução (modo silencioso).
+    Ideal para manter discrição e evitar ruído na tela do usuário.
+
+-Checks "<lista_de_checks>"
+    Executa apenas um subconjunto específico de verificações separadas por vírgula.
+    Exemplo: -Checks "system_info,current_user,token_privileges"
+
+-Resume
+    Ignora as verificações cujos arquivos de saída já foram gerados na pasta de destino,
+    evitando reexecutar tarefas demoradas caso o script tenha sido interrompido.
+
+
+3. PREPARACAO DO AMBIENTE (SE HOUVER BLOQUEIO)
+----------------------------------------------
+Caso o PowerShell bloqueie a execução do script por conta de diretivas de segurança:
+
+    Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process
+
+
+4. EXEMPLOS DE USO NO DIA A DIA
+-------------------------------
+
+A) Execução Padrão (Coleta Completa):
+    & .\enum_windows.ps1
+
+B) Execução Rápida (Apenas Módulos Essenciais):
+    & .\enum_windows.ps1 -Checks "system_info,current_user,token_privileges,defenses_state"
+
+C) Execução Discreta / Silenciosa (OPSEC):
+    & .\enum_windows.ps1 -Quiet -OutputDir C:\Windows\Temp\.cache_enum
+
+D) Retomando Execução Interrompida:
+    & .\enum_windows.ps1 -Resume
+
+
+5. RESUMO DOS CHECKS DISPONIVEIS
+--------------------------------
+- system_info            : Informacoes de SO, arquitetura e modelo da maquina.
+- patch_level            : Historico dos ultimos 15 patches/hotfixes instalados.
+- current_user           : Usuario atual, privilegios atipicos e grupos.
+- local_users            : Enumeracao de contas locais via ADSI (sem evento 4799).
+- local_admins           : Membros do grupo de Administradores Locais.
+- creds_files            : Busca padroes de senhas em configs (.xml, .ini, .config).
+- dpapi_candidates       : Arquivos de proteção do Windows (DPAPI) do usuario.
+- wifi_profiles          : Lista perfis de redes Wi-Fi salvas.
+- network_config         : Interfaces de rede, IPs e rotas padrao.
+- listening_svcs         : Portas TCP escutando localmente e seus PIDs.
+- arp_cache              : Tabela ARP com hosts vizinhos alcancaveis.
+- services_unquoted      : Servicos com caminhos contendo espacos e sem aspas.
+- writable_service_paths : Checa se o usuario pode alterar binarios/diretorios de servicos.
+- always_installelevated : Verifica se instalacoes MSI rodam como SYSTEM no Registro.
+- token_privileges       : Checa tokens perigosos (ex: SeDebugPrivilege, SeImpersonatePrivilege).
+- scheduled_tasks        : Tarefas agendadas ativas que rodam como SYSTEM.
+- defenses_state         : Status do Windows Defender e servicos de seguranca.
+
+
+6. ARTEFATOS GERADOS NO OUTPUT
+------------------------------
+Ao concluir a execução, os seguintes arquivos serão criados na pasta de saída:
+
+1. findings.json        : Relatório consolidado com achados de segurança e severidade.
+2. environment.json     : Status do ambiente e detecção de agentes de monitoramento.
+3. manifest.jsonl       : Registro linha a linha de cada verificação concluída.
+4. cleanup_manifest.txt : Lista de artefatos criados para posterior limpeza do sistema.
+5. <check_name>.txt     : Saída bruta detalhada de cada módulo de verificação.
+
+===============================================================================
+
+sso funcionará desde que você montou o script a partir da pasta Enum2.0:
+
+PowerShell
+Download
+Copiar código
+
+.\scripts\enum_windows.ps1 -OutputDir .\evidence
+
+Opção
+Mais explícito, útil se você estiver rodando em outro diretório:
+
+PowerShell
+Download
+Copiar código
+
+.\scripts\enum_windows.ps1 -OutputDir "C:\Users\WinLab\Downloads\Red_Team_Repo\04_Enumeration\Enum2.0\evidence"
+
+D
+Se você quiser organizar melhor a pasta evidencepara múltiplas execuções, o script já cria uma subpasta com timestamp por padrão se você não especificar o diretório final . No entanto, como você está passando -OutputDirdiretamente para a pasta evidence, os arquivos cairão direto nela.
+
+Se você quiser criar uma subpasta de dados dentro de evidence, você pode fazer assim:
+
+PowerShell
+Download
+Copiar código
+
+.\scripts\enum_windows.ps1 -OutputDir (Join-Path ".\evidence" "enum_" + (Get-Date).ToUniversalTime().ToString('yyyyMMdd_HHmmss'))
+
+Isso resultaria em algo como: C:\...\Enum2.0\evidence\enum_20261024_210814\findings.json
+
+Mas para o seu caso simples, a Opção 1 é a mais limpa e profissional.

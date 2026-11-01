@@ -1,0 +1,2 @@
+﻿### check=network_config host=DESKTOP-VS678NC ts=2026-10-24T21:18:05Z user=WinLab isAdmin=True
+### timeout: check took longer than 30s

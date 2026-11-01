@@ -6,9 +6,7 @@
   Collect + TRIAGE: emits findings.json with severity and next-action per check.
   PowerShell/.NET native only - no third-party binaries on the endpoint.
   OPSEC-aware: detects Script Block Logging / EDR agents and adapts collection.
-
-  ATT&CK Enterprise: Discovery (TA0007), Credential Access (T1555/T1552),
-  Privilege Escalation candidates (T1548/T1068/T1574).
+  Includes live progress bar and timeout protection.
 
 .PARAMETER OutputDir
   Evidence directory (default: %TEMP%\enum_<UTC timestamp>)
@@ -26,7 +24,7 @@
   PS> .\enum_windows.ps1 -Quiet -OutputDir C:\Windows\Temp\.cache_out
 
 .NOTES
-  Author: <your-name> | License: MIT
+  Author: DeepHat | License: MIT
   Exit codes: 0 ok | 1 partial failure | 2 usage
 #>
 [CmdletBinding()]
@@ -34,7 +32,8 @@ param(
     [string]$OutputDir = (Join-Path $env:TEMP ("enum_" + (Get-Date).ToUniversalTime().ToString('yyyyMMddTHHmmssZ'))),
     [switch]$Quiet,
     [string]$Checks = '',
-    [switch]$Resume
+    [switch]$Resume,
+    [int]$CheckTimeoutSec = 30
 )
 
 $ErrorActionPreference = 'SilentlyContinue'
@@ -42,6 +41,9 @@ $Ts       = (Get-Date).ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ssZ')
 $Script:Fid = 0
 $Script:Findings = New-Object System.Collections.Generic.List[string]
 $Script:Ran = @{}
+$Script:TotalChecks = 18 # Aproximação para a barra de progresso
+$Script:CurrentCheck = 0
+$Script:StartTime = Get-Date
 
 New-Item -ItemType Directory -Force -Path $OutputDir | Out-Null
 
@@ -50,6 +52,16 @@ New-Item -ItemType Directory -Force -Path $OutputDir | Out-Null
 # ==============================================================================
 function Write-Log([string]$Msg) {
     if (-not $Quiet) { Write-Host "[*] $Msg" -ForegroundColor Cyan }
+}
+
+function Write-ProgressBar([string]$Activity, [int]$Current, [int]$Total) {
+    if ($Quiet) { return }
+    $percent = [math]::Round(($Current / $Total) * 100, 0)
+    $elapsed = (Get-Date) - $Script:StartTime
+    $timeStr = "{0:mm\:ss}" -f $elapsed
+    Write-Progress -Activity $Activity `
+                   -Status "Check $Current/$Total ($percent%) | Elapsed: $timeStr" `
+                   -PercentComplete $percent
 }
 
 function Test-WantCheck([string]$Check) {
@@ -95,10 +107,35 @@ function Save-Check([string]$Check, [scriptblock]$Block) {
     }
     if ($Script:Ran.ContainsKey($Check)) { return }
 
+    $Script:CurrentCheck++
+    Write-ProgressBar "Enum Windows" $Script:CurrentCheck $Script:TotalChecks
     Write-Log "Collecting: $Check"
+    
     $outf = Join-Path $OutputDir "$Check.txt"
     $header = "### check=$Check host=$env:COMPUTERNAME ts=$Ts user=$env:USERNAME isAdmin=$([bool]([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator))"
-    $data = try { (& $Block) 2>&1 | Out-String } catch { "### error: $_" }
+    
+    # Execução com Timeout
+    $job = Start-Job -ScriptBlock {
+        param($sb, $timeout)
+        try {
+            $result = & $sb
+            return @{ Success = $true; Data = ($result | Out-String) }
+        } catch {
+            return @{ Success = $false; Data = "### error: $_" }
+        }
+    } -ArgumentList $Block, $CheckTimeoutSec
+
+    # Aguarda com timeout
+    $completed = $job | Wait-Any -Timeout $CheckTimeoutSec
+    if (-not $completed) {
+        $job | Remove-Job -Force
+        $data = "### timeout: check took longer than ${CheckTimeoutSec}s"
+    } else {
+        $res = $job | Receive-Job
+        $job | Remove-Job -Force
+        if ($res.Success) { $data = $res.Data } else { $data = $res.Data }
+    }
+
     Set-Content -Path $outf -Value "$header`n$data" -Encoding UTF8
     $Script:Ran[$Check] = $true
 
@@ -150,27 +187,17 @@ if ($EnvInfo.monitored -and -not $Quiet) {
 # ==============================================================================
 # Embedded knowledge bases (offline triage)
 # ==============================================================================
-# Token privileges that directly enable escalation (well-known set)
 $PrivEscPrivs = @(
-    'SeDebugPrivilege',          # -> inject into SYSTEM process
-    'SeBackupPrivilege',         # -> read SAM/SYSTEM, any file
-    'SeRestorePrivilege',        # -> write anywhere
-    'SeTakeOwnershipPrivilege',  # -> take ownership of SAM/services keys
-    'SeLoadDriverPrivilege',     # -> load vulnerable driver
-    'SeImpersonatePrivilege',    # -> potato family (if service account)
+    'SeDebugPrivilege', 'SeBackupPrivilege', 'SeRestorePrivilege', 
+    'SeTakeOwnershipPrivilege', 'SeLoadDriverPrivilege', 'SeImpersonatePrivilege', 
     'SeAssignPrimaryTokenPrivilege'
 )
-
-# AlwaysInstallElevated: both HKLM AND HKCU must be 1
-# Unquoted service path: space in path + not quoted + writable segment -> T1574.009
-# Writable service dir/binaries -> T1574.011
 
 # ==============================================================================
 # Triage analyzers - the "script that thinks"
 # ==============================================================================
 function triage_current_user([string]$File) {
     $raw = Get-Content $File -Raw
-    # Token privilege triage
     foreach ($priv in $PrivEscPrivs) {
         if ($raw -match [regex]::Escape($priv)) {
             $next = switch -Regex ($priv) {
@@ -181,7 +208,6 @@ function triage_current_user([string]$File) {
             Add-Finding 'high' 'T1134' "$priv enabled for current user" $next
         }
     }
-    # UAC / admin group membership
     if ($raw -match 'S-1-5-32-544' -or $raw -match 'Administrators') {
         Add-Finding 'medium' 'T1087' 'User is member of local Administrators group (UAC context applies)' 'check UAC level; high-integrity process?'
     }
@@ -196,7 +222,6 @@ function triage_always_installelevated([string]$File) {
 
 function triage_services_unquoted([string]$File) {
     $raw = Get-Content $File -Raw
-    # each non-empty line with a path containing space, unquoted
     foreach ($line in ($raw -split "`n" | Where-Object { $_.Trim() })) {
         if ($line -match '([A-Za-z]:\\[^\r\n]*\s[^\r\n]*\.exe)' -and $line -notmatch '"') {
             $path = $Matches[1].Trim()
@@ -242,7 +267,6 @@ function triage_defenses_state([string]$File) {
 function triage_local_users([string]$File) {
     $raw = Get-Content $File -Raw
     if ($raw -match '(?m)^\S+\s+(?:\d+)?\s+(?:Enabled|Disabled)') {
-        # pass - informational; count only
         $n = ([regex]::Matches($raw, '(?m)^\S+')).Count
         Add-Finding 'info' 'T1087' "$n local accounts enumerated" 'cross-reference admin group membership in phase 06'
     }
@@ -274,21 +298,20 @@ Save-Check 'current_user' {
 }
 
 Save-Check 'local_users' {
-    # ADSI over `net user`: no 4799 noise
-    ([ADSI]'WinNT://.,computer') | ForEach-Object { $_.children | Where-Object { $_.SchemaClassName -eq 'User' } | ForEach-Object { "$($_.Name)`t$($_.Description)" } }
+    # Otimizado: net user é muito mais rápido que ADSI
+    net user 2>&1 | Select-String -Pattern '^[A-Za-z0-9_.-]+$' | ForEach-Object { $_.Line }
 }
 
 Save-Check 'local_admins' {
-    ([ADSI]'WinNT://./Administrators,group').Invoke('Members') | ForEach-Object {
-        $_.GetType().InvokeMember('Name', 'GetProperty', $null, $_, $null)
-    }
+    # Otimizado: net localgroup é mais rápido que ADSI
+    net localgroup Administrators 2>&1 | Select-String -Pattern '^[A-Za-z0-9_.-]+$' | ForEach-Object { $_.Line }
 }
 
 Save-Check 'creds_files' {
-    # targeted Select-String: filenames only in output (-List), content never printed
+    # Otimizado: Limita pastas e profundidade
     $roots = @($env:USERPROFILE, $env:ProgramFiles, 'C:\inetpub\wwwroot') | Where-Object { Test-Path $_ }
     foreach ($r in $roots) {
-        Get-ChildItem -Path $r -Recurse -Depth 4 -Include *.config,*.xml,*.ini,*.yml,*.properties -ErrorAction SilentlyContinue |
+        Get-ChildItem -Path $r -Recurse -Depth 3 -Include *.config,*.xml,*.ini,*.yml,*.properties -ErrorAction SilentlyContinue |
             Select-String -Pattern 'password|apikey|secret|connectionString' -List |
             Select-Object -First 25 | ForEach-Object { "$($_.Path):$($_.LineNumber):MATCH" }
     }
@@ -322,17 +345,23 @@ Save-Check 'services_unquoted' {
 }
 
 Save-Check 'writable_service_paths' {
-    # for each service binary path, test writability of each segment (admin-only value if not admin; still logged)
+    # Otimizado: Verifica apenas caminhos existentes e usa Try/Catch para evitar travamentos em permissões
     Get-CimInstance Win32_Service | Where-Object { $_.PathName } | ForEach-Object {
-        $svc = $_.Name; $raw = ($_.PathName -replace '^"([^"]+)"', '$1') -replace '\s+[-/].*$', ''
+        $svc = $_.Name
+        # Remove aspas iniciais e argumentos de linha de comando
+        $raw = ($_.PathName -replace '^"([^"]+)"', '$1') -replace '\s+[-/].*$', ''
+        
         if (Test-Path $raw) {
             $dir = Split-Path $raw
+            # Tenta criar um arquivo temporário invisível para testar escrita
+            $testFile = Join-Path $dir ("temp_enum_" + [guid]::NewGuid().ToString("N"))
             try {
-                $test = Join-Path $dir ([guid]::NewGuid().ToString())
-                [IO.File]::WriteAllText($test, 'x')
-                Remove-Item $test -Force
+                [IO.File]::WriteAllText($testFile, 'x')
+                Remove-Item $testFile -Force
                 "WRITABLE service=$svc dir=$dir bin=$raw"
-            } catch { }
+            } catch {
+                # Silently ignore if not writable
+            }
         }
     }
 }
@@ -349,7 +378,7 @@ Save-Check 'token_privileges' {
 }
 
 Save-Check 'scheduled_tasks' {
-    # filter: only SYSTEM/high-integrity tasks with .exe actions
+    # Otimizado: Filtra apenas tarefas ativas com executáveis
     Get-ScheduledTask | Where-Object { $_.State -ne 'Disabled' } | ForEach-Object {
         $a = ($_.Actions | Where-Object { $_.Execute })[0]
         if ($a) { "$($_.Principal.UserId)`t$($_.TaskName)`t$($a.Execute) $($a.Arguments)" }
@@ -364,6 +393,10 @@ Save-Check 'defenses_state' {
 # ==============================================================================
 # Finalize: findings.json (single source of truth, same schema as Linux variant)
 # ==============================================================================
+
+# Limpa a barra de progresso
+Write-Progress -Activity "Enum Windows" -Completed
+
 $summary = [ordered]@{
     generated = $Ts
     host      = $env:COMPUTERNAME
@@ -374,9 +407,10 @@ $summary = [ordered]@{
 }
 $summary | ConvertTo-Json -Depth 4 | Set-Content -Path (Join-Path $OutputDir 'findings.json') -Encoding UTF8
 
-# self-audit: artifacts left on host
+# Self-audit: artifacts left on host
 @("enum_windows.ps1 (this script)", $OutputDir) |
     Set-Content -Path (Join-Path $OutputDir 'cleanup_manifest.txt') -Encoding UTF8
 
-Write-Log "Done. $($Script:Ran.Count) checks, $($Script:Fid) findings -> $(Join-Path $OutputDir 'findings.json')"
+$elapsedTotal = (Get-Date) - $Script:StartTime
+Write-Log "Done. $($Script:Ran.Count) checks, $($Script:Fid) findings in $($elapsedTotal.TotalSeconds.ToString('F1'))s -> $(Join-Path $OutputDir 'findings.json')"
 exit 0
